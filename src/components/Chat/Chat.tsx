@@ -10,25 +10,28 @@ import Input from "./Chat_Input";
 import Core from "./Chat_Core";
 
 import "./_Chat.scss";
-
-function scrollToChat() {
-    const node = document.getElementById("Chat");
-    node && node.scrollIntoView();
-    window.scrollBy(0, -80);
-}
+import React from "react";
 
 const Chat = (props: Pick<UserDetails, "id" | "name">) => {
     const { id, name } = props;
-    const debouncedScroll = debounce(scrollToChat, 500);
+
+    const ref: React.RefObject<any> = React.createRef();
+
+    function scrolling() {
+        ref.current!.scrollIntoView();
+        window.scrollBy(0, -80);
+    }
+
+    const debouncedScrolling = debounce(scrolling, 500);
 
     useLayoutEffect(() => {
-        debouncedScroll();
+        debouncedScrolling();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [id]);
 
     return (
         <Fade in={true} timeout={700}>
-            <section className="Chat" id="Chat">
+            <section className="Chat" id="Chat" ref={ref}>
                 <Header id={id} name={name} />
                 <Core id={id} />
                 <Input id={id} />
