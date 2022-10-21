@@ -23,7 +23,7 @@
     justify-content: space-between;
     align-items: center;
     border-top: 1px solid var(--secondary-bg-color);
-    //margin-top: 16px;
+    border-bottom: 1px solid var(--secondary-bg-color);
     padding-left: 30px;
     @include mobile {
         margin-top: 0;

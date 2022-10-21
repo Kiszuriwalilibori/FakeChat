@@ -17,11 +17,11 @@ const UserMessage = (props: Props) => {
     const fromHost = sender === "host";
 
     return (
-        <div className={fromHost ? "host-message" : "user-message"}>
+        <div className={fromHost ? "message message--host" : " message message--user"}>
             {fromHost && (
                 <>
                     <Baloon text={text} type={"host"} />
-                    <div className="person-wrapper">
+                    <div className="message--sender">
                         <Portrait online thumbnail={"https://i.ibb.co/tYQ9jG4/Author.jpg"} name={name} />
                         <Time time={timestamp} />
                     </div>
@@ -30,7 +30,7 @@ const UserMessage = (props: Props) => {
 
             {!fromHost && (
                 <>
-                    <div className="person-wrapper">
+                    <div className="message--sender">
                         <Portrait online thumbnail={thumbnail} name={name} />
                         <Time time={timestamp} />
                     </div>
@@ -42,7 +42,3 @@ const UserMessage = (props: Props) => {
 };
 
 export default UserMessage;
-
-/**
- * todo to byłoby dobre na rendering props
- */

@@ -22,7 +22,8 @@
                 @extend .social__svg;
             }
             & .form__button {
-                @extend .withGreySideBorders;
+                border-left: 1px solid var(--secondary-bg-color);
+                display: flex;
                 justify-content: center;
                 width: calc(
                     var(--users-search-height) + (var(--users-search-wrapper-height) - var(--users-search-height)) / 2

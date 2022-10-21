@@ -2,7 +2,7 @@ import React from "react";
 import uuid from "react-uuid";
 
 import menuItems from "./config";
-import NavigationItem from "./NavigationItem";
+import NavigationItem from "./Navigation_Item";
 
 import "./_Navigation.scss";
 

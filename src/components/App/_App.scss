@@ -14,9 +14,9 @@
 
 .all-but-nav {
     display: grid;
-    grid-template-columns: 432px auto 300px;
+    grid-template-columns: 360px auto 300px;
     grid-auto-rows: 1fr;
-    width: 100% - var(--nav-width);
+    width: calc(100vw - var(--nav-width));
     margin-left: var(--nav-width);
     @include mobile {
         margin-left: unset;

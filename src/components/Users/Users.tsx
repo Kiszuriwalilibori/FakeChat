@@ -1,9 +1,10 @@
+import FadeIn from "react-fade-in";
+import uuid from "react-uuid";
+
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 
-import uuid from "react-uuid";
-
-import User from "./UserDetails";
+import User from "./User";
 import Input from "./Input";
 
 import { RootStateType, UsersData, Messages } from "types/types";
@@ -47,12 +48,14 @@ const Users = (props: Props) => {
         });
 
     return (
-        <section className="Users">
-            <Input changeHandler={setFilter} />
-            {orderedPersons.map(item => (
-                <User user={item} isActive={item.id === activeUser} clickHandle={activeUserSetter} key={uuid()} />
-            ))}
-        </section>
+        <FadeIn>
+            <section className="Users">
+                <Input changeHandler={setFilter} />
+                {orderedPersons.map(item => (
+                    <User user={item} isActive={item.id === activeUser} clickHandle={activeUserSetter} key={uuid()} />
+                ))}
+            </section>
+        </FadeIn>
     );
 };
 

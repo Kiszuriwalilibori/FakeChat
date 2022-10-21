@@ -22,7 +22,7 @@ interface Props extends OwnProps {
 const Chat = (props: Props) => {
     const { messages, thumbnail, name } = props;
     return (
-        <div>
+        <div className="chat--core">
             {messages.map(message => {
                 return <Message message={message} thumbnail={thumbnail} name={name} key={uuid()} />;
             })}

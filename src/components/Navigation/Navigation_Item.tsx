@@ -1,9 +1,8 @@
-import { FunctionComponent, MouseEventHandler, SVGProps } from "react";
-
 import uuid from "react-uuid";
 
+import { MouseEventHandler } from "react";
+
 import { MenuConfigItem } from "types/types";
-import Icons from "icons";
 
 import home from "icons/home.svg";
 import chat from "icons/chat.svg";
@@ -42,28 +41,6 @@ const NavigationItem = (props: Props) => {
             break;
         default:
     }
-    //let Node: FunctionComponent<SVGProps<SVGSVGElement> & { title?: string | undefined }>;
-    // switch (menuItem.icon) {
-    //     case "home":
-    //         Node = Icons.Home;
-    //         break;
-    //     case "chat":
-    //         Node = Icons.Chat;
-    //         break;
-    //     case "edit":
-    //         Node = Icons.Edit;
-    //         break;
-    //     case "person":
-    //         Node = Icons.Person;
-    //         break;
-    //     case "settings":
-    //         Node = Icons.Settings;
-    //         break;
-    //     case "cards":
-    //         Node = Icons.Cards;
-    //         break;
-    //     default:
-    // }
 
     return (
         <div
