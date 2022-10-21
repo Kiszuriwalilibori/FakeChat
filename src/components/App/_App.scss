@@ -1,8 +1,13 @@
 @use "styles/mixins" as *;
 
 .App {
-    display: flex;
-    flex-direction: row;
+    // display: flex;
+    // flex-direction: row;
+
+    display: grid;
+    //grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: var(--nav-width) 432px auto 300px;
+    grid-auto-rows: 1fr;
 
     @include mobile {
         width: 100%;

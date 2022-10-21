@@ -4,9 +4,7 @@
 
 .Users {
     background-color: var(--secondary-bg-color);
-    height: 100vh;
-    width: 30%;
-    margin-left: var(--nav-width);
+
     @include mobile {
         margin-left: unset;
         width: 100%;

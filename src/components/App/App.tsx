@@ -30,6 +30,7 @@ function _App(props: Props) {
     return (
         <div className="App">
             <Navigation />
+
             <Suspense fallback={<div></div>}>
                 <Users />
             </Suspense>
