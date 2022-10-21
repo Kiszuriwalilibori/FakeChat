@@ -1,6 +1,6 @@
-import Icons from "icons";
-import { connect } from "react-redux";
 import moment from "moment";
+
+import { connect } from "react-redux";
 
 import { RootStateType, UserDetails, Messages, Message } from "types/types";
 
@@ -55,5 +55,3 @@ const mapStateToProps = (state: RootStateType, ownProps: OwnProps) => {
 };
 
 export default connect(mapStateToProps, {})(User);
-
-//export default User;

@@ -5,7 +5,7 @@ import Icons from "icons";
 import useDispatchAction from "hooks/useDispatchAction";
 
 import { BasicButton } from "components";
-import { Message } from "types/types";
+import { Message, UserDetails } from "types/types";
 
 import "./_Chat_Input.scss";
 
@@ -35,11 +35,7 @@ function randomInteger(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-interface Props {
-    id: string;
-}
-
-const Input = (props: Props) => {
+const Input = (props: Pick<UserDetails, "id">) => {
     const { id } = props;
     const [textContent, setTextContent] = useState<string>("");
     const [message, setMessage] = useState<Message>({} as Message);
@@ -63,7 +59,6 @@ const Input = (props: Props) => {
     useEffect(() => {
         timeouts.push(
             setTimeout(() => {
-                console.log(message, "message");
                 !isEmpty(message) && addMessage(message);
             }, randomInteger(5, 10) * 1000)
         );
@@ -74,15 +69,6 @@ const Input = (props: Props) => {
         return () => timeouts.forEach(t => clearTimeout(t));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
-    // useEffect(() => {
-    //     const timer = setTimeout(() => {
-    //         !isEmpty(message) && addMessage(message);
-    //     }, randomInteger(5, 10) * 1000);
-    //     //return () => clearTimeout(timer);
-
-    //     // eslint-disable-next-line react-hooks/exhaustive-deps
-    // }, [message]);
 
     return (
         <div className="Chat__input">
@@ -105,19 +91,7 @@ const Input = (props: Props) => {
                 </BasicButton>
 
                 {textContent && (
-                    <BasicButton
-                        className="button-usual"
-                        type="submit"
-                        // onClick={() => {
-                        //     if (textContent) {
-                        //         const message = createMessage(textContent, id);
-                        //         addMessage(message);
-                        //         setTextContent("");
-                        //         setMessage(createAnswer(textContent, id));
-                        //     }
-                        // }}
-                        onClick={clickHandler}
-                    >
+                    <BasicButton className="button-usual" type="submit" onClick={clickHandler}>
                         <Icons.Send />
                     </BasicButton>
                 )}

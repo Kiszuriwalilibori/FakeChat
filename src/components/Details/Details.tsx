@@ -36,7 +36,6 @@ interface Props {
 const Details = (props: Props) => {
     const { user } = props;
     const { location, dob, name, phone, picture, social, nat } = user;
-    console.log(user);
 
     if (isEmpty(user)) return null;
     return (

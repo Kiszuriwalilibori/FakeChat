@@ -16,7 +16,7 @@ interface Props {
     messages: Messages;
 }
 const Users = (props: Props) => {
-    const { users, messages } = props;
+    const { users /*, messages*/ } = props;
     const [activeUser, setActiveUser] = useState<string>("");
     const [pattern, setPattern] = useState<string>("");
 
