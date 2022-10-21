@@ -1,11 +1,16 @@
 import Moment from "react-moment";
+import { pick } from "lodash";
 
 import Icons from "icons";
 
 import { UserDetails } from "types/types";
 
-const Informations = (props: Pick<UserDetails, "phone" | "dob">) => {
-    const { phone, dob } = props;
+import countries from "countries/countries.json";
+
+const Informations = (props: Pick<UserDetails, "phone" | "dob" | "nat">) => {
+    const { phone, dob, nat } = props;
+
+    const languages = Object.values(pick(countries, [nat]))[0].languages.join(" ");
 
     return (
         <div className="Details__informations">
@@ -25,7 +30,7 @@ const Informations = (props: Pick<UserDetails, "phone" | "dob">) => {
                 </div>
                 <div>
                     <span>Language:</span>
-                    <span></span>
+                    <span>{languages}</span>
                 </div>
             </div>
         </div>

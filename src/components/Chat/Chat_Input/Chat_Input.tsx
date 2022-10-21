@@ -58,14 +58,31 @@ const Input = (props: Props) => {
         [textContent, id]
     );
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            !isEmpty(message) && addMessage(message);
-        }, randomInteger(5, 10) * 1000);
-        //return () => clearTimeout(timer);
+    const timeouts = [] as any[];
 
+    useEffect(() => {
+        timeouts.push(
+            setTimeout(() => {
+                console.log(message, "message");
+                !isEmpty(message) && addMessage(message);
+            }, randomInteger(5, 10) * 1000)
+        );
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [message]);
+
+    useEffect(() => {
+        return () => timeouts.forEach(t => clearTimeout(t));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    // useEffect(() => {
+    //     const timer = setTimeout(() => {
+    //         !isEmpty(message) && addMessage(message);
+    //     }, randomInteger(5, 10) * 1000);
+    //     //return () => clearTimeout(timer);
+
+    //     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, [message]);
 
     return (
         <div className="Chat__input">

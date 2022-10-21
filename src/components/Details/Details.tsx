@@ -35,14 +35,15 @@ interface Props {
 
 const Details = (props: Props) => {
     const { user } = props;
-    const { location, dob, name, phone, picture, social } = user;
+    const { location, dob, name, phone, picture, social, nat } = user;
+    console.log(user);
 
     if (isEmpty(user)) return null;
     return (
         <Fade in={true} timeout={300}>
             <section className="Details">
                 <Header name={name} location={location} picture={picture} social={social} />
-                <Informations phone={phone} dob={dob} />
+                <Informations phone={phone} dob={dob} nat={nat} />
                 <SharedFiles files={foo} />
             </section>
         </Fade>

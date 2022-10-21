@@ -25,7 +25,8 @@
             "js/*": ["js/*"],
             "icons/*": ["Icons/*"],
             "styles/*": ["styles/*"],
-            "images/*": ["images/*"]
+            "images/*": ["images/*"],
+            "countries/*": ["countries/*"]
         }
     },
     "include": ["src"]
