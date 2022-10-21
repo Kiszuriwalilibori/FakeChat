@@ -1,5 +1,6 @@
 @use "styles/variables" as *;
 @use "styles/common" as *;
+@use "styles/mixins" as *;
 
 .chat--input {
     @extend .flexRow;
@@ -24,6 +25,9 @@
     border-top: 1px solid var(--secondary-bg-color);
     margin-top: 16px;
     padding-left: 30px;
+    @include mobile {
+        margin-top: 0;
+    }
 
     &:hover {
         background-color: var(--secondary-bg-color);

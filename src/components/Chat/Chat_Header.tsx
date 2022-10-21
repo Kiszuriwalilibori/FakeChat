@@ -20,7 +20,7 @@ const Header = (props: Pick<UserDetails, "id" | "name">) => {
     if (!name) return null;
 
     return (
-        <div className="Chat__header">
+        <div className="Chat__header" id="Chat_Header">
             <div>
                 <span>{title}</span>
                 <span>{" " + name.first + " " + name.last}</span>
