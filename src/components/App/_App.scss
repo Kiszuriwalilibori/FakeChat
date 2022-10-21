@@ -1,0 +1,11 @@
+@use "styles/mixins" as *;
+
+.App {
+    display: flex;
+    flex-direction: row;
+
+    @include mobile {
+        width: 100%;
+        flex-direction: column;
+    }
+}

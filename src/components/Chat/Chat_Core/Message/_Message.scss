@@ -1,0 +1,68 @@
+@use "styles/common" as *;
+@use "styles/variables" as *;
+@use "styles/mixins" as *;
+
+.user-message {
+    @extend .flexRowVerticallyCentered;
+    justify-content: flex-start;
+
+    padding-top: 20px;
+}
+
+.host-message {
+    @extend .flexRowVerticallyCentered;
+    justify-content: flex-end;
+
+    padding-top: 20px;
+}
+.person-wrapper {
+    @extend .flexColumn;
+    padding: 0 20px;
+}
+
+.baloon {
+    padding: 12px;
+    border-radius: 8px;
+    max-width: 50%;
+    word-wrap: break-word;
+    margin-top: -15px;
+
+    &-host {
+        background-color: var(--secondary-bg-color);
+        position: relative;
+        &:after {
+            position: absolute;
+            z-index: 3;
+            display: block;
+            top: 15px;
+            right: -10px;
+            width: 10px;
+            height: 10px;
+            margin-bottom: -4px;
+            content: "";
+            background-color: var(--secondary-bg-color);
+            transform: translate(-50%, 0) rotate(45deg);
+            transition: transform 0.2s ease-out;
+            pointer-events: none;
+        }
+    }
+    &-user {
+        background-color: var(--nav-icon-color);
+        position: relative;
+        &:after {
+            position: absolute;
+            z-index: 3;
+            display: block;
+            top: 15px;
+            left: 0;
+            width: 10px;
+            height: 10px;
+            margin-bottom: -4px;
+            content: "";
+            background-color: var(--nav-icon-color);
+            transform: translate(-50%, 0) rotate(45deg);
+            transition: transform 0.2s ease-out;
+            pointer-events: none;
+        }
+    }
+}

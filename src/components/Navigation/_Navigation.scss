@@ -1,0 +1,44 @@
+@use "styles/variables" as *;
+@use "styles/mixins" as *;
+@use "styles/common" as *;
+
+.Navigation {
+    @extend .flexColumn;
+    background-color: var(--main-nav-bg-color);
+    width: var(--nav-width);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+
+    @include mobile {
+        width: 100%;
+        flex-direction: row;
+        justify-content: flex-start;
+        height: initial;
+        position: initial;
+    }
+    & > .Navigation__item {
+        @extend .flexRowVerticallyCentered;
+        width: 100%;
+        justify-content: center;
+        border-bottom: 1px dotted var(--nav-icon-color);
+        background-color: var(--main-nav-bg-color);
+        &.active {
+            cursor: pointer;
+            &:hover {
+                background-color: var(--active-nav-bg-color);
+            }
+        }
+
+        & > img {
+            width: 35%;
+            fill: var(--nav-icon-color);
+        }
+
+        &:after {
+            content: "";
+            display: block;
+            padding-bottom: 100%;
+        }
+    }
+}

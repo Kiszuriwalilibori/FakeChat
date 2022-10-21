@@ -1,0 +1,49 @@
+@use "styles/common" as *;
+@use "styles/variables" as *;
+@use "styles/mixins" as *;
+
+.Chat {
+    flex-grow: 1;
+    position: relative;
+    height: 100vh;
+    &__header {
+        @extend .flexRow;
+        @extend .withGreyBorder;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 30px;
+        height: calc(
+            var(--users-search-height) + (var(--users-search-wrapper-height) - var(--users-search-height)) / 2
+        );
+        & .buttons {
+            @extend .flexRow;
+            height: 100%;
+            & svg {
+                @extend .social__svg;
+            }
+            & .form__button {
+                @extend .withGreySideBorders;
+                justify-content: center;
+                width: calc(
+                    var(--users-search-height) + (var(--users-search-wrapper-height) - var(--users-search-height)) / 2
+                );
+            }
+        }
+        & span:nth-of-type(2) {
+            @extend .blueText;
+            @extend .heavy;
+            margin-left: 3px;
+
+            position: relative;
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: -8px;
+                right: 0%;
+                height: 2px;
+                background-color: var(--blue-text-color);
+                width: 100%;
+            }
+        }
+    }
+}

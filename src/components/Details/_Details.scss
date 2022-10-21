@@ -1,0 +1,115 @@
+@use "styles/common" as *;
+@use "styles/variables" as *;
+
+.Details {
+    @extend .flexColumn;
+    width: 300px;
+    // position: fixed;
+    // top: 0;
+    // bottom: 0;
+    // right: 0;
+
+    & > div {
+        @extend .withGreyBorder;
+        width: 100%;
+    }
+    &__header {
+        @extend .flexColumn;
+        padding-top: 30px;
+        & h2 {
+            @extend .heavy;
+            @extend .blueText;
+            padding-top: 40px;
+            font-size: var(--font-larger);
+        }
+        & p {
+            padding-top: 20px;
+            color: var(--main-text-color);
+        }
+        div.social {
+            @extend .flexRow;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            & svg {
+                @extend .svg;
+            }
+        }
+    }
+
+    &__informations,
+    &__files {
+        @extend .flexColumn;
+        & .header {
+            @extend .flexRow;
+            align-items: center;
+            padding-top: 30px;
+            padding-bottom: 30px;
+
+            & svg {
+                @extend .svg;
+            }
+
+            & h2 {
+                @extend .upperCase;
+                @extend .withGreyText;
+                font-size: 14px;
+            }
+        }
+
+        & .content {
+            @extend .flexColumn;
+            padding-bottom: 30px;
+            width: 100%;
+        }
+    }
+    &__files {
+        padding-bottom: 40px;
+        & ul {
+            @extend .flexColumn;
+            list-style: disc inside;
+            color: var(--nav-border-color);
+            width: 100%;
+
+            & li {
+                padding: 14px 0 0 0;
+                width: 75%;
+            }
+
+            & span {
+                color: var(--main-text-color);
+
+                &::after {
+                    position: absolute;
+                    content: "";
+                    height: 1px;
+                    bottom: -4px;
+                    width: 100%;
+                    left: 0;
+                    background: var(--main-text-color);
+                }
+            }
+        }
+        & a {
+            @extend .clickable;
+            text-decoration: none;
+            position: relative;
+            margin-left: 18px;
+        }
+    }
+    &__informations {
+        & .content {
+            & > div {
+                @extend .flexRow;
+                @extend .withGreyText;
+                padding: 12px 0 12px 0;
+                justify-content: space-between;
+                width: 75%;
+                box-sizing: border-box;
+                font-size: 12px;
+            }
+            & > div:not(:last-child) {
+                @extend .withDottedBorder;
+            }
+        }
+    }
+}
