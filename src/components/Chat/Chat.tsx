@@ -1,4 +1,6 @@
 import { connect } from "react-redux";
+import { debounce } from "lodash";
+import { useLayoutEffect } from "react";
 
 import { RootStateType, UserDetails } from "types/types";
 
@@ -7,14 +9,20 @@ import Input from "./Chat_Input";
 import Core from "./Chat_Core";
 
 import "./_Chat.scss";
-import { useLayoutEffect } from "react";
+
+function scrollToChat() {
+    const node = document.getElementById("Chat");
+    node && node.scrollIntoView();
+    window.scrollBy(0, -80);
+}
 
 const Chat = (props: Pick<UserDetails, "id" | "name">) => {
     const { id, name } = props;
+    const debouncedScroll = debounce(scrollToChat, 500);
 
     useLayoutEffect(() => {
-        document.getElementById("Chat")!.scrollIntoView();
-        window.scrollBy(0, -80);
+        debouncedScroll();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [id]);
 
     return (
