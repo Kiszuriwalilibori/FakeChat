@@ -6,9 +6,10 @@
     @extend .flexColumn;
     background-color: var(--main-nav-bg-color);
     width: var(--nav-width);
-    // position: fixed;
-    // top: 0;
-    // bottom: 0;
+    float: left;
+    position: fixed;
+    top: 0;
+    bottom: 0;
 
     @include mobile {
         width: 100%;

@@ -1,16 +1,20 @@
 @use "styles/mixins" as *;
 
 .App {
-    // display: flex;
-    // flex-direction: row;
-
-    display: grid;
-    //grid-template-columns: repeat(4, 1fr);
-    grid-template-columns: var(--nav-width) 432px auto 300px;
-    grid-auto-rows: 1fr;
+    // display: grid;
+    // grid-template-columns: var(--nav-width) auto;
+    // grid-auto-rows: 1fr;
 
     @include mobile {
         width: 100%;
         flex-direction: column;
     }
+}
+
+.all-but-nav {
+    display: grid;
+    grid-template-columns: 432px auto 300px;
+    grid-auto-rows: 1fr;
+    width: 100% - var(--nav-width);
+    margin-left: var(--nav-width);
 }

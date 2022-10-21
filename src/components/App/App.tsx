@@ -30,17 +30,18 @@ function _App(props: Props) {
     return (
         <div className="App">
             <Navigation />
+            <div className="all-but-nav">
+                <Suspense fallback={<div></div>}>
+                    <Users />
+                </Suspense>
+                {!isEmpty(activeUser) && <Chat />}
+                <Suspense fallback={<div></div>}>
+                    <Details />
+                </Suspense>
 
-            <Suspense fallback={<div></div>}>
-                <Users />
-            </Suspense>
-            {!isEmpty(activeUser) && <Chat />}
-            <Suspense fallback={<div></div>}>
-                <Details />
-            </Suspense>
-
-            {isLoading && <Loader />}
-            {isError && <ErrorMessage />}
+                {isLoading && <Loader />}
+                {isError && <ErrorMessage />}
+            </div>
         </div>
     );
 }
