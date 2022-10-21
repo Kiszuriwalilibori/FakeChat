@@ -137,6 +137,9 @@ textarea {
     background-color: initial;
     text-align: inherit;
     cursor: pointer;
+    &:disabled {
+        cursor: none;
+    }
 
     &--flexy {
         @extend .button-usual;

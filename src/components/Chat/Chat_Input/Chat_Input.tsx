@@ -89,12 +89,9 @@ const Input = (props: Pick<UserDetails, "id">) => {
                 <BasicButton className="button-usual" type="button">
                     <Icons.Smile />
                 </BasicButton>
-
-                {textContent && (
-                    <BasicButton className="button-usual" type="submit" onClick={clickHandler}>
-                        <Icons.Send />
-                    </BasicButton>
-                )}
+                <BasicButton className="button-usual" type="submit" disabled={!textContent} onClick={clickHandler}>
+                    <Icons.Send />
+                </BasicButton>
             </div>
         </div>
     );
