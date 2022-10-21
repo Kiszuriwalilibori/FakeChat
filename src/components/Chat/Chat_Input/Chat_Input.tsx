@@ -60,7 +60,6 @@ const Input = (props: Props) => {
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            console.log(message, "message");
             !isEmpty(message) && addMessage(message);
         }, randomInteger(5, 10) * 1000);
         //return () => clearTimeout(timer);

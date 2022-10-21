@@ -1,6 +1,6 @@
 {
     "name": "my-app-typescript",
-    "homepage": "http://kiszuriwalilibori.github.io/chat",
+    "homepage": "http://kiszuriwalilibori.github.io/EgzotechChat",
     "version": "0.1.0",
     "private": true,
     "dependencies": {

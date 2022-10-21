@@ -21,7 +21,6 @@ interface Props extends OwnProps {
 
 const Chat = (props: Props) => {
     const { messages, thumbnail, name } = props;
-    console.log(messages, "messages");
     return (
         <div>
             {messages.map(message => {

@@ -1,13 +1,17 @@
 import { useEffect } from "react";
+import React, { Suspense } from "react";
 import { connect } from "react-redux";
 import { isEmpty } from "lodash";
 
 import thunkFetchUsers from "reduxware/thunks/fetchUsersThunk";
 
 import { RootStateType, UserDetails } from "types";
-import { Navigation, Loader, ErrorMessage, Users, Details, Chat } from "components";
-
+import { Navigation, Loader, ErrorMessage, /*Details,*/ Chat } from "components";
 import "./_App.scss";
+
+const Users = React.lazy(() => import("components/Users/Users"));
+
+const Details = React.lazy(() => import("components/Details/Details"));
 
 interface Props {
     fetchUsers: Function;
@@ -26,9 +30,14 @@ function _App(props: Props) {
     return (
         <div className="App">
             <Navigation />
-            <Users />
+            <Suspense fallback={<div></div>}>
+                <Users />
+            </Suspense>
             {!isEmpty(activeUser) && <Chat />}
-            <Details />
+            <Suspense fallback={<div></div>}>
+                <Details />
+            </Suspense>
+
             {isLoading && <Loader />}
             {isError && <ErrorMessage />}
         </div>
