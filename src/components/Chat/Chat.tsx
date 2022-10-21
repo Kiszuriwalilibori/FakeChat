@@ -18,7 +18,7 @@ const Chat = (props: Pick<UserDetails, "id" | "name">) => {
     const ref: React.RefObject<any> = React.createRef();
 
     function scrolling() {
-        ref.current!.scrollIntoView();
+        ref.current && ref.current.scrollIntoView();
         window.scrollBy(0, -80);
     }
 
