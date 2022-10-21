@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/EgzotechChat/static/css/main.d58be61c.css",
-    "main.js": "/EgzotechChat/static/js/main.680a8957.js",
+    "main.js": "/EgzotechChat/static/js/main.e6663b60.js",
     "static/js/377.94831b23.chunk.js": "/EgzotechChat/static/js/377.94831b23.chunk.js",
     "service-worker.js": "/EgzotechChat/service-worker.js",
     "static/media/settings.svg": "/EgzotechChat/static/media/settings.f84494afe4ecfc5f6e59edd0641daaed.svg",
@@ -25,11 +25,11 @@
     "static/media/person.svg": "/EgzotechChat/static/media/person.423fa0bb0fa241ff6f5a45369f822045.svg",
     "static/media/information.svg": "/EgzotechChat/static/media/information.522971a05f65decdf323796073f3c027.svg",
     "main.d58be61c.css.map": "/EgzotechChat/static/css/main.d58be61c.css.map",
-    "main.680a8957.js.map": "/EgzotechChat/static/js/main.680a8957.js.map",
+    "main.e6663b60.js.map": "/EgzotechChat/static/js/main.e6663b60.js.map",
     "377.94831b23.chunk.js.map": "/EgzotechChat/static/js/377.94831b23.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d58be61c.css",
-    "static/js/main.680a8957.js"
+    "static/js/main.e6663b60.js"
   ]
 }
