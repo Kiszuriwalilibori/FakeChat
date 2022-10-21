@@ -15,8 +15,11 @@
         width: 100%;
         flex-direction: row;
         justify-content: flex-start;
-        height: initial;
+        height: var(--nav-width);
         position: initial;
+        position: fixed;
+        z-index: 1000;
+        top: 0;
     }
     & > .Navigation__item {
         @extend .flexRowVerticallyCentered;
