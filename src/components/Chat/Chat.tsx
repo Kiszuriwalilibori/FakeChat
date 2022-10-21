@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import { debounce } from "lodash";
 import { useLayoutEffect } from "react";
+import Fade from "@material-ui/core/Fade";
 
 import { RootStateType, UserDetails } from "types/types";
 
@@ -26,11 +27,13 @@ const Chat = (props: Pick<UserDetails, "id" | "name">) => {
     }, [id]);
 
     return (
-        <section className="Chat" id="Chat">
-            <Header id={id} name={name} />
-            <Core id={id} />
-            <Input id={id} />
-        </section>
+        <Fade in={true} timeout={700}>
+            <section className="Chat" id="Chat">
+                <Header id={id} name={name} />
+                <Core id={id} />
+                <Input id={id} />
+            </section>
+        </Fade>
     );
 };
 

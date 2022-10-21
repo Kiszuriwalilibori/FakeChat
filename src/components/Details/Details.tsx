@@ -39,7 +39,7 @@ const Details = (props: Props) => {
 
     if (isEmpty(user)) return null;
     return (
-        <Fade in={true} timeout={300}>
+        <Fade in={true} timeout={700}>
             <section className="Details">
                 <Header name={name} location={location} picture={picture} social={social} />
                 <Informations phone={phone} dob={dob} nat={nat} />

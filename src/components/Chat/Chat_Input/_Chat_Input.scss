@@ -2,19 +2,19 @@
 @use "styles/common" as *;
 @use "styles/mixins" as *;
 
-.chat--input {
-    @extend .flexRow;
-    justify-content: space-between;
+// .chat--input {
+//     @extend .flexRow;
+//     justify-content: space-between;
 
-    & .buttons {
-        & svg {
-            width: 20px;
-            height: 20px;
-            padding-left: 4px;
-            padding-right: 4px;
-        }
-    }
-}
+//     & .buttons {
+//         & svg {
+//             width: 20px;
+//             height: 20px;
+//             padding-left: 4px;
+//             padding-right: 4px;
+//         }
+//     }
+// }
 
 .Chat__input {
     height: var(--users-search-wrapper-height);

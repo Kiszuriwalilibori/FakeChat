@@ -65,7 +65,7 @@
         & ul {
             @extend .flexColumn;
             list-style: disc inside;
-            color: var(--nav-border-color);
+            color: var(--main-nav-bg-color);
             width: 100%;
 
             & li {
