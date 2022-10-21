@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/EgzotechChat/static/css/main.ceb1ee07.css",
-    "main.js": "/EgzotechChat/static/js/main.e75712ca.js",
+    "main.css": "/EgzotechChat/static/css/main.d58be61c.css",
+    "main.js": "/EgzotechChat/static/js/main.680a8957.js",
     "static/js/377.94831b23.chunk.js": "/EgzotechChat/static/js/377.94831b23.chunk.js",
     "service-worker.js": "/EgzotechChat/service-worker.js",
     "static/media/settings.svg": "/EgzotechChat/static/media/settings.f84494afe4ecfc5f6e59edd0641daaed.svg",
@@ -24,12 +24,12 @@
     "static/media/cards.svg": "/EgzotechChat/static/media/cards.0bf6a302b0143804421a9d7542124d6a.svg",
     "static/media/person.svg": "/EgzotechChat/static/media/person.423fa0bb0fa241ff6f5a45369f822045.svg",
     "static/media/information.svg": "/EgzotechChat/static/media/information.522971a05f65decdf323796073f3c027.svg",
-    "main.ceb1ee07.css.map": "/EgzotechChat/static/css/main.ceb1ee07.css.map",
-    "main.e75712ca.js.map": "/EgzotechChat/static/js/main.e75712ca.js.map",
+    "main.d58be61c.css.map": "/EgzotechChat/static/css/main.d58be61c.css.map",
+    "main.680a8957.js.map": "/EgzotechChat/static/js/main.680a8957.js.map",
     "377.94831b23.chunk.js.map": "/EgzotechChat/static/js/377.94831b23.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ceb1ee07.css",
-    "static/js/main.e75712ca.js"
+    "static/css/main.d58be61c.css",
+    "static/js/main.680a8957.js"
   ]
 }
