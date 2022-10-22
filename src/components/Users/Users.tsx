@@ -1,11 +1,11 @@
-import FadeIn from "react-fade-in";
+import Fade from "@material-ui/core/Fade";
 import uuid from "react-uuid";
 
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 
 import User from "./User";
-import Input from "./Input";
+import Input from "./Users_Input";
 
 import { RootStateType, UsersData, Messages } from "types/types";
 import { useDispatchAction } from "hooks";
@@ -15,9 +15,10 @@ import "./_Users.scss";
 interface Props {
     users: UsersData;
     messages: Messages;
+    resizeMain: () => void;
 }
 const Users = (props: Props) => {
-    const { users /*, messages*/ } = props;
+    const { users, resizeMain } = props;
     const [activeUser, setActiveUser] = useState<string>("");
     const [pattern, setPattern] = useState<string>("");
 
@@ -33,6 +34,7 @@ const Users = (props: Props) => {
             return obj.id === activeUser;
         });
         active && setActiveUserDetails(active);
+        activeUser && resizeMain();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [activeUser, users]);
 
@@ -48,14 +50,14 @@ const Users = (props: Props) => {
         });
 
     return (
-        <FadeIn>
+        <Fade in={true} timeout={700}>
             <section className="Users">
                 <Input changeHandler={setFilter} />
                 {orderedPersons.map(item => (
                     <User user={item} isActive={item.id === activeUser} clickHandle={activeUserSetter} key={uuid()} />
                 ))}
             </section>
-        </FadeIn>
+        </Fade>
     );
 };
 

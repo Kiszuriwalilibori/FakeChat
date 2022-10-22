@@ -25,16 +25,18 @@ const Chat = (props: Pick<UserDetails, "id" | "name">) => {
     const debouncedScrolling = debounce(scrolling, 500);
 
     useLayoutEffect(() => {
-        debouncedScrolling();
+        id && debouncedScrolling();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [id]);
 
     return (
         <Fade in={true} timeout={700}>
             <section className="Chat" id="Chat" ref={ref}>
+                {/* <div style={{ maxHeight: "100%" }}> */}
                 <Header id={id} name={name} />
-                <Core id={id} />
-                <Input id={id} />
+                {id && <Core id={id} />}
+                {id && <Input id={id} />}
+                {/* </div> */}
             </section>
         </Fade>
     );

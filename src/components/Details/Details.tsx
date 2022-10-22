@@ -1,4 +1,5 @@
 import Fade from "@material-ui/core/Fade";
+import Slide from "@material-ui/core/Slide";
 import isEmpty from "lodash/isEmpty";
 
 import { connect } from "react-redux";
@@ -39,13 +40,13 @@ const Details = (props: Props) => {
 
     if (isEmpty(user)) return null;
     return (
-        <Fade in={true} timeout={700}>
+        <Slide direction="left" timeout={700} in={true} mountOnEnter unmountOnExit>
             <section className="Details">
                 <Header name={name} location={location} picture={picture} social={social} />
                 <Informations phone={phone} dob={dob} nat={nat} />
                 <SharedFiles files={foo} />
             </section>
-        </Fade>
+        </Slide>
     );
 };
 

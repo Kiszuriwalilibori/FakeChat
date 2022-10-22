@@ -4,19 +4,14 @@ interface Props {
     isFavorite?: boolean;
     thumbnail: string;
     name: { first: string; last: string };
-    online?: boolean;
+    isOnline?: boolean;
 }
 
 const Portrait = (props: Props) => {
-    const { isFavorite = false, thumbnail, online = false, name } = props;
+    const { isFavorite = false, isOnline = false, thumbnail, name } = props;
 
-    const cls = online
-        ? "image-wrapper online"
-        : Boolean(Math.round(Math.random()))
-        ? "image-wrapper online"
-        : "image-wrapper";
     return (
-        <div className={cls}>
+        <div className={isOnline ? "image-wrapper online" : "image-wrapper"}>
             {isFavorite && <Icons.Star />}
             <img src={thumbnail} alt={name.last} className="circular--square" />
         </div>

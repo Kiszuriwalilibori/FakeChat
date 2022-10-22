@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import React, { Suspense } from "react";
 import { connect } from "react-redux";
 import { isEmpty } from "lodash";
@@ -6,10 +6,8 @@ import { isEmpty } from "lodash";
 import thunkFetchUsers from "reduxware/thunks/fetchUsersThunk";
 
 import { RootStateType, UserDetails } from "types";
-import { Navigation, Loader, ErrorMessage, /*Details,*/ Chat } from "components";
+import { Navigation, Loader, ErrorMessage, Users, Chat } from "components";
 import "./_App.scss";
-
-const Users = React.lazy(() => import("components/Users/Users"));
 
 const Details = React.lazy(() => import("components/Details/Details"));
 
@@ -21,7 +19,14 @@ interface Props {
 }
 
 function _App(props: Props) {
-    const { fetchUsers, isError, isLoading, activeUser } = props;
+    const { fetchUsers, isError, isLoading } = props;
+
+    const ref = useRef<HTMLElement>(null);
+
+    const resizeMain = () => {
+        ref.current && ref.current.classList.add("triple");
+    };
+
     useEffect(() => {
         fetchUsers();
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -30,18 +35,16 @@ function _App(props: Props) {
     return (
         <div className="App">
             <Navigation />
-            <div className="all-but-nav">
-                <Suspense fallback={<div></div>}>
-                    <Users />
-                </Suspense>
-                {!isEmpty(activeUser) && <Chat />}
+            <main className="main" ref={ref}>
+                <Users resizeMain={resizeMain} />
+                <Chat />
                 <Suspense fallback={<div></div>}>
                     <Details />
                 </Suspense>
 
                 {isLoading && <Loader />}
                 {isError && <ErrorMessage />}
-            </div>
+            </main>
         </div>
     );
 }

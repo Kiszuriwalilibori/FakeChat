@@ -1,17 +1,21 @@
 :root {
+    /* colors */
     --main-bg-color: #ffffff;
     --secondary-bg-color: #f5f7fd;
     --main-nav-bg-color: #425daa;
-    --blue-text-color: #007fc5;
+    --blue-text-color: #425daa;
     --main-text-color: #757575;
-
     --main-text-color: #978b86;
     --bold-text-color: #413d3e;
+    --user-baloon-color: #e2dbdb;
+    --host-baloon-color: #dee5fb;
+    --spinner-color: #cfb6a8;
+    /* sizes */
     --font-larger: 18px;
     --large-padding: 24px;
     --nav-width: 80px;
     --users-search-height: 45px;
     --users-search-wrapper-height: 80px;
-    --user-baloon-color: #e2dbdb;
-    --host-baloon-color: #dee5fb;
+    --svg-width: 20px;
+    --details-height: 99.5px;
 }

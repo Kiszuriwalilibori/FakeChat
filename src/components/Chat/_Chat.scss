@@ -5,6 +5,10 @@
 .Chat {
     flex-grow: 1;
     position: relative;
+    height: calc(10 * var(--details-height) + (var(--users-search-wrapper-height)));
+    // display: grid;
+    // grid-template-rows: 62.5px calc(100% - 142.5px) 80px;
+    // max-width: 100%;
 
     &__header {
         @extend .flexRow;
@@ -18,33 +22,122 @@
         & .buttons {
             @extend .flexRow;
             height: 100%;
-            & svg {
-                @extend .social__svg;
-            }
-            & .form__button {
+
+            & .button--chat {
+                @extend .button;
+                @extend .flexbox-row-centered;
                 border-left: 1px solid var(--secondary-bg-color);
-                display: flex;
-                justify-content: center;
                 width: calc(
                     var(--users-search-height) + (var(--users-search-wrapper-height) - var(--users-search-height)) / 2
                 );
+                cursor: pointer;
+                & > svg {
+                    @extend .svg--chat;
+                    fill: var(--blue-text-color);
+                }
+                &:disabled {
+                    cursor: default;
+                    & > svg {
+                        @extend .svg--chat;
+                        fill: var(--main-text-color);
+                    }
+                }
             }
         }
-        & span:nth-of-type(2) {
-            @extend .blueText;
-            @extend .heavy;
-            margin-left: 3px;
+        & > div {
+            & > span:nth-of-type(2) {
+                @extend .blueText;
+                @extend .heavy;
+                margin-left: 3px;
 
-            position: relative;
-            &::after {
-                content: "";
-                position: absolute;
-                bottom: -8px;
-                right: 0%;
-                height: 2px;
-                background-color: var(--blue-text-color);
-                width: 100%;
+                position: relative;
+                &::after {
+                    content: "";
+                    position: absolute;
+                    bottom: -8px;
+                    right: 0%;
+                    height: 2px;
+                    background-color: var(--blue-text-color);
+                    width: 100%;
+                }
             }
         }
+    }
+
+    &__message-section {
+        height: var(--users-search-wrapper-height);
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        bottom: 0;
+        border-top: 1px solid var(--secondary-bg-color);
+        border-bottom: 1px solid var(--secondary-bg-color);
+        padding-left: calc(
+            (
+                    (var(--users-search-height) + (var(--users-search-wrapper-height) - var(--users-search-height)) / 2) -
+                        var(--svg-width)
+                ) / 2
+        );
+        @include mobile {
+            margin-top: 0;
+        }
+
+        &:hover {
+            background-color: var(--secondary-bg-color);
+        }
+
+        & input {
+            @extend .text-input;
+            flex-grow: 1;
+            width: 100%;
+            border: none;
+            outline: none;
+        }
+
+        & .buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-column-gap: var(--svg-width);
+
+            margin: 0
+                calc(
+                    (
+                            (
+                                    var(--users-search-height) +
+                                        (var(--users-search-wrapper-height) - var(--users-search-height)) / 2
+                                ) - var(--svg-width)
+                        ) / 2
+                );
+
+            & .button {
+                & svg {
+                    width: var(--svg-width);
+                    height: var(--svg-width);
+                }
+                &:last-of-type {
+                    & svg {
+                        width: 30px;
+                        height: 30px;
+                    }
+                }
+            }
+        }
+    }
+    & .chat--core {
+        // max-height: calc(100% - 400px);
+        // height: calc(100% - 400px);
+        max-height: calc(
+            100% - var(--users-search-wrapper-height) -
+                (var(--users-search-height) + (var(--users-search-wrapper-height) - var(--users-search-height)) / 2)
+        );
+
+        height: calc(
+            100% - var(--users-search-wrapper-height) -
+                (var(--users-search-height) + (var(--users-search-wrapper-height) - var(--users-search-height)) / 2)
+        );
+
+        overflow-y: scroll;
     }
 }

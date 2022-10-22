@@ -16,10 +16,6 @@ body {
     width: 100vw;
 }
 
-.clickable {
-    cursor: pointer;
-}
-
 input,
 select,
 textarea {
@@ -45,7 +41,7 @@ textarea {
     align-items: center;
 }
 
-.flexRowCentered {
+.flexbox-row-centered {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -84,17 +80,22 @@ textarea {
 }
 
 .form__svg {
-    width: 20px;
-    height: 20px;
-    padding-left: 14px;
+    width: var(--svg-width);
+    height: var(--svg-width);
     box-sizing: initial;
     fill: #767676;
     transition: fill 0.1s ease-in-out;
 }
 .social__svg {
+    width: var(--svg-width);
+    height: var(--svg-width);
+    fill: var(--blue-text-color);
+    box-sizing: initial;
+}
+
+.svg--chat {
     width: 20px;
     height: 20px;
-    fill: var(--blue-text-color);
     box-sizing: initial;
 }
 
@@ -131,19 +132,19 @@ textarea {
     }
 }
 
-.button-usual {
+.button {
     border: none;
-    padding: 0;
     background-color: initial;
     text-align: inherit;
     cursor: pointer;
     &:disabled {
-        cursor: none;
+        cursor: default;
     }
+}
 
-    &--flexy {
-        @extend .button-usual;
-        display: flex;
-        align-items: center;
-    }
+.text-input {
+    height: var(--users-search-height);
+    padding: 6px 6px 6px 14px;
+    border-radius: 30px;
+    background-color: var(--main-bg-color);
 }

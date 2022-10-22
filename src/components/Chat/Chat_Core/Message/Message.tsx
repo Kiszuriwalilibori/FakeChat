@@ -22,7 +22,7 @@ const UserMessage = (props: Props) => {
                 <>
                     <Baloon text={text} type={"host"} />
                     <div className="message--sender">
-                        <Portrait online thumbnail={"https://i.ibb.co/tYQ9jG4/Author.jpg"} name={name} />
+                        <Portrait isOnline thumbnail={"https://i.ibb.co/q7xpjTg/IMG-1018.webp"} name={name} />
                         <Time time={timestamp} />
                     </div>
                 </>
@@ -31,7 +31,7 @@ const UserMessage = (props: Props) => {
             {!fromHost && (
                 <>
                     <div className="message--sender">
-                        <Portrait online thumbnail={thumbnail} name={name} />
+                        <Portrait isOnline thumbnail={thumbnail} name={name} />
                         <Time time={timestamp} />
                     </div>
                     <Baloon text={text} type={"user"} />

@@ -11,11 +11,12 @@
         width: 100%;
     }
     & > .details {
-        @extend .clickable;
+        cursor: pointer;
         padding: var(--large-padding);
         background-color: var(--secondary-bg-color);
         border-bottom: 1px dotted var(--main-text-color);
         position: relative;
+        height: var(--details-height);
         & .image-wrapper {
             position: relative;
             & svg {
@@ -69,7 +70,7 @@
                 padding-left: 12px;
                 height: 40px;
                 & h2 {
-                    font-weight: 800;
+                    font-weight: 700;
                 }
                 & .last--message {
                     @extend .cut-string240;
@@ -90,4 +91,67 @@
             }
         }
     }
+
+    .users--search-wrapper {
+        @extend .withDottedBottomBorder;
+        height: var(--users-search-wrapper-height);
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & > .users--search {
+            @extend .text-input;
+            width: 320px;
+            height: var(--users-search-height);
+            display: flex;
+            position: relative;
+            font-size: 15px;
+            font-weight: 400;
+            line-height: 1.6;
+            background-color: var(--main-bg-color);
+            width: 320px;
+
+            & > input {
+                flex-grow: 1;
+                width: 100%;
+                border: none;
+                outline: none;
+            }
+
+            & .button.button--reset {
+                & > svg {
+                    @extend .form__svg;
+                    padding-right: 14px;
+                    padding-left: 14px;
+                }
+            }
+
+            & .button.button--search {
+                & > svg {
+                    @extend .form__svg;
+                }
+            }
+        }
+    }
+
+    // .form__input-clear {
+    //     border: none;
+    //     padding: 0;
+    //     background-color: initial;
+    //     text-align: inherit;
+    //     cursor: pointer;
+    // }
+
+    // .form__input-clear-svg {
+    //     padding-right: 14px;
+    //     padding-left: 14px;
+
+    //     width: 20px;
+    //     height: 20px;
+
+    //     box-sizing: initial;
+    //     fill: #767676;
+    //     transition: fill 0.1s ease-in-out;
+    // }
 }

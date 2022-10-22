@@ -7,7 +7,7 @@ import { Provider } from "react-redux";
 import fetchReducer from "reduxware/reducers/fetchReducer";
 import usersReducer from "reduxware/reducers/usersReducer";
 import messagesReducer from "reduxware/reducers/messageReducer";
-import React from "react";
+import React, { ReactNode } from "react";
 
 const rootReducer = combineReducers({
     fetch: fetchReducer,
@@ -20,7 +20,7 @@ export const store = configureStore({
     middleware: getDefaultMiddleware => getDefaultMiddleware().concat(thunk),
 });
 
-const AppProvider: React.FC = ({ children }) => {
+const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     return <Provider store={store}>{children}</Provider>;
 };
 

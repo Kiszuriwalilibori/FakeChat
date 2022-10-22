@@ -27,9 +27,10 @@ const ContainerVerticallyCentered = withStyles({
 
 export const CircularProgress = withStyles({
     root: {
-        color: "rgba(122, 194, 33, 0.8);",
+        color: "#cfb6a8;",
     },
 })(Progress);
+
 /**
  * creates memoised spinner that indicates loading state
  * @returns spinner component

@@ -53,5 +53,3 @@ const thunkFetchUsers = (): ThunkAction<void, RootStateType, unknown, AnyAction>
 };
 
 export default thunkFetchUsers;
-
-// JU16-3KIJ-CMOT-DILZ

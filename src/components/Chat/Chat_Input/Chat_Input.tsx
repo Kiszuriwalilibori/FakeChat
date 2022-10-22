@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { isEmpty } from "lodash";
 
 import Icons from "icons";
@@ -6,8 +6,6 @@ import useDispatchAction from "hooks/useDispatchAction";
 
 import { BasicButton } from "components";
 import { Message, UserDetails } from "types/types";
-
-import "./_Chat_Input.scss";
 
 const placeHolder = "Type your message here...";
 
@@ -39,7 +37,12 @@ const Input = (props: Pick<UserDetails, "id">) => {
     const { id } = props;
     const [textContent, setTextContent] = useState<string>("");
     const [message, setMessage] = useState<Message>({} as Message);
-    const { addMessage } = useDispatchAction();
+    const { addMessage, setOnlineTrue, updateLastMessage } = useDispatchAction();
+    const ref = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        ref.current && ref.current.focus();
+    }, []);
 
     const clickHandler = useCallback(
         () => {
@@ -48,6 +51,8 @@ const Input = (props: Pick<UserDetails, "id">) => {
                 addMessage(message);
                 setTextContent("");
                 setMessage(createAnswer(textContent, id));
+                updateLastMessage({ id, lastMessage: { text: message.text, timestamp: message.timestamp } });
+                ref.current && ref.current.focus();
             }
         },
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -60,8 +65,16 @@ const Input = (props: Pick<UserDetails, "id">) => {
         timeouts.push(
             setTimeout(() => {
                 !isEmpty(message) && addMessage(message);
+                !isEmpty(message) &&
+                    updateLastMessage({ id, lastMessage: { text: message.text, timestamp: message.timestamp } });
             }, randomInteger(5, 10) * 1000)
         );
+        timeouts.push(
+            setTimeout(() => {
+                !isEmpty(message) && setOnlineTrue(id);
+            }, randomInteger(3, 5) * 1000)
+        );
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [message]);
 
@@ -71,25 +84,25 @@ const Input = (props: Pick<UserDetails, "id">) => {
     }, []);
 
     return (
-        <div className="Chat__input">
+        <div className="Chat__message-section">
             <input
-                className="form__input"
                 placeholder={placeHolder}
                 type="text"
                 value={textContent}
+                ref={ref}
                 onChange={e => {
                     setTextContent(e.target.value);
                 }}
             ></input>
 
             <div className="buttons">
-                <BasicButton className="button-usual" type="button">
+                <BasicButton className="button" type="button">
                     <Icons.Attach />
                 </BasicButton>
-                <BasicButton className="button-usual" type="button">
+                <BasicButton className="button" type="button">
                     <Icons.Smile />
                 </BasicButton>
-                <BasicButton className="button-usual" type="submit" disabled={!textContent} onClick={clickHandler}>
+                <BasicButton className="button" type="submit" disabled={!textContent} onClick={clickHandler}>
                     <Icons.Send />
                 </BasicButton>
             </div>

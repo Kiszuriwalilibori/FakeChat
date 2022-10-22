@@ -1,5 +1,5 @@
 import { createAction } from "@reduxjs/toolkit";
-import { UsersData, UserDetails, Message } from "types/types";
+import { UsersData, UserDetails, Message, UpdateLastMessage } from "types/types";
 
 interface ShowError {
     isError: boolean;
@@ -13,5 +13,8 @@ export const completeLoading = createAction("LOADING_COMPLETE");
 export const storeUsers = createAction<UsersData>("USERS_STORE");
 export const setActiveUserDetails = createAction<UserDetails>("ACTIVE_USER_DETAILS_SET");
 export const setActiveUserID = createAction<string>("ACTIVE_USER_ID_SET");
-export const markFavorite = createAction<string>("FAVORITE_MARK");
+export const toggleFavorite = createAction<string>("FAVORITE_TOGGLE");
 export const addMessage = createAction<Message>("MESSAGE_SEND");
+export const setOnlineTrue = createAction<string>("ONLINE_SET_TRUE");
+export const setOnlineFalse = createAction<string>("ONLINE_SET_FALSE");
+export const updateLastMessage = createAction<UpdateLastMessage>("LAST_MESSAGE_UPDATE");

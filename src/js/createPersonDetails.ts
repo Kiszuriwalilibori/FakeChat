@@ -19,6 +19,7 @@ function createPersonDetails(obj: any): UserDetails {
         nat: getData(obj?.nat, ""),
         id: array[0].toString(),
         social: { facebook: "", linkedin: "", twitter: "" },
+        isOnline: Boolean(Math.round(Math.random())),
     };
 
     return result;

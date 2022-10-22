@@ -12,10 +12,14 @@
     }
 }
 
-.all-but-nav {
+.main {
     display: grid;
-    grid-template-columns: 360px auto 300px;
+    grid-template-columns: 360px auto;
+    &.triple {
+        grid-template-columns: 360px auto 300px;
+    }
     grid-auto-rows: 1fr;
+
     width: calc(100vw - var(--nav-width));
     margin-left: var(--nav-width);
     @include mobile {
