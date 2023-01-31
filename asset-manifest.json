@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/EgzotechChat/static/css/main.053dc6ee.css",
-    "main.js": "/EgzotechChat/static/js/main.e6663b60.js",
-    "static/js/377.94831b23.chunk.js": "/EgzotechChat/static/js/377.94831b23.chunk.js",
+    "main.css": "/EgzotechChat/static/css/main.23393c24.css",
+    "main.js": "/EgzotechChat/static/js/main.fa8e288f.js",
+    "static/js/377.909530c7.chunk.js": "/EgzotechChat/static/js/377.909530c7.chunk.js",
     "service-worker.js": "/EgzotechChat/service-worker.js",
     "static/media/settings.svg": "/EgzotechChat/static/media/settings.f84494afe4ecfc5f6e59edd0641daaed.svg",
     "static/media/send.svg": "/EgzotechChat/static/media/send.869ec500ac53183c628dc6da78f9397b.svg",
@@ -15,21 +15,21 @@
     "static/media/linkedin.svg": "/EgzotechChat/static/media/linkedin.14f38c07d38be5bddee02d700bf0fc2d.svg",
     "static/media/facebook.svg": "/EgzotechChat/static/media/facebook.f51db061afd1b76fff7ddfd786e4e06c.svg",
     "static/media/smile.svg": "/EgzotechChat/static/media/smile.b4271ac5ca99baead79b3e97705e5590.svg",
-    "static/media/search.svg": "/EgzotechChat/static/media/search.4c58611a44ee5e794a7bd98dda8e95d6.svg",
-    "index.html": "/EgzotechChat/index.html",
+    "static/media/search.svg": "/EgzotechChat/static/media/search.fdeda0f23ffdd42c991f475217f663e6.svg",
     "static/media/star.svg": "/EgzotechChat/static/media/star.fc487797b89c598baceb5568ae917e20.svg",
+    "index.html": "/EgzotechChat/index.html",
     "static/media/attach.svg": "/EgzotechChat/static/media/attach.9339571f3789dd283b67f47966db6d4e.svg",
-    "static/media/clear.svg": "/EgzotechChat/static/media/clear.8982b0c35e5d695a245a28596dc03255.svg",
     "static/media/camera.svg": "/EgzotechChat/static/media/camera.f81df7db873116103936c63a769bce2a.svg",
+    "static/media/clear.svg": "/EgzotechChat/static/media/clear.676bc622f368a92ab656775a5d489543.svg",
     "static/media/cards.svg": "/EgzotechChat/static/media/cards.0bf6a302b0143804421a9d7542124d6a.svg",
     "static/media/person.svg": "/EgzotechChat/static/media/person.423fa0bb0fa241ff6f5a45369f822045.svg",
     "static/media/information.svg": "/EgzotechChat/static/media/information.522971a05f65decdf323796073f3c027.svg",
-    "main.053dc6ee.css.map": "/EgzotechChat/static/css/main.053dc6ee.css.map",
-    "main.e6663b60.js.map": "/EgzotechChat/static/js/main.e6663b60.js.map",
-    "377.94831b23.chunk.js.map": "/EgzotechChat/static/js/377.94831b23.chunk.js.map"
+    "main.23393c24.css.map": "/EgzotechChat/static/css/main.23393c24.css.map",
+    "main.fa8e288f.js.map": "/EgzotechChat/static/js/main.fa8e288f.js.map",
+    "377.909530c7.chunk.js.map": "/EgzotechChat/static/js/377.909530c7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.053dc6ee.css",
-    "static/js/main.e6663b60.js"
+    "static/css/main.23393c24.css",
+    "static/js/main.fa8e288f.js"
   ]
 }
