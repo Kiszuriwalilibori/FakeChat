@@ -1,6 +1,6 @@
 {
     "name": "chat",
-    "homepage": "http://kiszuriwalilibori.github.io/EgzotechChat",
+    "homepage": "http://kiszuriwalilibori.github.io/FakeChat",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
