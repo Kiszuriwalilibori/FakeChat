@@ -6,11 +6,31 @@ import Icons from "icons";
 import { UserDetails } from "types/types";
 
 import countries from "countries/countries.json";
+import langs from "countries/languages.json";
+import { useMemo } from "react";
 
 const Informations = (props: Pick<UserDetails, "phone" | "dob" | "nat">) => {
     const { phone, dob, nat } = props;
 
-    const languages = Object.values(pick(countries, [nat]))[0].languages.join(" ");
+    const pickedCodes = Object.values(pick(countries, [nat]))[0].languages;
+
+    const codesWithLanguages = useMemo(() => {
+        return Object.assign(
+            {},
+            ...langs.map(item => {
+                const code = item.alpha2;
+                const value = item.English;
+                const newItem = { [code]: value };
+                return newItem;
+            })
+        );
+    }, []);
+
+    const userLanguages = pickedCodes
+        .map(code => {
+            return codesWithLanguages[code] ? codesWithLanguages[code] : code;
+        })
+        .join(" ");
 
     return (
         <div className="Details__informations">
@@ -30,7 +50,7 @@ const Informations = (props: Pick<UserDetails, "phone" | "dob" | "nat">) => {
                 </div>
                 <div>
                     <span>Language:</span>
-                    <span>{languages}</span>
+                    <span>{userLanguages}</span>
                 </div>
             </div>
         </div>
