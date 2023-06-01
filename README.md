@@ -45,19 +45,11 @@ initial
 
 restyled main chat component
 
+### 1.0.2
+
+languages and not language codes
+MUI v5.xx
+Avatar and Badge applied
+custom icon in index.html
+
 ### TODO
-
-clearer langauages in details
-Tne poniższy kawałek powinien być zastąpiony przez MUI badge
-
-&.online {
-&::after {
-content: "";
-position: absolute;
-bottom: 15%;
-right: 0%;
-width: 12px;
-height: 12px;
-background-color: #8dd7a6;
-border-radius: 6px;
-}
