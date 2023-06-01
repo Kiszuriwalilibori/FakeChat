@@ -117,19 +117,6 @@ textarea {
 
 .image-wrapper {
     position: relative;
-
-    &.online {
-        &::after {
-            content: "";
-            position: absolute;
-            bottom: 15%;
-            right: 0%;
-            width: 12px;
-            height: 12px;
-            background-color: #8dd7a6;
-            border-radius: 6px;
-        }
-    }
 }
 
 .button {

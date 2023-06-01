@@ -88,7 +88,6 @@ video {
   vertical-align: baseline;
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
 }
 
@@ -329,16 +328,6 @@ textarea {
 .image-wrapper {
   position: relative;
 }
-.image-wrapper.online::after {
-  content: "";
-  position: absolute;
-  bottom: 15%;
-  right: 0%;
-  width: 12px;
-  height: 12px;
-  background-color: #8dd7a6;
-  border-radius: 6px;
-}
 
 .button {
   border: none;
@@ -355,4 +344,4 @@ textarea {
   padding: 6px 6px 6px 14px;
   border-radius: 30px;
   background-color: var(--main-bg-color);
-}/*# sourceMappingURL=index.css.map */
+}

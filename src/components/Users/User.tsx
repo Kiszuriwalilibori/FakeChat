@@ -2,7 +2,7 @@ import moment from "moment";
 
 import { UserDetails } from "types/types";
 
-import { Portrait, PortraitBis } from "components";
+import { Portrait } from "components";
 
 interface Props {
     user: UserDetails;

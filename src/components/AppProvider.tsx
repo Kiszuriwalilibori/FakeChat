@@ -1,5 +1,7 @@
+import React, { ReactNode } from "react";
 import thunk from "redux-thunk";
 
+import { ThemeProvider } from "@mui/material";
 import { combineReducers } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
@@ -7,7 +9,7 @@ import { Provider } from "react-redux";
 import fetchReducer from "reduxware/reducers/fetchReducer";
 import usersReducer from "reduxware/reducers/usersReducer";
 import messagesReducer from "reduxware/reducers/messageReducer";
-import React, { ReactNode } from "react";
+import theme from "../themes/theme";
 
 const rootReducer = combineReducers({
     fetch: fetchReducer,
@@ -21,7 +23,11 @@ export const store = configureStore({
 });
 
 const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-    return <Provider store={store}>{children}</Provider>;
+    return (
+        <Provider store={store}>
+            <ThemeProvider theme={theme}>{children}</ThemeProvider>
+        </Provider>
+    );
 };
 
 export default AppProvider;

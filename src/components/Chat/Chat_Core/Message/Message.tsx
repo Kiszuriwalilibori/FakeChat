@@ -1,7 +1,7 @@
 import Baloon from "./Baloon";
 import Time from "./Time";
 
-import { Portrait, PortraitBis } from "components";
+import { Portrait } from "components";
 import { Message } from "types/types";
 
 import "./_Message.scss";
@@ -22,7 +22,7 @@ const UserMessage = (props: Props) => {
                 <>
                     <Baloon text={text} type={"host"} />
                     <div className="message--sender">
-                        <PortraitBis isOnline thumbnail={"https://i.ibb.co/q7xpjTg/IMG-1018.webp"} name={name} />
+                        <Portrait isOnline thumbnail={"https://i.ibb.co/q7xpjTg/IMG-1018.webp"} name={name} />
                         <Time time={timestamp} />
                     </div>
                 </>
@@ -31,7 +31,7 @@ const UserMessage = (props: Props) => {
             {!fromHost && (
                 <>
                     <div className="message--sender">
-                        <PortraitBis isOnline thumbnail={thumbnail} name={name} />
+                        <Portrait isOnline thumbnail={thumbnail} name={name} />
                         <Time time={timestamp} />
                     </div>
                     <Baloon text={text} type={"user"} />
