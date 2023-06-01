@@ -1,5 +1,5 @@
-import Fade from "@material-ui/core/Fade";
-import CancelIcon from "@material-ui/icons/Cancel";
+import Fade from "@mui/material/Fade";
+import CancelIcon from "@mui/icons-material/Cancel";
 
 import { useCallback } from "react";
 import { connect } from "react-redux";

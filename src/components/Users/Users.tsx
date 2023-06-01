@@ -1,4 +1,4 @@
-import Fade from "@material-ui/core/Fade";
+import Fade from "@mui/material/Fade";
 import uuid from "react-uuid";
 
 import { useEffect, useState } from "react";

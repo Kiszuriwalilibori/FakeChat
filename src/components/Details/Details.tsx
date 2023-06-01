@@ -1,14 +1,13 @@
-import Fade from "@material-ui/core/Fade";
-import Slide from "@material-ui/core/Slide";
+import Slide from "@mui/material/Slide";
 import isEmpty from "lodash/isEmpty";
 
 import { connect } from "react-redux";
 
-import { UserDetails, RootStateType, Files } from "types/types";
-
 import SharedFiles from "./Details_Files";
 import Header from "./Details_Header";
 import Informations from "./Details_Informations";
+
+import { UserDetails, RootStateType, Files } from "types/types";
 
 import "./_Details.scss";
 

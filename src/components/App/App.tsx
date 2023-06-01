@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "react";
 import React, { Suspense } from "react";
 import { connect } from "react-redux";
-import { isEmpty } from "lodash";
 
 import thunkFetchUsers from "reduxware/thunks/fetchUsersThunk";
 

@@ -48,3 +48,16 @@ restyled main chat component
 ### TODO
 
 clearer langauages in details
+Tne poniższy kawałek powinien być zastąpiony przez MUI badge
+
+&.online {
+&::after {
+content: "";
+position: absolute;
+bottom: 15%;
+right: 0%;
+width: 12px;
+height: 12px;
+background-color: #8dd7a6;
+border-radius: 6px;
+}

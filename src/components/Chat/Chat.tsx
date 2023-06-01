@@ -1,7 +1,8 @@
+import Fade from "@mui/material/Fade";
+
 import { connect } from "react-redux";
 import { debounce } from "lodash";
 import { useLayoutEffect } from "react";
-import Fade from "@material-ui/core/Fade";
 
 import { RootStateType, UserDetails } from "types/types";
 

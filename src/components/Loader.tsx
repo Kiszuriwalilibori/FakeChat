@@ -1,9 +1,9 @@
 import { memo } from "react";
 
-import Box from "@material-ui/core/Box";
-import Progress from "@material-ui/core/CircularProgress";
+import Box from "@mui/material/Box";
+import Progress from "@mui/material/CircularProgress";
 
-import { withStyles } from "@material-ui/core/styles";
+import withStyles from "@mui/styles/withStyles";
 
 const Container = withStyles({
     root: {
