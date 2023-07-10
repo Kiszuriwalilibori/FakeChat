@@ -14,7 +14,11 @@ const User = (props: Props) => {
     const { user, isActive, clickHandle } = props;
 
     return (
-        <div className={isActive ? "details active" : "details"} onClick={() => clickHandle(user.id)} tabIndex={0}>
+        <div
+            className={isActive ? "details active" : "details"}
+            onClick={user.isOnline ? () => clickHandle(user.id) : () => {}}
+            tabIndex={0}
+        >
             <div className="content">
                 <Portrait
                     thumbnail={user.picture.thumbnail}
