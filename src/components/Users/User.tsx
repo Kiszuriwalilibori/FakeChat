@@ -15,8 +15,8 @@ const User = (props: Props) => {
 
     return (
         <div
-            className={isActive ? "details active" : "details"}
-            onClick={user.isOnline ? () => clickHandle(user.id) : () => {}}
+            className={`${isActive ? "details active" : "details"} ${user.isOnline ? "clickable" : ""} `}
+            onClick={user.isOnline ? () => clickHandle(user.id) : undefined}
             tabIndex={0}
         >
             <div className="content">

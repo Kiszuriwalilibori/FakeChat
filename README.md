@@ -53,3 +53,5 @@ Avatar and Badge applied
 custom icon in index.html
 
 ### TODO
+
+w Users trza by zróżnicować online i offline, w tej chwili oba mają cursor pointer

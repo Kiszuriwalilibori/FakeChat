@@ -11,12 +11,14 @@
         width: 100%;
     }
     & > .details {
-        cursor: pointer;
         padding: var(--large-padding);
         background-color: var(--secondary-bg-color);
         border-bottom: 1px dotted var(--main-text-color);
         position: relative;
         height: var(--details-height);
+        &.clickable {
+            cursor: pointer;
+        }
         & .image-wrapper {
             position: relative;
             & svg {
