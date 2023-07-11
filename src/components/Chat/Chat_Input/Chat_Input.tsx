@@ -4,8 +4,8 @@ import { isEmpty } from "lodash";
 import Icons from "icons";
 import useDispatchAction from "hooks/useDispatchAction";
 
-import { BasicButton } from "components";
 import { Message, UserDetails } from "types/types";
+import { IconButton, Stack } from "@mui/material";
 
 const placeHolder = "Type your message here...";
 
@@ -44,7 +44,7 @@ const Input = (props: Pick<UserDetails, "id">) => {
         ref.current && ref.current.focus();
     }, []);
 
-    const clickHandler = useCallback(
+    const sendClickHandler = useCallback(
         () => {
             if (textContent) {
                 const message = createMessage(textContent, id);
@@ -95,17 +95,17 @@ const Input = (props: Pick<UserDetails, "id">) => {
                 }}
             ></input>
 
-            <div className="buttons">
-                <BasicButton className="button" type="button">
+            <Stack direction="row" spacing={1.5} sx={{ mx: 2 }}>
+                <IconButton disabled aria-label="attach file">
                     <Icons.Attach />
-                </BasicButton>
-                <BasicButton className="button" type="button">
+                </IconButton>
+                <IconButton disabled aria-label="add emoticon">
                     <Icons.Smile />
-                </BasicButton>
-                <BasicButton className="button" type="submit" disabled={!textContent} onClick={clickHandler}>
+                </IconButton>
+                <IconButton disabled={!textContent} onClick={sendClickHandler} aria-label="send">
                     <Icons.Send />
-                </BasicButton>
-            </div>
+                </IconButton>
+            </Stack>
         </div>
     );
 };

@@ -143,6 +143,8 @@ a {
   --main-bg-color: #ffffff;
   --secondary-bg-color: #f5f7fd;
   --main-nav-bg-color: #425daa;
+  --hover-nav-bg-color: #7c8fc2;
+  --active-nav-bg-color: #2b4288;
   --blue-text-color: #425daa;
   --main-text-color: #757575;
   --main-text-color: #978b86;
@@ -165,6 +167,8 @@ a {
   --main-bg-color: #ffffff;
   --secondary-bg-color: #f5f7fd;
   --main-nav-bg-color: #425daa;
+  --hover-nav-bg-color: #7c8fc2;
+  --active-nav-bg-color: #2b4288;
   --blue-text-color: #425daa;
   --main-text-color: #757575;
   --main-text-color: #978b86;
@@ -187,6 +191,8 @@ a {
   --main-bg-color: #ffffff;
   --secondary-bg-color: #f5f7fd;
   --main-nav-bg-color: #425daa;
+  --hover-nav-bg-color: #7c8fc2;
+  --active-nav-bg-color: #2b4288;
   --blue-text-color: #425daa;
   --main-text-color: #757575;
   --main-text-color: #978b86;

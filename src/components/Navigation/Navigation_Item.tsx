@@ -49,7 +49,7 @@ const NavigationItem = (props: Props) => {
             key={uuid()}
         >
             <img src={source} alt={menuItem.icon} />
-        </div> // to jednak powinien być mui button bo tracimy WCAG
+        </div> // todo to jednak powinien być mui button bo tracimy WCAG
     );
 };
 

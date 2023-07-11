@@ -95,35 +95,6 @@
             border: none;
             outline: none;
         }
-
-        & .buttons {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-column-gap: var(--svg-width);
-
-            margin: 0
-                calc(
-                    (
-                            (
-                                    var(--users-search-height) +
-                                        (var(--users-search-wrapper-height) - var(--users-search-height)) / 2
-                                ) - var(--svg-width)
-                        ) / 2
-                );
-
-            & .button {
-                & svg {
-                    width: var(--svg-width);
-                    height: var(--svg-width);
-                }
-                &:last-of-type {
-                    & svg {
-                        width: 30px;
-                        height: 30px;
-                    }
-                }
-            }
-        }
     }
     & .chat--core {
         // max-height: calc(100% - 400px);
