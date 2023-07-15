@@ -3,6 +3,7 @@ import moment from "moment";
 import { UserDetails } from "types/types";
 
 import { Portrait } from "components";
+import Typography from "@mui/material/Typography";
 
 interface Props {
     user: UserDetails;
@@ -28,7 +29,7 @@ const User = (props: Props) => {
                 />
 
                 <div className="text--content">
-                    <h2>{`${user.name.first} ${user.name.last}`}</h2>
+                    <Typography variant="h2_dark" component="h2">{`${user.name.first} ${user.name.last}`}</Typography>
                     <div>
                         {user.lastMessage?.text && <span className="last--message">{user.lastMessage?.text}</span>}
                     </div>

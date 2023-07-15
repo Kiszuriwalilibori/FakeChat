@@ -1,3 +1,5 @@
+import { Typography } from "@mui/material";
+
 interface Props {
     href: string;
     fileName: string;
@@ -7,7 +9,7 @@ const DownloadableFile = (props: Props) => {
     return (
         <li>
             <a href={href} tabIndex={0} download>
-                <span>{fileName}</span>
+                <Typography variant="text_light_underlined">{fileName}</Typography>
             </a>
         </li>
     );

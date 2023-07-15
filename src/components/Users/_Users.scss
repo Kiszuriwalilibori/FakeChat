@@ -59,9 +59,9 @@
                 justify-content: space-between;
                 padding-left: 12px;
                 height: 40px;
-                & h2 {
-                    font-weight: 700;
-                }
+                // & h2 {
+                //     font-weight: 700;
+                // }
                 & .last--message {
                     @extend .cut-string240;
                     color: var(--main-text-color);

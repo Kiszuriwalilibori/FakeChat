@@ -5,6 +5,7 @@ import Icons from "icons";
 import { BasicButton } from "components";
 import { useDispatchAction } from "hooks";
 import { UserDetails } from "types/types";
+import Typography from "@mui/material/Typography";
 
 const title = "Chat with ";
 const emptyTitle = "Chat with...";
@@ -23,7 +24,7 @@ const Header = (props: Pick<UserDetails, "id" | "name">) => {
         <div className="Chat__header" id="Chat_Header">
             <div>
                 <span>{active ? title : emptyTitle}</span>
-                {active && <span>{" " + name.first + " " + name.last}</span>}
+                {active && <Typography variant="text_blue_underlined">{` ${name.first} ${name.last}`}</Typography>}
             </div>
             <div className="buttons">
                 <BasicButton className="button--chat" disabled={!active}>

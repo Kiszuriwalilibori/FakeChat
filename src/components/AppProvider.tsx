@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import thunk from "redux-thunk";
-
-import { ThemeProvider } from "@mui/material";
+import { Theme } from "@mui/material/styles";
+import { ThemeProvider, StyledEngineProvider } from "@mui/material";
 import { combineReducers } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
@@ -22,10 +22,17 @@ export const store = configureStore({
     middleware: getDefaultMiddleware => getDefaultMiddleware().concat(thunk),
 });
 
+declare module "@mui/styles/defaultTheme" {
+    // eslint-disable-next-line @typescript-eslint/no-empty-interface
+    interface DefaultTheme extends Theme {}
+}
+
 const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     return (
         <Provider store={store}>
-            <ThemeProvider theme={theme}>{children}</ThemeProvider>
+            <StyledEngineProvider injectFirst>
+                <ThemeProvider theme={theme}>{children}</ThemeProvider>
+            </StyledEngineProvider>
         </Provider>
     );
 };

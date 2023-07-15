@@ -4,6 +4,7 @@ import Icons from "icons";
 import DownloadableFile from "./DownloadableFile";
 
 import { Files } from "types/types";
+import Typography from "@mui/material/Typography";
 
 interface Props {
     files: Files;
@@ -14,7 +15,9 @@ const SharedFiles = (props: Props) => {
         <div className="Details__files">
             <div className="header">
                 <Icons.Files />
-                <h2>Shared files</h2>
+                <Typography component="h2" variant="h2_light">
+                    Shared files
+                </Typography>
             </div>
             <div className="content">
                 <ul>
