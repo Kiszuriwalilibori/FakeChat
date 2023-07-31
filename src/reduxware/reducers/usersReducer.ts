@@ -53,7 +53,6 @@ const usersReducer = createReducer(initialState, builder => {
                     return user.id === action.payload.id;
                 });
                 state.users[updateIndex].lastMessage = action.payload.lastMessage;
-                console.log(state.users[updateIndex].lastMessage);
             }
         });
 });

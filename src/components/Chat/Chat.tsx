@@ -33,11 +33,9 @@ const Chat = (props: Pick<UserDetails, "id" | "name">) => {
     return (
         <Fade in={true} timeout={700}>
             <section className="Chat" id="Chat" ref={ref}>
-                {/* <div style={{ maxHeight: "100%" }}> */}
                 <Header id={id} name={name} />
                 {id && <Core id={id} />}
                 {id && <Input id={id} />}
-                {/* </div> */}
             </section>
         </Fade>
     );
