@@ -3,13 +3,10 @@ import isEmpty from "lodash/isEmpty";
 
 import { connect } from "react-redux";
 
-import SharedFiles from "./Details_Files";
-import Header from "./Details_Header";
-import Informations from "./Details_Informations";
-
+import { Header, Informations, SharedFiles } from "./components";
 import { UserDetails, RootStateType, Files } from "types";
 
-import "./_Details.scss";
+import "./styles/_Details.scss";
 
 /**
  * fake files as demo

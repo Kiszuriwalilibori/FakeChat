@@ -2,9 +2,9 @@ import React from "react";
 import uuid from "react-uuid";
 
 import menuItems from "./config";
-import NavigationItem from "./Navigation_Item";
+import NavigationItem from "./components/Navigation_Item";
 
-import "./_Navigation.scss";
+import "./styles/_Navigation.scss";
 
 const Navigation = () => {
     return (

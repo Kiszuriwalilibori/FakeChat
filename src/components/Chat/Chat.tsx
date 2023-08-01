@@ -9,7 +9,7 @@ import { RootStateType, UserDetails } from "types";
 
 import { Header, Input } from "./Components";
 
-import Core from "./Chat_Core";
+import Core from "./Components/Chat_Core";
 
 import "./_Chat.scss";
 

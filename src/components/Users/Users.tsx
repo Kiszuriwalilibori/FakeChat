@@ -4,9 +4,7 @@ import uuid from "react-uuid";
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 
-import User from "./User";
-import Input from "./Users_Input";
-
+import { User, Input } from "./components";
 import { RootStateType, UsersData, Messages } from "types";
 import { useDispatchAction } from "hooks";
 

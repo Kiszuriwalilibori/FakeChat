@@ -2,7 +2,7 @@ import { UserDetails } from "types";
 
 import Icons from "assets/icons";
 import { IconButton, Stack, Typography } from "@mui/material";
-import { IconSx, SocialIconsContainer } from "./styled";
+import { IconSx, SocialIconsContainer } from "../styles";
 
 const Header = (props: Pick<UserDetails, "name" | "location" | "picture" | "social">) => {
     const { name, location, picture, social } = props;

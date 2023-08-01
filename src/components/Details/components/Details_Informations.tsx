@@ -8,7 +8,7 @@ import Icons from "assets/icons";
 
 import { countries, langs } from "assets/countries";
 import { UserDetails } from "types";
-import { InformationsContainer, InformationsItem } from "./styled";
+import { InformationsContainer, InformationsItem } from "../styles/styled";
 
 const Informations = (props: Pick<UserDetails, "phone" | "dob" | "nat">) => {
     const { phone, dob, nat } = props;
