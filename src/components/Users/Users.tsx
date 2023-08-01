@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import User from "./User";
 import Input from "./Users_Input";
 
-import { RootStateType, UsersData, Messages } from "types/types";
+import { RootStateType, UsersData, Messages } from "types";
 import { useDispatchAction } from "hooks";
 
 import "./_Users.scss";

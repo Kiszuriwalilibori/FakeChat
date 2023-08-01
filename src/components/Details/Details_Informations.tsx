@@ -4,11 +4,10 @@ import Typography from "@mui/material/Typography";
 import { pick } from "lodash";
 import { useMemo } from "react";
 
-import Icons from "icons";
-import countries from "countries/countries.json";
-import langs from "countries/languages.json";
+import Icons from "assets/icons";
 
-import { UserDetails } from "types/types";
+import { countries, langs } from "assets/countries";
+import { UserDetails } from "types";
 import { InformationsContainer, InformationsItem } from "./styled";
 
 const Informations = (props: Pick<UserDetails, "phone" | "dob" | "nat">) => {

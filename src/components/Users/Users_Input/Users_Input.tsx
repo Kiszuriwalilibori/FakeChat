@@ -1,4 +1,4 @@
-import Icons from "icons";
+import Icons from "assets/icons";
 import { BasicButton } from "components";
 
 import { useEffect, useRef } from "react";

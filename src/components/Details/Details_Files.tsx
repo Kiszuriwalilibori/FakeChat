@@ -1,10 +1,11 @@
 import uuid from "react-uuid";
 
-import Icons from "icons";
+import Typography from "@mui/material/Typography";
+
+import Icons from "assets/icons";
 import DownloadableFile from "./DownloadableFile";
 
-import { Files } from "types/types";
-import Typography from "@mui/material/Typography";
+import { Files } from "types";
 
 interface Props {
     files: Files;

@@ -1,4 +1,4 @@
-import { Messages } from "types/types";
+import { Messages } from "types";
 
 const initialState = {
     messages: [] as Messages,

@@ -4,7 +4,7 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import { useCallback } from "react";
 import { connect } from "react-redux";
 
-import { RootStateType } from "types/types";
+import { RootStateType } from "types";
 import { useDispatchAction } from "hooks";
 
 import "./_errorMessage.scss";

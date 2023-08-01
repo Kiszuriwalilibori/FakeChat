@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import uuid from "react-uuid";
 
-import { RootStateType, Messages } from "types/types";
+import { RootStateType, Messages } from "types";
 
 import Message from "./Message";
 

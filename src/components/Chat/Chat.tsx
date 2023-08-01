@@ -1,17 +1,17 @@
+import React from "react";
 import Fade from "@mui/material/Fade";
 
 import { connect } from "react-redux";
 import { debounce } from "lodash";
 import { useLayoutEffect } from "react";
 
-import { RootStateType, UserDetails } from "types/types";
+import { RootStateType, UserDetails } from "types";
 
-import Header from "./Chat_Header";
-import Input from "./Chat_Input";
+import { Header, Input } from "./Components";
+
 import Core from "./Chat_Core";
 
 import "./_Chat.scss";
-import React from "react";
 
 const Chat = (props: Pick<UserDetails, "id" | "name">) => {
     const { id, name } = props;

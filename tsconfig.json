@@ -22,11 +22,13 @@
             "hooks/*": ["hooks/*"],
             "models/*": ["models/*"],
             "components/*": ["components/*"],
-            "js/*": ["js/*"],
-            "icons/*": ["Icons/*"],
+            "functions/*": ["functions/*"],
+            "icons/*": ["assets/icons/*"],
             "styles/*": ["styles/*"],
             "images/*": ["images/*"],
-            "countries/*": ["countries/*"]
+            "countries/*": ["countries/*"],
+            "assets/*": ["assets/*"],
+            "shared/*": ["sharedComponents/*"]
         }
     },
     "include": ["src"]

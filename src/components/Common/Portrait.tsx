@@ -1,5 +1,5 @@
 import { Avatar, Badge } from "@mui/material";
-import Icons from "icons";
+import Icons from "assets/icons";
 import { GreenBadge } from "styles/styled";
 
 interface Props {

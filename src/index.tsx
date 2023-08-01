@@ -1,12 +1,13 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import "./index.css";
+
 import "./styles/index.css";
-import { AppProvider, App } from "components";
-import breakWhenInternetExplorer from "js/breakWhenInternetExplorer";
+
+import breakWhenInternetExplorer from "functions/breakWhenInternetExplorer";
 
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
+import { App, AppProvider } from "components";
 
 breakWhenInternetExplorer();
 

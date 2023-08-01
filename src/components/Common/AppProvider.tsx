@@ -9,7 +9,7 @@ import { Provider } from "react-redux";
 import fetchReducer from "reduxware/reducers/fetchReducer";
 import usersReducer from "reduxware/reducers/usersReducer";
 import messagesReducer from "reduxware/reducers/messageReducer";
-import theme from "../themes/theme";
+import theme from "../../themes/theme";
 
 const rootReducer = combineReducers({
     fetch: fetchReducer,

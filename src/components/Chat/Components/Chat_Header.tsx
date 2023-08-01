@@ -1,10 +1,10 @@
 import { useCallback } from "react";
 
-import Icons from "icons";
+import Icons from "assets/icons";
 
 import { BasicButton } from "components";
 import { useDispatchAction } from "hooks";
-import { UserDetails } from "types/types";
+import { UserDetails } from "types";
 import Typography from "@mui/material/Typography";
 
 const title = "Chat with ";

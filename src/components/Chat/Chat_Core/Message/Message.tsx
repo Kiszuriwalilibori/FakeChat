@@ -1,10 +1,10 @@
 import Baloon from "./Baloon";
 import Time from "./Time";
 
-import { Portrait } from "components";
-import { Message } from "types/types";
+import { Message } from "types";
 
 import "./_Message.scss";
+import { Portrait } from "components";
 
 interface Props {
     message: Message;

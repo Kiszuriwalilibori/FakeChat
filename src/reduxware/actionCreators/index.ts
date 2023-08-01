@@ -1,5 +1,5 @@
 import { createAction } from "@reduxjs/toolkit";
-import { UsersData, UserDetails, Message, UpdateLastMessage } from "types/types";
+import { UsersData, UserDetails, Message, UpdateLastMessage } from "types";
 
 interface ShowError {
     isError: boolean;

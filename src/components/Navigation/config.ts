@@ -1,4 +1,4 @@
-import { MenuConfig } from "types/types";
+import { MenuConfig } from "types";
 
 const config: MenuConfig = [
     { icon: "home", isActive: false },

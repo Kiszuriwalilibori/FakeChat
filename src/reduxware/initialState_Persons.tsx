@@ -1,4 +1,4 @@
-import { UsersData, UserDetails } from "types/types";
+import { UsersData, UserDetails } from "types";
 
 const initialState = {
     users: [] as UsersData,

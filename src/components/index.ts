@@ -1,13 +1,8 @@
-import Navigation from "./Navigation";
-import AppProvider from "./AppProvider";
-import ErrorMessage from "./ErrorMessage";
-import Loader from "./Loader";
-import App from "./App/App";
-import Users from "./Users";
-import BasicButton from "./BasicButton";
-import Details from "./Details";
 import Chat from "./Chat";
+import Details from "./Details";
+import Navigation from "./Navigation";
+import Users from "./Users";
 
-import Portrait from "./Portrait";
+import { App, AppProvider, BasicButton, Loader, Portrait, ErrorMessage } from "./Common";
 
 export { App, AppProvider, BasicButton, Chat, Details, ErrorMessage, Loader, Navigation, Users, Portrait };

@@ -1,4 +1,4 @@
-import { RootStateType } from "components/AppProvider";
+import { RootStateType } from "components/Common/AppProvider";
 
 type Icons = "chat" | "edit" | "home" | "person" | "cards" | "settings";
 interface MenuConfigItem {

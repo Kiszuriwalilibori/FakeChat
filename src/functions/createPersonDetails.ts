@@ -1,4 +1,4 @@
-import { UserDetails } from "types/types";
+import { UserDetails } from "types";
 
 function getData(data: string | null, replacement: string = "Undisclosed") {
     //return typeof data === "string" && data ? data : replacement;

@@ -2,14 +2,14 @@ import uuid from "react-uuid";
 
 import { MouseEventHandler } from "react";
 
-import { MenuConfigItem } from "types/types";
+import { MenuConfigItem } from "types";
 
-import home from "icons/home.svg";
-import chat from "icons/chat.svg";
-import edit from "icons/edit.svg";
-import person from "icons/person.svg";
-import settings from "icons/settings.svg";
-import cards from "icons/cards.svg";
+import home from "assets/icons/home.svg";
+import chat from "assets/icons/chat.svg";
+import edit from "assets/icons/edit.svg";
+import person from "assets/icons/person.svg";
+import settings from "assets/icons/settings.svg";
+import cards from "assets/icons/cards.svg";
 
 interface Props {
     menuItem: MenuConfigItem;

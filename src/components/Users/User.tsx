@@ -1,6 +1,6 @@
 import moment from "moment";
 
-import { UserDetails } from "types/types";
+import { UserDetails } from "types";
 
 import { Portrait } from "components";
 import Typography from "@mui/material/Typography";

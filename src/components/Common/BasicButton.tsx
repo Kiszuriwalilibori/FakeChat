@@ -1,5 +1,5 @@
 import React, { forwardRef, Ref } from "react";
-//import { renderWhenIsVisible } from "HOCs";
+
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
 
 function BasicButton(props: ButtonProps, ref: Ref<HTMLButtonElement>) {
@@ -12,5 +12,4 @@ function BasicButton(props: ButtonProps, ref: Ref<HTMLButtonElement>) {
     );
 }
 
-// export default renderWhenIsVisible(forwardRef(BasicButton));
 export default forwardRef(BasicButton);

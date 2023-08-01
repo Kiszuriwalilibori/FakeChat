@@ -1,6 +1,6 @@
-import { UserDetails } from "types/types";
+import { UserDetails } from "types";
 
-import Icons from "icons";
+import Icons from "assets/icons";
 import { IconButton, Stack, Typography } from "@mui/material";
 import { IconSx, SocialIconsContainer } from "./styled";
 

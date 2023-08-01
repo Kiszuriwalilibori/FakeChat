@@ -1,12 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { isEmpty } from "lodash";
-
-import Icons from "icons";
-import useDispatchAction from "hooks/useDispatchAction";
-
-import { Message, UserDetails } from "types/types";
 import { IconButton, Stack } from "@mui/material";
 
+import Icons from "assets/icons";
+import useDispatchAction from "hooks/useDispatchAction";
+
+import { Message, UserDetails } from "types";
 const placeHolder = "Type your message here...";
 
 function createMessage(text: string, addressee: string): Message {
