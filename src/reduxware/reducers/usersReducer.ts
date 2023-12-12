@@ -2,8 +2,6 @@ import { createReducer } from "@reduxjs/toolkit";
 
 import { Users, UserDetails } from "types";
 
-// import initialState from "../initialState_Persons";
-
 import {
     storeUsers,
     setActiveUserDetails,

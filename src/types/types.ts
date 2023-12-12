@@ -61,7 +61,15 @@ interface Message extends LastMessage {
 
 type Messages = Message[];
 
+type Error = Pick<RootState["fetch"], "isError" | "errorMessage">;
+
+interface Response {
+    results: JsonUser[];
+    error?: { message: string };
+}
+
 export type {
+    Error,
     Files,
     GPTRequestBody,
     GPTRequestBodyMessages,
@@ -72,6 +80,7 @@ export type {
     MenuConfigItem,
     Message,
     Messages,
+    Response,
     RootState,
     UpdateLastMessage,
     Users,

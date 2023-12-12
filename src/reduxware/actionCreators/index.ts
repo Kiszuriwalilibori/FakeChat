@@ -1,12 +1,7 @@
 import { createAction } from "@reduxjs/toolkit";
-import { Message, UpdateLastMessage, RootState } from "types";
+import { Message, UpdateLastMessage, RootState, Error } from "types";
 
-interface ShowError {
-    isError: boolean;
-    errorMessage: string;
-}
-
-export const showError = createAction<ShowError>("ERROR_SHOW");
+export const showError = createAction<Error>("ERROR_SHOW");
 export const clearError = createAction("ERROR_CLEAR");
 export const startLoading = createAction("LOADING_START");
 export const completeLoading = createAction("LOADING_COMPLETE");

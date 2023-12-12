@@ -16,6 +16,7 @@
         "@testing-library/jest-dom": "^5.16.2",
         "@testing-library/react": "^11.2.7",
         "@testing-library/user-event": "^12.8.3",
+        "axios": "^1.6.2",
         "emoji-picker-react": "^4.4.10",
         "lodash": "^4.17.21",
         "moment": "^2.29.4",
