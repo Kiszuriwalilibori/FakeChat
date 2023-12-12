@@ -1,16 +1,18 @@
 import { AnyAction } from "redux";
 import { ThunkAction } from "redux-thunk";
 import { startLoading, completeLoading, showError, storeUsers } from "../actionCreators";
-import { createPersonsData } from "functions";
+import { createUserData } from "functions";
 import { RootState } from "types";
+
+const USERS_URL = "https://randomuser.me/api/?results=10";
 
 const thunkFetchUsers = (): ThunkAction<void, RootState, unknown, AnyAction> => {
     return async (dispatch, getState) => {
-        const path = "https://randomuser.me/api/?results=10";
         dispatch(startLoading());
-        fetch(path)
+        fetch(USERS_URL)
             .then(res => res.json())
             .then(json => {
+                console.log(json);
                 dispatch(completeLoading());
                 if (json) {
                     try {
@@ -22,7 +24,7 @@ const thunkFetchUsers = (): ThunkAction<void, RootState, unknown, AnyAction> => 
                                 })
                             );
                         } else {
-                            const result = createPersonsData(json.results);
+                            const result = createUserData(json.results);
                             dispatch(storeUsers(result));
                         }
                     } catch (error) {
@@ -37,7 +39,7 @@ const thunkFetchUsers = (): ThunkAction<void, RootState, unknown, AnyAction> => 
                     dispatch(
                         showError({
                             isError: true,
-                            errorMessage: "No valid data received from " + path,
+                            errorMessage: "No valid data received from " + USERS_URL,
                         })
                     );
                 }

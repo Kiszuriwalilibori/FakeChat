@@ -1,4 +1,4 @@
 import breakWhenInternetExplorer from "./breakWhenInternetExplorer";
-import createUserData from "./createPersonsData";
+import createUserData from "./createUserData";
 
-export { createUserData as createPersonsData, breakWhenInternetExplorer };
+export { createUserData, breakWhenInternetExplorer };

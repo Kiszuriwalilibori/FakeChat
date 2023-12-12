@@ -4,7 +4,7 @@ function getData(data: string | null, replacement: string = "Undisclosed") {
     return data || replacement;
 }
 
-function createPersonDetails(obj: JsonUser): UserDetails {
+function createUserDetails(obj: JsonUser): UserDetails {
     const array = new Uint32Array(1);
     window.crypto.getRandomValues(array);
 
@@ -25,7 +25,7 @@ function createPersonDetails(obj: JsonUser): UserDetails {
 }
 
 export function createUserData(ary: JsonUser[]) {
-    return ary.map(createPersonDetails);
+    return ary.map(createUserDetails);
 }
 
 export default createUserData;
