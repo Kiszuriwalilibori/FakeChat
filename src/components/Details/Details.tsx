@@ -4,7 +4,7 @@ import isEmpty from "lodash/isEmpty";
 import { connect } from "react-redux";
 
 import { Header, Informations, SharedFiles } from "./components";
-import { UserDetails, RootStateType, Files } from "types";
+import { UserDetails, RootState, Files } from "types";
 
 import "./styles/_Details.scss";
 
@@ -46,7 +46,7 @@ const Details = (props: Props) => {
     );
 };
 
-const mapStateToProps = (state: RootStateType) => ({
+const mapStateToProps = (state: RootState) => ({
     user: state.users.activeUser,
 });
 

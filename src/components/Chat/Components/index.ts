@@ -1,4 +1,4 @@
-import Header from "./Chat_Header";
-import Input from "./Chat_Input";
+import ChatHeader from "./ChatHeader";
+import ChatInput from "./ChatInput";
 
-export { Header, Input };
+export { ChatHeader, ChatInput };

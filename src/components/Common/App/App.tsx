@@ -1,17 +1,21 @@
-import { useEffect, useRef } from "react";
-import React, { Suspense } from "react";
+import React from "react";
+
+import { useEffect, useRef, Suspense } from "react";
 import { connect } from "react-redux";
 
 import thunkFetchUsers from "reduxware/thunks/fetchUsersThunk";
 
-import { RootStateType, UserDetails } from "types";
-import { Navigation, Loader, ErrorMessage, Users, Chat } from "components";
+import { RootState, UserDetails } from "types";
+import { Navigation, Loader, ErrorMessage, Users, Chat, Header } from "components";
+import { useHandleConnectionStatus } from "hooks";
+
 import "./_App.scss";
+import { AppDispatch } from "../AppProvider";
 
 const Details = React.lazy(() => import("components/Details/Details"));
 
 interface Props {
-    fetchUsers: Function;
+    fetchUsers: () => void;
     isLoading: boolean;
     isError: boolean;
     activeUser: UserDetails;
@@ -19,7 +23,7 @@ interface Props {
 
 function _App(props: Props) {
     const { fetchUsers, isError, isLoading } = props;
-
+    useHandleConnectionStatus();
     const ref = useRef<HTMLElement>(null);
 
     const resizeMain = () => {
@@ -28,11 +32,15 @@ function _App(props: Props) {
 
     useEffect(() => {
         fetchUsers();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+        document.documentElement.style.setProperty(
+            "--scrollbar-width",
+            window.innerWidth - document.documentElement.offsetWidth + "px"
+        );
+    }, [fetchUsers]);
 
     return (
         <div className="App">
+            <Header />
             <Navigation />
             <main className="main" ref={ref}>
                 <Users resizeMain={resizeMain} />
@@ -48,13 +56,13 @@ function _App(props: Props) {
     );
 }
 
-const mapStateToProps = (state: RootStateType) => ({
+const mapStateToProps = (state: RootState) => ({
     isLoading: state.fetch.isLoading,
     isError: state.fetch.isError,
     activeUser: state.users.activeUser,
 });
 
-const mapDispatchToProps = (dispatch: Function) => ({
+const mapDispatchToProps = (dispatch: AppDispatch) => ({
     fetchUsers: () => dispatch(thunkFetchUsers()),
 });
 

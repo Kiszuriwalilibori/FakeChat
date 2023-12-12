@@ -1,4 +1,4 @@
-import { RootStateType } from "components/Common/AppProvider";
+import { RootState } from "components/Common/AppProvider";
 
 type Icons = "chat" | "edit" | "home" | "person" | "cards" | "settings";
 interface MenuConfigItem {
@@ -8,11 +8,11 @@ interface MenuConfigItem {
 
 type MenuConfig = MenuConfigItem[];
 
-interface UserDetails {
-    name: { first: string; last: string };
+export interface RawUserDetails {
+    name: { firstName: string; lastName: string };
     location: { city: string; country: string };
     phone: string;
-    dob: string;
+    dob: { date: string; age: number }; //
     nat: string;
     picture: { large: string; medium: string; thumbnail: string };
     isFavorite: boolean;
@@ -22,22 +22,35 @@ interface UserDetails {
     lastMessage?: LastMessage;
 }
 
-type UsersData = UserDetails[];
+interface JsonUser extends Omit<RawUserDetails, "name"> {
+    name: { first: string; last: string };
+}
+
+interface UserDetails extends Omit<RawUserDetails, "dob"> {
+    dob: string;
+}
+
+type Users = UserDetails[];
 
 type Files = { fileName: string; href: string }[];
 
 interface LastMessage {
-    text: string;
+    content: string;
     timestamp: number;
 }
 
-// interface UpdateLastMessage {
-//     id: string;
-//     message: string;
-// }
+interface GPTRequestBodyMessage {
+    role: "assistant" | "user" | "system";
+    content: string;
+}
+type GPTRequestBodyMessages = GPTRequestBodyMessage[];
+interface GPTRequestBody {
+    model: string;
+    messages: GPTRequestBodyMessages;
+}
 
 interface UpdateLastMessage {
-    id: string;
+    ID: string;
     lastMessage: LastMessage;
 }
 
@@ -49,14 +62,20 @@ interface Message extends LastMessage {
 type Messages = Message[];
 
 export type {
-    RootStateType,
+    Files,
+    GPTRequestBody,
+    GPTRequestBodyMessages,
+    GPTRequestBodyMessage,
+    Icons,
+    JsonUser,
     MenuConfig,
     MenuConfigItem,
-    Icons,
-    UsersData,
-    UserDetails,
-    Files,
     Message,
     Messages,
+    RootState,
     UpdateLastMessage,
+    Users,
+    UserDetails,
 };
+
+export type BaloonVariant = "host" | "user";

@@ -1,7 +1,7 @@
 import Baloon from "./Baloon";
 import Time from "./Time";
 
-import { Message } from "types";
+import { Message, UserDetails } from "types";
 
 import "./_Message.scss";
 import { Portrait } from "components";
@@ -9,18 +9,18 @@ import { Portrait } from "components";
 interface Props {
     message: Message;
     thumbnail: string;
-    name: { first: string; last: string };
+    name: UserDetails["name"];
 }
 const UserMessage = (props: Props) => {
     const { thumbnail, message, name } = props;
-    const { text, timestamp, sender } = message;
-    const fromHost = sender === "host";
+    const { content, timestamp, sender } = message;
+    const isFromHost = sender === "host";
 
     return (
-        <div className={fromHost ? "message message--host" : " message message--user"}>
-            {fromHost && (
+        <div className={isFromHost ? "message message--host" : " message message--user"}>
+            {isFromHost && (
                 <>
-                    <Baloon text={text} type={"host"} />
+                    <Baloon message={content} variant={"host"} />
                     <div className="message--sender">
                         <Portrait isOnline thumbnail={"https://i.ibb.co/q7xpjTg/IMG-1018.webp"} name={name} />
                         <Time time={timestamp} />
@@ -28,13 +28,13 @@ const UserMessage = (props: Props) => {
                 </>
             )}
 
-            {!fromHost && (
+            {!isFromHost && (
                 <>
                     <div className="message--sender">
                         <Portrait isOnline thumbnail={thumbnail} name={name} />
                         <Time time={timestamp} />
                     </div>
-                    <Baloon text={text} type={"user"} />
+                    <Baloon message={content} variant={"user"} />
                 </>
             )}
         </div>

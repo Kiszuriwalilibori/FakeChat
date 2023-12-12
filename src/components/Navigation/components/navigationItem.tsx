@@ -10,10 +10,11 @@ import edit from "assets/icons/edit.svg";
 import person from "assets/icons/person.svg";
 import settings from "assets/icons/settings.svg";
 import cards from "assets/icons/cards.svg";
+import useDebouncedCallback from "hooks/useDebouncedCallback";
 
 interface Props {
     menuItem: MenuConfigItem;
-    clickHandler?: MouseEventHandler<HTMLDivElement>;
+    clickHandler: MouseEventHandler<HTMLDivElement>;
 }
 
 const NavigationItem = (props: Props) => {
@@ -42,14 +43,18 @@ const NavigationItem = (props: Props) => {
         default:
     }
 
+    const handleClick = useDebouncedCallback(clickHandler);
+
     return (
         <div
             className={menuItem.isActive ? "Navigation__item active" : "Navigation__item"}
-            onClick={menuItem.isActive ? clickHandler : undefined}
+            onClick={menuItem.isActive ? handleClick : undefined}
             key={uuid()}
+            role="button"
+            tabIndex={0}
         >
             <img src={source} alt={menuItem.icon} />
-        </div> // todo to jednak powinien być mui button bo tracimy WCAG
+        </div>
     );
 };
 

@@ -10,6 +10,7 @@
     position: fixed;
     top: 0;
     bottom: 0;
+    margin-left: calc(100vw - 100%);
 
     @include mobile {
         width: 100%;
@@ -41,6 +42,7 @@
 
         & > img {
             width: 35%;
+            aspect-ratio: 1;
             fill: var(--nav-icon-color);
         }
 

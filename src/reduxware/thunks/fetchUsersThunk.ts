@@ -2,9 +2,9 @@ import { AnyAction } from "redux";
 import { ThunkAction } from "redux-thunk";
 import { startLoading, completeLoading, showError, storeUsers } from "../actionCreators";
 import { createPersonsData } from "functions";
-import { RootStateType } from "types";
+import { RootState } from "types";
 
-const thunkFetchUsers = (): ThunkAction<void, RootStateType, unknown, AnyAction> => {
+const thunkFetchUsers = (): ThunkAction<void, RootState, unknown, AnyAction> => {
     return async (dispatch, getState) => {
         const path = "https://randomuser.me/api/?results=10";
         dispatch(startLoading());

@@ -59,13 +59,6 @@
                 justify-content: space-between;
                 padding-left: 12px;
                 height: 40px;
-                // & h2 {
-                //     font-weight: 700;
-                // }
-                & .last--message {
-                    @extend .cut-string240;
-                    color: var(--main-text-color);
-                }
             }
             .last-comment {
                 @extend .flexRowVerticallyCentered;
@@ -106,7 +99,6 @@
                 flex-grow: 1;
                 width: 100%;
                 border: none;
-                outline: none;
             }
 
             & .button.button--reset {

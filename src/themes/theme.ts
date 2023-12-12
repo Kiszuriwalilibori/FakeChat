@@ -9,6 +9,7 @@ declare module "@mui/material/styles" {
         text_blue_underlined: React.CSSProperties;
         text_light_small: React.CSSProperties;
         text_light_underlined: React.CSSProperties;
+        text_truncated?: React.CSSProperties;
     }
 
     interface TypographyVariantsOptions {
@@ -18,6 +19,7 @@ declare module "@mui/material/styles" {
         text_blue_underlined?: React.CSSProperties;
         text_light_small?: React.CSSProperties;
         text_light_underlined?: React.CSSProperties;
+        text_truncated?: React.CSSProperties;
     }
 }
 
@@ -29,6 +31,7 @@ declare module "@mui/material/Typography" {
         text_blue_underlined: true;
         text_light_small: true;
         text_light_underlined: true;
+        text_truncated: true;
     }
 }
 
@@ -80,6 +83,15 @@ theme = createTheme(theme, {
             textDecorationThickness: "1px",
             textUnderlineOffset: theme.spacing(0.5),
         },
+        text_truncated: {
+            width: "240px",
+            display: "block",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
+            color: TEXT_SECONDARY,
+        },
+
         body1: { color: TEXT_SECONDARY, lineHeight: "unset" },
     },
     components: {

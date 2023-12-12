@@ -4,45 +4,44 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import { useCallback } from "react";
 import { connect } from "react-redux";
 
-import { RootStateType } from "types";
+import { RootState } from "types";
 import { useDispatchAction } from "hooks";
 
 import "./_errorMessage.scss";
+import useDebouncedCallback from "hooks/useDebouncedCallback";
 
-const cancel = {
+const CANCEL = {
     cursor: "pointer",
 };
-const center = {
+const CENTER = {
     margin: "0 auto",
 };
 
-const generalWarning = "Ojejku, błąd:(";
+const ERROR_MESSAGE = "Ojejku, błąd:(";
 interface Props {
     errorMessage: string;
 }
 
-const ProblemMessage = (props: Props) => {
+const ErrorMessage = (props: Props) => {
     const { errorMessage } = props;
     const { clearError } = useDispatchAction();
-    const dispatchHideErrorMessage = useCallback(() => {
-        clearError();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+
+    const handleCancelClicked = useDebouncedCallback(clearError);
 
     return (
-        <Fade in={true} timeout={300} style={center}>
+        <Fade in={true} timeout={300} style={CENTER}>
             <article className="error">
-                <CancelIcon onClick={dispatchHideErrorMessage} style={cancel} />
+                <CancelIcon onClick={handleCancelClicked} style={CANCEL} />
                 <hr></hr>
-                <p>{generalWarning}</p>
+                <p>{ERROR_MESSAGE}</p>
                 <p>{errorMessage}</p>
             </article>
         </Fade>
     );
 };
 
-const mapStateToProps = (state: RootStateType) => ({
+const mapStateToProps = (state: RootState) => ({
     errorMessage: state.fetch.errorMessage,
 });
 
-export default connect(mapStateToProps, {})(ProblemMessage);
+export default connect(mapStateToProps, {})(ErrorMessage);

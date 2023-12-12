@@ -1,9 +1,7 @@
 @use "styles/mixins" as *;
 
 .App {
-    // display: grid;
-    // grid-template-columns: var(--nav-width) auto;
-    // grid-auto-rows: 1fr;
+    margin-left: calc(var(--scrollbar-width) * -1); // ostatnia zmiana
 
     @include mobile {
         width: 100%;
@@ -19,9 +17,11 @@
         grid-template-columns: 360px auto 300px;
     }
     grid-auto-rows: 1fr;
+    // width: calc(100% - var(--nav-width));
+    margin-left: calc(var(--nav-width) + var(--scrollbar-width));
 
-    width: calc(100vw - var(--nav-width));
-    margin-left: var(--nav-width);
+    margin-right: 18px;
+
     @include mobile {
         margin-left: unset;
         display: block;

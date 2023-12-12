@@ -52,6 +52,13 @@ MUI v5.xx
 Avatar and Badge applied
 custom icon in index.html
 
+### 1.0.3
+
+files structure rearranged
+better names
+stricter typings
+fixed bug - now after change of current user input clears
+
 ### TODO
 
-w Users trza by zróżnicować online i offline, w tej chwili oba mają cursor pointer
+find another way to reach GPT chat

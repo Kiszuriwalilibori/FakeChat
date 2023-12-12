@@ -5,11 +5,13 @@ import { ThemeProvider, StyledEngineProvider } from "@mui/material";
 import { combineReducers } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
+import { register } from "../../serviceWorkerRegistration";
 
 import fetchReducer from "reduxware/reducers/fetchReducer";
 import usersReducer from "reduxware/reducers/usersReducer";
 import messagesReducer from "reduxware/reducers/messageReducer";
 import theme from "../../themes/theme";
+import { SnackbarProvider } from "notistack";
 
 const rootReducer = combineReducers({
     fetch: fetchReducer,
@@ -31,12 +33,20 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     return (
         <Provider store={store}>
             <StyledEngineProvider injectFirst>
-                <ThemeProvider theme={theme}>{children}</ThemeProvider>
+                <SnackbarProvider
+                    maxSnack={3}
+                    anchorOrigin={{
+                        vertical: "bottom",
+                        horizontal: "center",
+                    }}
+                >
+                    <ThemeProvider theme={theme}>{children}</ThemeProvider>
+                </SnackbarProvider>
             </StyledEngineProvider>
         </Provider>
     );
 };
-
+register();
 export default AppProvider;
-export type RootStateType = ReturnType<typeof store.getState>;
+export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

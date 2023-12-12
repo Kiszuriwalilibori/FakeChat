@@ -1,17 +1,27 @@
 import { UserDetails } from "types";
+// import theme from "../../themes/theme";
 
 import Icons from "assets/icons";
-import { IconButton, Stack, Typography } from "@mui/material";
-import { IconSx, SocialIconsContainer } from "../styles";
+
+import { IconButton, Stack, Theme, Typography } from "@mui/material";
+import { SocialIconsContainer } from "./index";
+
+export const IconSx = {
+    p: 0,
+    width: "36px",
+    height: "36px",
+    mr: (theme: Theme) => theme.spacing(1.75),
+    ml: (theme: Theme) => theme.spacing(1.75),
+};
 
 const Header = (props: Pick<UserDetails, "name" | "location" | "picture" | "social">) => {
     const { name, location, picture, social } = props;
 
     return (
         <div className="Details__header">
-            <img className="circular--square" src={picture.large} alt="user foto" />
+            <img className="circular--square" src={picture.large} alt="user" />
             <Stack spacing={2.5} sx={{ alignItems: "center", pb: 2.5, pt: 2.5, mt: 2.5 }}>
-                <Typography component="h2" variant="h2_blue">{`${name.first} ${name.last}`}</Typography>
+                <Typography component="h2" variant="h2_blue">{`${name.firstName} ${name.lastName}`}</Typography>
                 <Typography variant="body1">{`${location.city} ${location.country}`}</Typography>
                 <SocialIconsContainer>
                     <IconButton

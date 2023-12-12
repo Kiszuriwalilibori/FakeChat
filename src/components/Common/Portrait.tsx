@@ -1,12 +1,15 @@
 import { Avatar, Badge } from "@mui/material";
+
 import Icons from "assets/icons";
-import { GreenBadge } from "styles/styled";
+
+import { GreenBadge } from "./GreenBadge";
+import { UserDetails } from "types";
 
 interface Props {
-    isFavorite?: boolean;
-    thumbnail: string;
-    name: { first: string; last: string };
-    isOnline?: boolean;
+    isFavorite?: UserDetails["isFavorite"];
+    thumbnail: UserDetails["picture"]["thumbnail"];
+    name: UserDetails["name"];
+    isOnline?: UserDetails["isOnline"];
 }
 
 const Portrait = (props: Props) => {
@@ -26,7 +29,7 @@ const Portrait = (props: Props) => {
                     anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
                     variant="dot"
                 >
-                    <Avatar src={thumbnail} alt={name.last} />
+                    <Avatar src={thumbnail} alt={name.lastName} />
                 </GreenBadge>
             </Badge>
         </div>

@@ -1,5 +1,7 @@
 import Moment from "react-moment";
 
+import { memo } from "react";
+
 interface Props {
     time: number;
 }
@@ -14,4 +16,4 @@ const Time = (props: Props) => {
     );
 };
 
-export default Time;
+export default memo(Time);

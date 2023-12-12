@@ -1,4 +1,4 @@
 import User from "./User";
-import Input from "./Users_Input";
+import UserSelectInput from "./UsersSelectInput";
 
-export { User, Input };
+export { User, UserSelectInput };

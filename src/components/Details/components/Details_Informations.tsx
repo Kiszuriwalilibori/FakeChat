@@ -8,7 +8,9 @@ import Icons from "assets/icons";
 
 import { countries, langs } from "assets/countries";
 import { UserDetails } from "types";
-import { InformationsContainer, InformationsItem } from "../styles/styled";
+
+import { InformationsItem, InformationsContainer } from "./index";
+import Divider from "@mui/material/Divider";
 
 const Informations = (props: Pick<UserDetails, "phone" | "dob" | "nat">) => {
     const { phone, dob, nat } = props;
@@ -42,7 +44,7 @@ const Informations = (props: Pick<UserDetails, "phone" | "dob" | "nat">) => {
                 </Typography>
             </div>
 
-            <InformationsContainer>
+            <InformationsContainer divider={<Divider orientation="vertical" flexItem />}>
                 <InformationsItem>
                     <Typography variant="text_light_small">Tel:</Typography>
                     <Typography variant="text_light_small">{phone}</Typography>

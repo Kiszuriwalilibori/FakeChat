@@ -23,7 +23,7 @@
             "models/*": ["models/*"],
             "components/*": ["components/*"],
             "functions/*": ["functions/*"],
-            "icons/*": ["assets/icons/*"],
+            "icons/*": ["assets/_icons/*"],
             "styles/*": ["styles/*"],
             "images/*": ["images/*"],
             "countries/*": ["countries/*"],

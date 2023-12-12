@@ -1,23 +1,26 @@
 import moment from "moment";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 
 import { UserDetails } from "types";
-
 import { Portrait } from "components";
-import Typography from "@mui/material/Typography";
+import useDebouncedCallback from "hooks/useDebouncedCallback";
 
 interface Props {
     user: UserDetails;
     isActive: boolean;
-    clickHandle: Function;
+    clickHandler: (userId: string) => void;
 }
 
 const User = (props: Props) => {
-    const { user, isActive, clickHandle } = props;
+    const { user, isActive, clickHandler } = props;
+
+    const handleClick = useDebouncedCallback(clickHandler, user.id);
 
     return (
         <div
             className={`${isActive ? "details active" : "details"} ${user.isOnline ? "clickable" : ""} `}
-            onClick={user.isOnline ? () => clickHandle(user.id) : undefined}
+            onClick={user.isOnline ? handleClick : undefined}
             tabIndex={0}
         >
             <div className="content">
@@ -29,15 +32,26 @@ const User = (props: Props) => {
                 />
 
                 <div className="text--content">
-                    <Typography variant="h2_dark" component="h2">{`${user.name.first} ${user.name.last}`}</Typography>
-                    <div>
-                        {user.lastMessage?.text && <span className="last--message">{user.lastMessage?.text}</span>}
-                    </div>
+                    <Typography
+                        variant="h2_dark"
+                        component="h2"
+                    >{`${user.name.firstName} ${user.name.lastName}`}</Typography>
+
+                    {user.lastMessage?.content && (
+                        <Box
+                            sx={theme => ({
+                                position: "absolute",
+                                bottom: theme.spacing(-1),
+                            })}
+                        >
+                            <Typography variant="text_truncated">{user.lastMessage?.content}</Typography>
+                        </Box>
+                    )}
                 </div>
 
-                {user.lastMessage?.text && (
+                {user.lastMessage?.content && (
                     <div className="last-comment">
-                        {user.lastMessage?.text && moment(user.lastMessage?.timestamp).fromNow().replace("ago", "")}
+                        {user.lastMessage?.content && moment(user.lastMessage?.timestamp).fromNow().replace("ago", "")}
                     </div>
                 )}
             </div>

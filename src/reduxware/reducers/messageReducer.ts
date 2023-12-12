@@ -1,8 +1,11 @@
 import { createReducer } from "@reduxjs/toolkit";
 
-import initialState from "../initialState_Messages";
-
+import { Messages } from "types";
 import { addMessage } from "../actionCreators";
+
+const initialState = {
+    messages: [] as Messages,
+};
 
 const usersReducer = createReducer(initialState, builder => {
     builder.addCase(addMessage, (state, action) => {

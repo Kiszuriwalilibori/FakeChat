@@ -14,6 +14,7 @@
 body {
     height: 100vh;
     width: 100vw;
+    overflow-x: hidden;
 }
 
 input,
@@ -135,3 +136,22 @@ textarea {
     border-radius: 30px;
     background-color: var(--main-bg-color);
 }
+
+.sr-only {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+*:focus {
+    outline: 2px ridge #0ca4f6;
+    outline-offset: 1px;
+    z-index: 2000;
+}
+
+.scrollOffset {
+    margin-left: calc(100vw - 100%);
+} // todo to jest to

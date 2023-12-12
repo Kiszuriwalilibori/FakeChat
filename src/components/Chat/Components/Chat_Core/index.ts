@@ -1,1 +1,1 @@
-export { default } from "./Chat_Core";
+export { default } from "./MessagesSection";

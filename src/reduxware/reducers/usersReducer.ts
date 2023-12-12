@@ -1,6 +1,8 @@
 import { createReducer } from "@reduxjs/toolkit";
 
-import initialState from "../initialState_Persons";
+import { Users, UserDetails } from "types";
+
+// import initialState from "../initialState_Persons";
 
 import {
     storeUsers,
@@ -10,6 +12,12 @@ import {
     setOnlineFalse,
     updateLastMessage,
 } from "../actionCreators";
+
+const initialState = {
+    users: [] as Users,
+    activeUser: {} as UserDetails,
+    activeUserId: "",
+};
 
 const usersReducer = createReducer(initialState, builder => {
     builder
@@ -50,7 +58,7 @@ const usersReducer = createReducer(initialState, builder => {
         .addCase(updateLastMessage, (state, action) => {
             if (action.payload) {
                 const updateIndex = state.users.findIndex(user => {
-                    return user.id === action.payload.id;
+                    return user.id === action.payload.ID;
                 });
                 state.users[updateIndex].lastMessage = action.payload.lastMessage;
             }

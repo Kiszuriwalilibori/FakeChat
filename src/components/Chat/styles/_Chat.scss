@@ -35,6 +35,9 @@
                     @extend .svg--chat;
                     fill: var(--blue-text-color);
                 }
+                &:hover:not([disabled]) {
+                    background-color: lightgrey;
+                }
                 &:disabled {
                     cursor: default;
                     & > svg {
@@ -75,12 +78,9 @@
             flex-grow: 1;
             width: 100%;
             border: none;
-            outline: none;
         }
     }
     & .chat--core {
-        // max-height: calc(100% - 400px);
-        // height: calc(100% - 400px);
         max-height: calc(
             100% - var(--users-search-wrapper-height) -
                 (var(--users-search-height) + (var(--users-search-wrapper-height) - var(--users-search-height)) / 2)

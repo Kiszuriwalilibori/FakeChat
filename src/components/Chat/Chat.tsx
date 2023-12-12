@@ -5,13 +5,13 @@ import { connect } from "react-redux";
 import { debounce } from "lodash";
 import { useLayoutEffect } from "react";
 
-import { RootStateType, UserDetails } from "types";
+import { RootState, UserDetails } from "types";
 
-import { Header, Input } from "./Components";
+import { ChatHeader, ChatInput } from "./Components";
 
 import Core from "./Components/Chat_Core";
 
-import "./_Chat.scss";
+import "./styles/_Chat.scss";
 
 const Chat = (props: Pick<UserDetails, "id" | "name">) => {
     const { id, name } = props;
@@ -32,16 +32,16 @@ const Chat = (props: Pick<UserDetails, "id" | "name">) => {
 
     return (
         <Fade in={true} timeout={700}>
-            <section className="Chat" id="Chat" ref={ref}>
-                <Header id={id} name={name} />
-                {id && <Core id={id} />}
-                {id && <Input id={id} />}
+            <section className="Chat" id="Chat" ref={ref} aria-label="Chat section">
+                <ChatHeader id={id} name={name} />
+                {id && <Core ID={id} />}
+                {id && <ChatInput ID={id} />}
             </section>
         </Fade>
     );
 };
 
-const mapStateToProps = (state: RootStateType) => ({
+const mapStateToProps = (state: RootState) => ({
     name: state.users.activeUser.name,
     id: state.users.activeUser.id,
 });

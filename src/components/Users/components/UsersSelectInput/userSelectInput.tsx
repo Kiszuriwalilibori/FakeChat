@@ -1,17 +1,32 @@
-import Icons from "assets/icons";
-import { BasicButton } from "components";
+import { useCallback, useEffect, useRef, ChangeEvent } from "react";
 
-import { useEffect, useRef } from "react";
+import Icons from "assets/icons";
+
+import { BasicButton } from "components";
+import useDebouncedCallback from "hooks/useDebouncedCallback";
+
 interface Props {
     changeHandler: (value: string) => void;
 }
 
-const Input = (props: Props) => {
+const UserSelectInput = (props: Props) => {
     const { changeHandler } = props;
     const ref = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
         ref.current && ref.current.focus();
+    }, []);
+
+    const handleReset = useCallback(() => {
+        if (ref.current) {
+            ref.current.value = "";
+            changeHandler("");
+        }
+    }, [ref.current, changeHandler]);
+
+    const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+        const target = e.target as HTMLInputElement;
+        changeHandler(target.value);
     }, []);
 
     return (
@@ -22,24 +37,17 @@ const Input = (props: Props) => {
                 </BasicButton>
                 <input
                     placeholder="Search..."
+                    aria-label="type selected user name here for search"
                     type="text"
                     defaultValue=""
                     ref={ref}
-                    onChange={e => {
-                        const target = e.target as HTMLInputElement;
-                        changeHandler(target.value);
-                    }}
+                    onChange={handleChange}
                 ></input>
                 {ref.current && ref.current.value !== "" && (
                     <BasicButton
                         className="button button--reset flexbox-row-centered"
                         type="reset"
-                        onClick={() => {
-                            if (ref.current) {
-                                ref.current.value = "";
-                                changeHandler("");
-                            }
-                        }}
+                        onClick={handleReset}
                     >
                         <Icons.Reset />
                     </BasicButton>
@@ -49,4 +57,4 @@ const Input = (props: Props) => {
     );
 };
 
-export default Input;
+export default UserSelectInput;
