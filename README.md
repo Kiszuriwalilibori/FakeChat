@@ -59,6 +59,14 @@ better names
 stricter typings
 fixed bug - now after change of current user input clears
 
+### 1.1.0
+
+voice support, Axios
+
+### 1.1.1
+
+some styles rearranged
+
 ### TODO
 
 find another way to reach GPT chat

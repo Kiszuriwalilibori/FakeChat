@@ -11,7 +11,7 @@ import "./styles/_Details.scss";
 /**
  * fake files as demo
  */
-const foo: Files = [
+const FILES: Files = [
     {
         href: "/images/myw3schoolsimage.jpg",
         fileName: "annualPlan.doc",
@@ -40,7 +40,7 @@ const Details = (props: Props) => {
             <section className="Details">
                 <Header name={name} location={location} picture={picture} social={social} />
                 <Informations phone={phone} dob={dob} nat={nat} />
-                <SharedFiles files={foo} />
+                <SharedFiles files={FILES} />
             </section>
         </Slide>
     );

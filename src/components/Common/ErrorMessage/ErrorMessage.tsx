@@ -8,16 +8,10 @@ import { RootState } from "types";
 import { useDispatchAction } from "hooks";
 
 import "./_errorMessage.scss";
+import { styleCancelIcon, styleWrapper } from "./style";
 import useDebouncedCallback from "hooks/useDebouncedCallback";
 
-const CANCEL = {
-    cursor: "pointer",
-};
-const CENTER = {
-    margin: "0 auto",
-};
-
-const ERROR_MESSAGE = "Ojejku, błąd:(";
+const ERROR = "Ojejku, błąd:(";
 interface Props {
     errorMessage: string;
 }
@@ -29,11 +23,11 @@ const ErrorMessage = (props: Props) => {
     const handleCancelClicked = useDebouncedCallback(clearError);
 
     return (
-        <Fade in={true} timeout={300} style={CENTER}>
+        <Fade in={true} timeout={300} style={styleWrapper}>
             <article className="error">
-                <CancelIcon onClick={handleCancelClicked} style={CANCEL} />
+                <CancelIcon onClick={handleCancelClicked} style={styleCancelIcon} />
                 <hr></hr>
-                <p>{ERROR_MESSAGE}</p>
+                <p>{ERROR}</p>
                 <p>{errorMessage}</p>
             </article>
         </Fade>

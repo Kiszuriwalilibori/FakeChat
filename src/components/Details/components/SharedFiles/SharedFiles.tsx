@@ -3,7 +3,7 @@ import uuid from "react-uuid";
 import Typography from "@mui/material/Typography";
 
 import Icons from "assets/icons";
-import DownloadableFile from "./DownloadableFile";
+import DownloadableFile from "./File";
 
 import { Files } from "types";
 

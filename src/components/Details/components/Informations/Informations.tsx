@@ -1,5 +1,6 @@
 import Moment from "react-moment";
 import Typography from "@mui/material/Typography";
+import Divider from "@mui/material/Divider";
 
 import { pick } from "lodash";
 import { useMemo } from "react";
@@ -8,9 +9,8 @@ import Icons from "assets/icons";
 
 import { countries, langs } from "assets/countries";
 import { UserDetails } from "types";
-
-import { InformationsItem, InformationsContainer } from "./index";
-import Divider from "@mui/material/Divider";
+import { InformationsItem } from "./Information";
+import { InformationsContainer } from "./Container";
 
 const Informations = (props: Pick<UserDetails, "phone" | "dob" | "nat">) => {
     const { phone, dob, nat } = props;
