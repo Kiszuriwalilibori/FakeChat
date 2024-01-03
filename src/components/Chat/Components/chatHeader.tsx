@@ -19,7 +19,7 @@ const ChatHeader = (props: Pick<UserDetails, "id" | "name">) => {
     // const handleFavoriteClicked = useCallback(() => {
     //     toggleFavorite(id);
     // }, [id, toggleFavorite]);
-    const handleFavoriteClicked = useDebouncedCallback(toggleFavorite, id);
+    const handleFavoriteClicked = useDebouncedCallback<HTMLButtonElement>(toggleFavorite, id);
 
     const isChatActive = Boolean(name && name.lastName);
     return (

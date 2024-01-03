@@ -15,7 +15,7 @@ interface Props {
 const User = (props: Props) => {
     const { user, isActive, clickHandler } = props;
 
-    const handleClick = useDebouncedCallback(clickHandler, user.id);
+    const handleClick = useDebouncedCallback<HTMLDivElement>(clickHandler, user.id);
 
     return (
         <div

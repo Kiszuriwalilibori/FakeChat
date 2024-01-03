@@ -20,7 +20,7 @@ const ErrorMessage = (props: Props) => {
     const { errorMessage } = props;
     const { clearError } = useDispatchAction();
 
-    const handleCancelClicked = useDebouncedCallback(clearError);
+    const handleCancelClicked = useDebouncedCallback<SVGElement>(clearError);
 
     return (
         <Fade in={true} timeout={300} style={styleWrapper}>

@@ -43,7 +43,7 @@ const NavigationItem = (props: Props) => {
         default:
     }
 
-    const handleClick = useDebouncedCallback(clickHandler);
+    const handleClick = useDebouncedCallback<HTMLDivElement>(clickHandler);
 
     return (
         <div
