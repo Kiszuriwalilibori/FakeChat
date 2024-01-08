@@ -24,6 +24,7 @@ import {
 
 import useBoolean from "hooks/useBoolean";
 import { Picker } from "components";
+import useInitialFocus from "hooks/useInitialFocus";
 
 const placeHolder = "Type your message here...";
 
@@ -57,11 +58,7 @@ const ChatInput = (props: Props) => {
 
     const [isPickerVisible, , , togglePickerVisibility] = useBoolean(false);
     const { addMessage, setOnlineTrue, updateLastMessage } = useDispatchAction();
-    const ref = useRef<HTMLInputElement>(null);
-
-    useEffect(() => {
-        ref.current && ref.current.focus();
-    }, []);
+    const initialFocus = useInitialFocus<HTMLInputElement>();
 
     useEffect(() => {
         ID && setTextContent(INITIAL_INPUT);
@@ -84,7 +81,7 @@ const ChatInput = (props: Props) => {
                 setTextContent("");
                 setMessage(createAnswer(textContent, ID));
                 updateLastMessage({ ID, lastMessage: { content: message.content, timestamp: message.timestamp } });
-                ref.current && ref.current.focus();
+                initialFocus.current && initialFocus.current.focus();
             }
         },
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -122,7 +119,7 @@ const ChatInput = (props: Props) => {
                 aria-label={placeHolder}
                 type="text"
                 value={textContent}
-                ref={ref}
+                ref={/*ref*/ initialFocus}
                 onChange={e => {
                     setTextContent(e.target.value);
                 }}
