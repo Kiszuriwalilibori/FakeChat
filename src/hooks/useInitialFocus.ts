@@ -12,7 +12,7 @@ export function useInitialFocus<
     const initialFocus = React.useRef<T>(null);
     React.useEffect(() => {
         initialFocus.current && initialFocus.current.focus();
-    });
+    }, []);
     return initialFocus;
 }
 export default useInitialFocus;

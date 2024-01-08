@@ -4,6 +4,7 @@ import Icons from "assets/icons";
 
 import { BasicButton } from "components";
 import useDebouncedCallback from "hooks/useDebouncedCallback"; //
+import useInitialFocus from "hooks/useInitialFocus";
 
 interface Props {
     changeHandler: (value: string) => void;
@@ -11,18 +12,13 @@ interface Props {
 
 const UserSelectInput = (props: Props) => {
     const { changeHandler } = props;
-    const ref = useRef<HTMLInputElement>(null);
-
-    useEffect(() => {
-        ref.current && ref.current.focus();
-    }, []);
-
+    const initialFocus = useInitialFocus<HTMLInputElement>();
     const handleReset = useCallback(() => {
-        if (ref.current) {
-            ref.current.value = "";
+        if (initialFocus.current) {
+            initialFocus.current.value = "";
             changeHandler("");
         }
-    }, [ref.current, changeHandler]);
+    }, [initialFocus.current, changeHandler]);
 
     const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
         const target = e.target as HTMLInputElement;
@@ -40,10 +36,10 @@ const UserSelectInput = (props: Props) => {
                     aria-label="type selected user name here for search"
                     type="text"
                     defaultValue=""
-                    ref={ref}
+                    ref={initialFocus}
                     onChange={handleChange}
                 ></input>
-                {ref.current && ref.current.value !== "" && (
+                {initialFocus.current && initialFocus.current.value !== "" && (
                     <BasicButton
                         className="button button--reset flexbox-row-centered"
                         type="reset"
