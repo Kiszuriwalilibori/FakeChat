@@ -22,9 +22,9 @@ import {
     translateMessageToGPTChatMessage,
 } from "../utils";
 
-import useBoolean from "hooks/useBoolean";
+import { useBoolean, useInitialFocus } from "hooks";
 import { Picker } from "components";
-import useInitialFocus from "hooks/useInitialFocus";
+import { listeningMicrophoneSx } from "./ChatInput.styles";
 
 const placeHolder = "Type your message here...";
 
@@ -119,7 +119,7 @@ const ChatInput = (props: Props) => {
                 aria-label={placeHolder}
                 type="text"
                 value={textContent}
-                ref={/*ref*/ initialFocus}
+                ref={initialFocus}
                 onChange={e => {
                     setTextContent(e.target.value);
                 }}
@@ -130,10 +130,7 @@ const ChatInput = (props: Props) => {
                     disabled={!supported}
                     aria-label="toggle microphone"
                     onClick={listening ? stop : listen}
-                    sx={{
-                        backgroundColor: listening ? "#91ff35" : "initial",
-                        "&:hover": { backgroundColor: listening ? "#91ff35" : "lightgrey" },
-                    }}
+                    sx={{ ...listeningMicrophoneSx(listening) }}
                 >
                     <MicIcon />
                 </IconButton>
