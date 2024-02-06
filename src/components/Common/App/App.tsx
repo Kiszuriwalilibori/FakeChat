@@ -7,10 +7,11 @@ import thunkFetchUsers from "reduxware/thunks/fetchUsersThunk";
 
 import { RootState, UserDetails } from "types";
 import { Navigation, Loader, ErrorMessage, Users, Chat, Header } from "components";
-import { useHandleConnectionStatus } from "hooks";
+import { useDelayedCondition, useHandleConnectionStatus } from "hooks";
 
 import "./_App.scss";
 import { AppDispatch } from "../AppProvider";
+import setScrollBarWidth from "functions/setScrollBarWidth";
 
 const Details = React.lazy(() => import("components/Details/Details"));
 
@@ -23,6 +24,7 @@ interface Props {
 
 function _App(props: Props) {
     const { fetchUsers, isError, isLoading } = props;
+    const shouldRenderLoader = useDelayedCondition(isLoading);
     useHandleConnectionStatus();
     const ref = useRef<HTMLElement>(null);
 
@@ -32,10 +34,7 @@ function _App(props: Props) {
 
     useEffect(() => {
         fetchUsers();
-        document.documentElement.style.setProperty(
-            "--scrollbar-width",
-            window.innerWidth - document.documentElement.offsetWidth + "px"
-        );
+        setScrollBarWidth();
     }, [fetchUsers]);
 
     return (
@@ -49,7 +48,7 @@ function _App(props: Props) {
                     <Details />
                 </Suspense>
 
-                {isLoading && <Loader />}
+                {shouldRenderLoader && <Loader />}
                 {isError && <ErrorMessage />}
             </main>
         </div>
