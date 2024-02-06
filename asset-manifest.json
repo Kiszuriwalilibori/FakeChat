@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/FakeChat/static/css/main.daa92ab6.css",
-    "main.js": "/FakeChat/static/js/main.523f2352.js",
+    "main.js": "/FakeChat/static/js/main.abc95ddd.js",
     "static/js/377.3f833630.chunk.js": "/FakeChat/static/js/377.3f833630.chunk.js",
     "service-worker.js": "/FakeChat/service-worker.js",
     "static/media/settings.svg": "/FakeChat/static/media/settings.2696c32991eda3164a516c203e82c92d.svg",
@@ -25,11 +25,11 @@
     "static/media/person.svg": "/FakeChat/static/media/person.423fa0bb0fa241ff6f5a45369f822045.svg",
     "static/media/information.svg": "/FakeChat/static/media/information.522971a05f65decdf323796073f3c027.svg",
     "main.daa92ab6.css.map": "/FakeChat/static/css/main.daa92ab6.css.map",
-    "main.523f2352.js.map": "/FakeChat/static/js/main.523f2352.js.map",
+    "main.abc95ddd.js.map": "/FakeChat/static/js/main.abc95ddd.js.map",
     "377.3f833630.chunk.js.map": "/FakeChat/static/js/377.3f833630.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.daa92ab6.css",
-    "static/js/main.523f2352.js"
+    "static/js/main.abc95ddd.js"
   ]
 }
