@@ -54,7 +54,7 @@ const ChatInput = (props: Props) => {
         onResult: (result: string) => {
             result && setTextContent(textContent + " " + result);
         },
-    });
+    }); //
 
     const [isPickerVisible, , , togglePickerVisibility] = useBoolean(false);
     const { addMessage, setOnlineTrue, updateLastMessage } = useDispatchAction();
