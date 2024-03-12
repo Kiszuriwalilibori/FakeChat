@@ -11,29 +11,11 @@ import { countries, langs } from "assets/countries";
 import { UserDetails } from "types";
 import { InformationsItem } from "./Information";
 import { InformationsContainer } from "./Container";
+import useGetUserLanguages from "hooks/useGetUserLanguages";
 
 const Informations = (props: Pick<UserDetails, "phone" | "dob" | "nat">) => {
     const { phone, dob, nat } = props;
-
-    const pickedCodes = Object.values(pick(countries, [nat]))[0].languages;
-
-    const codesWithLanguages = useMemo(() => {
-        return Object.assign(
-            {},
-            ...langs.map(item => {
-                const code = item.alpha2;
-                const value = item.English;
-                const newItem = { [code]: value };
-                return newItem;
-            })
-        );
-    }, []);
-
-    const userLanguages = pickedCodes
-        .map(code => {
-            return codesWithLanguages[code] ? codesWithLanguages[code] : code;
-        })
-        .join(" ");
+    const userLanguages = useGetUserLanguages(nat);
 
     return (
         <div className="Details__informations">
