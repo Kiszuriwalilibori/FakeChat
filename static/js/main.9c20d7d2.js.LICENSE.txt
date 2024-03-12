@@ -9,6 +9,8 @@
      *  Released under the MIT license
      */
 
+/*!textContent*/
+
 /**
  * @license
  * Lodash <https://lodash.com/>
