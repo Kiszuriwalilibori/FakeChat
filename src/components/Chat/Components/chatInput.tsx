@@ -1,6 +1,6 @@
 import MicIcon from "@mui/icons-material/Mic";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { isEmpty } from "lodash";
 import { Stack } from "@mui/material";
@@ -22,7 +22,7 @@ import {
     translateMessageToGPTChatMessage,
 } from "../utils";
 
-import { useBoolean, useInitialFocus } from "hooks";
+import { useBoolean, useChatMessage, useInitialFocus } from "hooks";
 import { Picker } from "components";
 import { listeningMicrophoneSx } from "./ChatInput.styles";
 
@@ -42,17 +42,18 @@ const getRandomDelay = () => randomInteger(5, 10) * 1000;
 //     "&:hover": { backgroundColor: listening ? "#91ff35" : "lightgrey" },
 // };
 
-const INITIAL_INPUT = "";
+// const INITIAL_INPUT = "";
 const INITIAL_MESSAGE = {} as Message;
 
 const ChatInput = (props: Props) => {
     const { ID, apiGPTRequestBodyMessages } = props;
-    const [textContent, setTextContent] = useState<string>(INITIAL_INPUT);
+    // const [textContent, setTextContent] = useState<string>(INITIAL_INPUT);
+    const { chatMessage, clearChatMessage, createChatMessage } = useChatMessage();
     const [message, setMessage] = useState<Message>(INITIAL_MESSAGE);
 
     const { listen, listening, stop, supported } = useSpeechRecognition({
         onResult: (result: string) => {
-            result && setTextContent(textContent + " " + result);
+            result && createChatMessage(chatMessage + " " + result);
         },
     }); //
 
@@ -61,13 +62,13 @@ const ChatInput = (props: Props) => {
     const initialFocus = useInitialFocus<HTMLInputElement>();
 
     useEffect(() => {
-        ID && setTextContent(INITIAL_INPUT);
+        ID && clearChatMessage();
     }, [ID]);
 
     const sendClickHandler = useCallback(
         () => {
-            if (textContent) {
-                const message = createMessage(textContent, ID);
+            if (chatMessage) {
+                const message = createMessage(chatMessage, ID);
                 // const newMessage = translateMessageToGPTChatMessage(message);
                 // const updatedMessages = [...apiGPTRequestBodyMessages, newMessage];
                 // const apiRequestBody = {
@@ -78,14 +79,18 @@ const ChatInput = (props: Props) => {
                 // askChatGPT(apiRequestBody);
                 // no GPT Chat - no action
                 addMessage(message);
-                setTextContent("");
-                setMessage(createAnswer(textContent, ID));
+                // setTextContent("");
+                clearChatMessage();
+                // setMessage(createAnswer(textContent, ID));
+                setMessage(createAnswer(chatMessage, ID));
                 updateLastMessage({ ID, lastMessage: { content: message.content, timestamp: message.timestamp } });
                 initialFocus.current && initialFocus.current.focus();
             }
         },
         // eslint-disable-next-line react-hooks/exhaustive-deps
-        [textContent, ID]
+
+        [chatMessage, ID]
+        // [textContent, ID]
     );
 
     const timeouts: NodeJS.Timeout[] = [];
@@ -118,10 +123,12 @@ const ChatInput = (props: Props) => {
                 placeholder={placeHolder}
                 aria-label={placeHolder}
                 type="text"
-                value={textContent}
+                // value={textContent}
+                value={chatMessage}
                 ref={initialFocus}
                 onChange={e => {
-                    setTextContent(e.target.value);
+                    // setTextContent(e.target.value);
+                    createChatMessage(e.target.value);
                 }}
             ></input>
 
@@ -147,14 +154,17 @@ const ChatInput = (props: Props) => {
                     <Icons.Smile />
                 </IconButton>
 
-                <IconButton disabled={!textContent} onClick={sendClickHandler} aria-label="send">
+                <IconButton disabled={/*!textContent*/ !chatMessage} onClick={sendClickHandler} aria-label="send">
                     <Icons.Send />
                 </IconButton>
             </Stack>
             <Picker
                 isActive={isPickerVisible}
                 clickHandler={(emojiData: EmojiClickData) => {
-                    createEmoji(emojiData) && setTextContent(textContent + createEmoji(emojiData));
+                    createEmoji(emojiData) &&
+                        /*setTextContent(textContent + createEmoji(emojiData))*/ createChatMessage(
+                            chatMessage + createEmoji(emojiData)
+                        );
                 }}
             />
         </div>
