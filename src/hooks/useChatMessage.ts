@@ -12,7 +12,9 @@ export const useChatMessage = () => {
         setChatMessage(INITIAL_CHAT_MESSAGE);
     }, []);
 
-    return { chatMessage, clearChatMessage, createChatMessage };
+    const isChatMessageEmpty = Boolean(!chatMessage);
+
+    return { chatMessage, clearChatMessage, createChatMessage, isChatMessageEmpty };
 };
 
 export default useChatMessage;

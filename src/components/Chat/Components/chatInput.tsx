@@ -6,11 +6,10 @@ import { isEmpty } from "lodash";
 import { Stack } from "@mui/material";
 import { EmojiClickData } from "emoji-picker-react";
 import { useSpeechRecognition } from "react-speech-kit";
-import { IconButton } from "components/Common";
 
 import Icons from "assets/icons";
-import useDispatchAction from "hooks/useDispatchAction";
 
+import { IconButton } from "components/Common";
 import { GPTRequestBodyMessage, Message, RootState } from "types";
 import {
     askChatGPT,
@@ -18,15 +17,15 @@ import {
     createEmoji,
     createMessage,
     createGPTRequestBodyMessages,
-    randomInteger,
+    getRandomDelay,
     translateMessageToGPTChatMessage,
 } from "../utils";
-
-import { useBoolean, useChatMessage, useInitialFocus } from "hooks";
+import { useBoolean, useChatMessage, useInitialFocus, useDispatchAction } from "hooks";
 import { Picker } from "components";
 import { listeningMicrophoneSx } from "./ChatInput.styles";
 
-const placeHolder = "Type your message here...";
+const PLACEHOLDER = "Type your message here...";
+const INITIAL_MESSAGE = {} as Message;
 
 interface OwnProps {
     ID: string;
@@ -35,20 +34,10 @@ interface Props extends OwnProps {
     apiGPTRequestBodyMessages: GPTRequestBodyMessage[];
 }
 
-const getRandomDelay = () => randomInteger(5, 10) * 1000;
-
-// const IconButtonStyle = {
-//     backgroundColor: listening ? "#91ff35" : "initial",
-//     "&:hover": { backgroundColor: listening ? "#91ff35" : "lightgrey" },
-// };
-
-// const INITIAL_INPUT = "";
-const INITIAL_MESSAGE = {} as Message;
-
 const ChatInput = (props: Props) => {
     const { ID, apiGPTRequestBodyMessages } = props;
-    // const [textContent, setTextContent] = useState<string>(INITIAL_INPUT);
-    const { chatMessage, clearChatMessage, createChatMessage } = useChatMessage();
+
+    const { chatMessage, clearChatMessage, createChatMessage, isChatMessageEmpty } = useChatMessage();
     const [message, setMessage] = useState<Message>(INITIAL_MESSAGE);
 
     const { listen, listening, stop, supported } = useSpeechRecognition({
@@ -79,9 +68,7 @@ const ChatInput = (props: Props) => {
                 // askChatGPT(apiRequestBody);
                 // no GPT Chat - no action
                 addMessage(message);
-                // setTextContent("");
                 clearChatMessage();
-                // setMessage(createAnswer(textContent, ID));
                 setMessage(createAnswer(chatMessage, ID));
                 updateLastMessage({ ID, lastMessage: { content: message.content, timestamp: message.timestamp } });
                 initialFocus.current && initialFocus.current.focus();
@@ -90,7 +77,6 @@ const ChatInput = (props: Props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
 
         [chatMessage, ID]
-        // [textContent, ID]
     );
 
     const timeouts: NodeJS.Timeout[] = [];
@@ -120,14 +106,12 @@ const ChatInput = (props: Props) => {
     return (
         <div className="Chat__message-section">
             <input
-                placeholder={placeHolder}
-                aria-label={placeHolder}
+                placeholder={PLACEHOLDER}
+                aria-label={PLACEHOLDER}
                 type="text"
-                // value={textContent}
                 value={chatMessage}
                 ref={initialFocus}
                 onChange={e => {
-                    // setTextContent(e.target.value);
                     createChatMessage(e.target.value);
                 }}
             ></input>
@@ -154,7 +138,7 @@ const ChatInput = (props: Props) => {
                     <Icons.Smile />
                 </IconButton>
 
-                <IconButton disabled={/*!textContent*/ !chatMessage} onClick={sendClickHandler} aria-label="send">
+                <IconButton disabled={isChatMessageEmpty} onClick={sendClickHandler} aria-label="send">
                     <Icons.Send />
                 </IconButton>
             </Stack>

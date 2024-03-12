@@ -6,6 +6,7 @@ import createGPTRequestBodyMessages from "./createGPTRequestBodyMessages";
 import askChatGPT from "./askChatGPT";
 import createEmoji from "./createEmoji";
 import translateMessageToGPTChatMessage from "./translateMessageToGPTChatMessage";
+import { getRandomDelay } from "./getRandomDelay";
 
 export {
     askChatGPT,
@@ -14,6 +15,7 @@ export {
     createGPTRequestBodyMessages,
     createMessage,
     filterMessages,
+    getRandomDelay,
     randomInteger,
     translateMessageToGPTChatMessage,
 };
