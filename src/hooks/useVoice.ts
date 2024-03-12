@@ -1,10 +1,10 @@
 import { useCallback } from "react";
 import { useSpeechRecognition } from "react-speech-kit";
 
-export const useVoice = (createComment: (text: string) => void) => {
+export const useVoice = (createChatMessage: (text: string) => void, chatMessage: string) => {
     const { listen, listening, stop, supported } = useSpeechRecognition({
         onResult: (result: string) => {
-            result && createComment(result);
+            result && createChatMessage(chatMessage + " " + result);
         },
     });
 

@@ -44,7 +44,7 @@ const ChatInput = (props: Props) => {
         onResult: (result: string) => {
             result && createChatMessage(chatMessage + " " + result);
         },
-    }); //
+    });
 
     const [isPickerVisible, , , togglePickerVisibility] = useBoolean(false);
     const { addMessage, setOnlineTrue, updateLastMessage } = useDispatchAction();
@@ -119,6 +119,7 @@ const ChatInput = (props: Props) => {
             <Stack direction="row" spacing={1.5} sx={{ mx: 2 }}>
                 <IconButton
                     disabled={!supported}
+                    id={"Microphone"}
                     aria-label="toggle microphone"
                     onClick={listening ? stop : listen}
                     sx={{ ...listeningMicrophoneSx(listening) }}
