@@ -7,10 +7,8 @@ import thunkFetchUsers from "reduxware/thunks/fetchUsersThunk";
 
 import { RootState, UserDetails } from "types";
 import { Navigation, Loader, ErrorMessage, Users, Chat, Header } from "components";
-import { useDelayedCondition, useHandleConnectionStatus } from "hooks";
-
+import { useDelayedCondition, useHandleConnectionStatus, useSetScrollBarWidthOnResize } from "hooks";
 import { AppDispatch } from "../AppProvider";
-import { setScrollBarWidth } from "functions";
 
 import "./_App.scss";
 
@@ -35,8 +33,9 @@ function _App(props: Props) {
 
     useEffect(() => {
         fetchUsers();
-        setScrollBarWidth();
     }, [fetchUsers]);
+
+    useSetScrollBarWidthOnResize();
 
     return (
         <div className="App">
