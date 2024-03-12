@@ -20,7 +20,7 @@ import {
     getRandomDelay,
     translateMessageToGPTChatMessage,
 } from "../utils";
-import { useBoolean, useChatMessage, useInitialFocus, useDispatchAction } from "hooks";
+import { useBoolean, useChatMessage, useInitialFocus, useDispatchAction, useVoice } from "hooks";
 import { Picker } from "components";
 import { listeningMicrophoneSx } from "./ChatInput.styles";
 
@@ -40,12 +40,12 @@ const ChatInput = (props: Props) => {
     const { chatMessage, clearChatMessage, createChatMessage, isChatMessageEmpty } = useChatMessage();
     const [message, setMessage] = useState<Message>(INITIAL_MESSAGE);
 
-    const { listen, listening, stop, supported } = useSpeechRecognition({
-        onResult: (result: string) => {
-            result && createChatMessage(chatMessage + " " + result);
-        },
-    });
-
+    // const { listen, listening, stop, supported } = useSpeechRecognition({
+    //     onResult: (result: string) => {
+    //         result && createChatMessage(chatMessage + " " + result);
+    //     },
+    // });
+    const { handleClickMicrophone, isMicrophoneDisabled, listening } = useVoice(createChatMessage, chatMessage);
     const [isPickerVisible, , , togglePickerVisibility] = useBoolean(false);
     const { addMessage, setOnlineTrue, updateLastMessage } = useDispatchAction();
     const initialFocus = useInitialFocus<HTMLInputElement>();
@@ -118,10 +118,12 @@ const ChatInput = (props: Props) => {
 
             <Stack direction="row" spacing={1.5} sx={{ mx: 2 }}>
                 <IconButton
-                    disabled={!supported}
+                    // disabled={!supported}
+                    disabled={isMicrophoneDisabled}
                     id={"Microphone"}
                     aria-label="toggle microphone"
-                    onClick={listening ? stop : listen}
+                    // onClick={listening ? stop : listen}
+                    onClick={handleClickMicrophone}
                     sx={{ ...listeningMicrophoneSx(listening) }}
                 >
                     <MicIcon />
