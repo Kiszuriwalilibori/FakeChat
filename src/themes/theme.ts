@@ -68,6 +68,7 @@ theme = createTheme(theme, {
             textDecoration: "underline",
             textDecorationThickness: "2px",
             textUnderlineOffset: theme.spacing(1),
+            whiteSpace: "nowrap",
         },
         text_light_small: {
             fontSize: "12px",

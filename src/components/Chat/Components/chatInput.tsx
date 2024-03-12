@@ -39,12 +39,6 @@ const ChatInput = (props: Props) => {
 
     const { chatMessage, clearChatMessage, createChatMessage, isChatMessageEmpty } = useChatMessage();
     const [message, setMessage] = useState<Message>(INITIAL_MESSAGE);
-
-    // const { listen, listening, stop, supported } = useSpeechRecognition({
-    //     onResult: (result: string) => {
-    //         result && createChatMessage(chatMessage + " " + result);
-    //     },
-    // });
     const { handleClickMicrophone, isMicrophoneDisabled, listening } = useVoice(createChatMessage, chatMessage);
     const [isPickerVisible, , , togglePickerVisibility] = useBoolean(false);
     const { addMessage, setOnlineTrue, updateLastMessage } = useDispatchAction();
@@ -118,11 +112,9 @@ const ChatInput = (props: Props) => {
 
             <Stack direction="row" spacing={1.5} sx={{ mx: 2 }}>
                 <IconButton
-                    // disabled={!supported}
                     disabled={isMicrophoneDisabled}
                     id={"Microphone"}
                     aria-label="toggle microphone"
-                    // onClick={listening ? stop : listen}
                     onClick={handleClickMicrophone}
                     sx={{ ...listeningMicrophoneSx(listening) }}
                 >
@@ -132,12 +124,7 @@ const ChatInput = (props: Props) => {
                 <IconButton disabled aria-label="attach file">
                     <Icons.Attach />
                 </IconButton>
-                <IconButton
-                    aria-label="add emoticon"
-                    onClick={() => {
-                        togglePickerVisibility();
-                    }}
-                >
+                <IconButton aria-label="add emoticon" id="Add emoticon" onClick={togglePickerVisibility}>
                     <Icons.Smile />
                 </IconButton>
 
@@ -148,10 +135,7 @@ const ChatInput = (props: Props) => {
             <Picker
                 isActive={isPickerVisible}
                 clickHandler={(emojiData: EmojiClickData) => {
-                    createEmoji(emojiData) &&
-                        /*setTextContent(textContent + createEmoji(emojiData))*/ createChatMessage(
-                            chatMessage + createEmoji(emojiData)
-                        );
+                    createEmoji(emojiData) && createChatMessage(chatMessage + createEmoji(emojiData));
                 }}
             />
         </div>

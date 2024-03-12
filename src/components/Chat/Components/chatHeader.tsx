@@ -15,10 +15,6 @@ const EMPTY_TITLE = "Chat with...";
 const ChatHeader = (props: Pick<UserDetails, "id" | "name">) => {
     const { name, id } = props;
     const { toggleFavorite } = useDispatchAction();
-
-    // const handleFavoriteClicked = useCallback(() => {
-    //     toggleFavorite(id);
-    // }, [id, toggleFavorite]);
     const handleFavoriteClicked = useDebouncedCallback<HTMLButtonElement>(toggleFavorite, id);
 
     const isChatActive = Boolean(name && name.lastName);

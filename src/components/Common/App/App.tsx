@@ -9,9 +9,10 @@ import { RootState, UserDetails } from "types";
 import { Navigation, Loader, ErrorMessage, Users, Chat, Header } from "components";
 import { useDelayedCondition, useHandleConnectionStatus } from "hooks";
 
-import "./_App.scss";
 import { AppDispatch } from "../AppProvider";
-import setScrollBarWidth from "functions/setScrollBarWidth";
+import { setScrollBarWidth } from "functions";
+
+import "./_App.scss";
 
 const Details = React.lazy(() => import("components/Details/Details"));
 
