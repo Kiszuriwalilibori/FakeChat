@@ -1,13 +1,13 @@
 import React from "react";
 
-import { useEffect, useRef, Suspense } from "react";
+import { useEffect, Suspense } from "react";
 import { connect } from "react-redux";
 
 import thunkFetchUsers from "reduxware/thunks/fetchUsersThunk";
 
 import { RootState, UserDetails } from "types";
 import { Navigation, Loader, ErrorMessage, Users, Chat, Header } from "components";
-import { useDelayedCondition, useHandleConnectionStatus, useSetScrollBarWidthOnResize } from "hooks";
+import { useDelayedCondition, useHandleConnectionStatus, useResizeMain, useSetScrollBarWidthOnResize } from "hooks";
 import { AppDispatch } from "../AppProvider";
 
 import "./_App.scss";
@@ -25,11 +25,7 @@ function _App(props: Props) {
     const { fetchUsers, isError, isLoading } = props;
     const shouldRenderLoader = useDelayedCondition(isLoading);
     useHandleConnectionStatus();
-    const ref = useRef<HTMLElement>(null);
-
-    const resizeMain = () => {
-        ref.current && ref.current.classList.add("triple");
-    };
+    const { refMain, resizeMain } = useResizeMain();
 
     useEffect(() => {
         fetchUsers();
@@ -41,13 +37,12 @@ function _App(props: Props) {
         <div className="App">
             <Header />
             <Navigation />
-            <main className="main" ref={ref}>
-                <Users resizeMain={resizeMain} />
+            <main className="main" ref={refMain}>
+                <Users handleUserSelected={resizeMain} />
                 <Chat />
                 <Suspense fallback={<div></div>}>
                     <Details />
                 </Suspense>
-
                 {shouldRenderLoader && <Loader />}
                 {isError && <ErrorMessage />}
             </main>

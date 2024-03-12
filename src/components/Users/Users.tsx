@@ -7,19 +7,19 @@ import { connect } from "react-redux";
 import { User, UserSelectInput } from "./components";
 import { RootState, Messages, UserDetails } from "types";
 import { useDispatchAction } from "hooks";
+import { getSelectedUsers } from "functions";
 
 import "./styles/_Users.scss";
 
 interface Props {
     users: UserDetails[];
     messages: Messages;
-    resizeMain: () => void;
+    handleUserSelected: () => void;
 }
 const Users = (props: Props) => {
-    const { users, resizeMain } = props;
+    const { users, handleUserSelected } = props;
     const [activeUser, setActiveUser] = useState<string>("");
     const [pattern, setPattern] = useState<string>("");
-
     const { setActiveUserDetails } = useDispatchAction();
 
     const setFilter = useCallback((value: string) => {
@@ -33,30 +33,18 @@ const Users = (props: Props) => {
             return obj.id === activeUser;
         });
         active && setActiveUserDetails(active);
-        activeUser && resizeMain();
+        activeUser && handleUserSelected();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [activeUser, users]);
 
-    const sortedUsers = users
-        .filter(person => {
-            return (
-                person.name.firstName.toLowerCase().includes(pattern.toLowerCase()) ||
-                person.name.lastName.toLowerCase().includes(pattern.toLowerCase())
-            );
-        })
-        .sort((a, b) => {
-            return a.name.lastName > b.name.lastName ? -1 : 1;
-        })
-        .sort((a, b) => {
-            return a.isFavorite === true ? -1 : 1;
-        });
+    const selectedUsers = getSelectedUsers(users, pattern);
 
     return (
         <Fade in={true} timeout={700}>
             <section className="Users" aria-label="Users">
                 <UserSelectInput changeHandler={setFilter} />
-                {sortedUsers.map(item => (
-                    <User user={item} isActive={item.id === activeUser} clickHandler={activeUserSetter} key={uuid()} />
+                {selectedUsers.map(user => (
+                    <User user={user} isActive={user.id === activeUser} clickHandler={activeUserSetter} key={uuid()} />
                 ))}
             </section>
         </Fade>
