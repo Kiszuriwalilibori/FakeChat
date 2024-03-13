@@ -11,6 +11,7 @@ import { useDelayedCondition, useHandleConnectionStatus, useResizeMain, useSetSc
 import { AppDispatch } from "../AppProvider";
 
 import "./_App.scss";
+import DetailsNotebook from "components/DetailsNotebook";
 
 const Details = React.lazy(() => import("components/Details/Details"));
 
@@ -38,12 +39,14 @@ function _App(props: Props) {
             <div className="App">
                 <Header />
                 <Navigation />
+                <DetailsNotebook />
                 <main className="main" ref={refMain}>
                     <Users handleUserSelected={resizeMain} />
                     <Chat />
                     <Suspense fallback={<div></div>}>
                         <Details />
                     </Suspense>
+
                     {shouldRenderLoader && <Loader />}
                     {isError && <ErrorMessage />}
                 </main>

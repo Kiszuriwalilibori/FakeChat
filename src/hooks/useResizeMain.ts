@@ -6,6 +6,7 @@ export const useResizeMain = () => {
     const resizeMain = () => {
         refMain.current && refMain.current.classList.add("triple");
     };
+
     return { refMain, resizeMain };
 };
 

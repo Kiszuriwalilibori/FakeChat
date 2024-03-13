@@ -12,15 +12,19 @@ import { ChatHeader, ChatInput } from "./Components";
 import Core from "./Components/Chat_Core";
 
 import "./styles/_Chat.scss";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const Chat = (props: Pick<UserDetails, "id" | "name">) => {
     const { id, name } = props;
+    const matches = useMediaQuery("(min-width: 768px ) and (max-width: 1105px");
 
     const ref: React.RefObject<any> = React.createRef();
 
     function scrolling() {
-        ref.current && ref.current.scrollIntoView();
-        window.scrollBy(0, -80);
+        if (!matches) {
+            ref.current && ref.current.scrollIntoView();
+            window.scrollBy(0, -80);
+        }
     }
 
     const debouncedScrolling = debounce(scrolling, 500);
