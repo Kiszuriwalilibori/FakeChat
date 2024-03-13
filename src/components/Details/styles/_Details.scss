@@ -3,6 +3,9 @@
 
 .Details {
     @extend .flexColumn;
+    @media (min-width: 768px) and (max-width: 1105px) {
+        display: none;
+    }
 
     & > div {
         @extend .withGreyBorder;
