@@ -160,6 +160,7 @@ a {
   --users-search-wrapper-height: 80px;
   --svg-width: 20px;
   --details-height: 99.5px;
+  --max-width: 1440px;
 }
 
 :root {
@@ -184,6 +185,7 @@ a {
   --users-search-wrapper-height: 80px;
   --svg-width: 20px;
   --details-height: 99.5px;
+  --max-width: 1440px;
 }
 
 :root {
@@ -208,6 +210,7 @@ a {
   --users-search-wrapper-height: 80px;
   --svg-width: 20px;
   --details-height: 99.5px;
+  --max-width: 1440px;
 }
 
 #root {

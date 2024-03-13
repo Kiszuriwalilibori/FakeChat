@@ -34,19 +34,21 @@ function _App(props: Props) {
     useSetScrollBarWidthOnResize();
 
     return (
-        <div className="App">
-            <Header />
-            <Navigation />
-            <main className="main" ref={refMain}>
-                <Users handleUserSelected={resizeMain} />
-                <Chat />
-                <Suspense fallback={<div></div>}>
-                    <Details />
-                </Suspense>
-                {shouldRenderLoader && <Loader />}
-                {isError && <ErrorMessage />}
-            </main>
-        </div>
+        <center>
+            <div className="App">
+                <Header />
+                <Navigation />
+                <main className="main" ref={refMain}>
+                    <Users handleUserSelected={resizeMain} />
+                    <Chat />
+                    <Suspense fallback={<div></div>}>
+                        <Details />
+                    </Suspense>
+                    {shouldRenderLoader && <Loader />}
+                    {isError && <ErrorMessage />}
+                </main>
+            </div>
+        </center>
     );
 }
 
