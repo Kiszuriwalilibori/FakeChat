@@ -6,6 +6,7 @@
     @media (min-width: 768px) and (max-width: 1105px) {
         margin-left: calc(var(--nav-width) + var(--scrollbar-width));
         flex-direction: row;
+        align-items: flex-start;
         &__header,
         &__informations,
         &__files {
@@ -61,7 +62,7 @@
 
             & li {
                 padding: 14px 0 0 0;
-                width: 75%;
+                // width: 75%;
             }
         }
         & a {

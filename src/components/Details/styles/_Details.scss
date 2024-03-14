@@ -51,11 +51,11 @@
             @extend .flexColumn;
             list-style: disc inside;
             color: var(--main-nav-bg-color);
-            width: 100%;
+            width: 75%;
+            align-items: flex-start;
 
             & li {
                 padding: 14px 0 0 0;
-                width: 75%;
             }
         }
         & a {

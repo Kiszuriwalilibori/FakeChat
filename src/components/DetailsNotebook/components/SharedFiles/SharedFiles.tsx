@@ -3,9 +3,10 @@ import uuid from "react-uuid";
 import Typography from "@mui/material/Typography";
 
 import Icons from "assets/icons";
-import DownloadableFile from "./File";
+import File from "./File";
 
 import { Files } from "types";
+import { FileList, SharedFilesHeader, SharedFilesWrapper } from "./SharedFiles.style";
 
 interface Props {
     files: Files;
@@ -13,21 +14,21 @@ interface Props {
 const SharedFiles = (props: Props) => {
     const { files } = props;
     return (
-        <div className="Details__files">
-            <div className="header">
+        <SharedFilesWrapper id="Shared Files Wrapper">
+            <SharedFilesHeader id="Shared Files Header" direction="row">
                 <Icons.Files />
                 <Typography component="h2" variant="h2_light">
                     Shared files
                 </Typography>
-            </div>
+            </SharedFilesHeader>
             <div className="content">
-                <ul>
+                <FileList>
                     {files.map(file => {
-                        return <DownloadableFile href={file.href} fileName={file.fileName} key={uuid()} />;
+                        return <File href={file.href} fileName={file.fileName} key={uuid()} />;
                     })}
-                </ul>
+                </FileList>
             </div>
-        </div>
+        </SharedFilesWrapper>
     );
 };
 

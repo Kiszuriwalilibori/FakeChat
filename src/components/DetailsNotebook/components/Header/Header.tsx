@@ -1,45 +1,50 @@
-import { UserDetails } from "types";
-
 import Icons from "assets/icons";
 
-import { IconButton, Stack, Typography } from "@mui/material";
-import { SocialIconsContainer } from "./SocialIconsContainer";
-import { sxIcon, sxStack } from "./style";
+import { IconButton, Typography } from "@mui/material";
+import {
+    HeaderContainer,
+    SocialIconsContainer,
+    sxIconButton,
+    UserImage,
+    UserDataStack,
+    UserName,
+} from "./Header.styles";
+import { UserDetails } from "types";
 
 const Header = (props: Pick<UserDetails, "name" | "location" | "picture" | "social">) => {
     const { name, location, picture, social } = props;
 
     return (
-        <div className="Details__header">
-            <img className="circular--square" src={picture.large} alt="user" />
-            <Stack spacing={2.5} sx={sxStack}>
-                <Typography component="h2" variant="h2_blue">{`${name.firstName} ${name.lastName}`}</Typography>
+        <HeaderContainer id="Header">
+            <UserImage src={picture.large} alt="user" id="User Image" />
+            <UserDataStack spacing={2.5}>
+                <UserName>{`${name.firstName} ${name.lastName}`}</UserName>
                 <Typography variant="body1">{`${location.city} ${location.country}`}</Typography>
                 <SocialIconsContainer>
                     <IconButton
                         aria-label="Link to Facebook"
-                        sx={sxIcon}
+                        sx={sxIconButton}
                         href={social && social.facebook ? social.facebook : "https://pl-pl.facebook.com/"}
                     >
                         <Icons.Facebook />
                     </IconButton>
                     <IconButton
                         aria-label="Link to LinkedIn"
-                        sx={sxIcon}
+                        sx={sxIconButton}
                         href={social && social.linkedin ? social.linkedin : "https://pl.linkedin.com/"}
                     >
                         <Icons.Linkedin />
                     </IconButton>
                     <IconButton
                         aria-label="Link to Twitter"
-                        sx={sxIcon}
+                        sx={sxIconButton}
                         href={social && social.twitter ? social.twitter : "https://twitter.com/?lang=pl"}
                     >
                         <Icons.Twitter />
                     </IconButton>
                 </SocialIconsContainer>
-            </Stack>
-        </div>
+            </UserDataStack>
+        </HeaderContainer>
     );
 };
 

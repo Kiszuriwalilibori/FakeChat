@@ -2,31 +2,26 @@ import Moment from "react-moment";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 
-import { pick } from "lodash";
-import { useMemo } from "react";
-
 import Icons from "assets/icons";
 
-import { countries, langs } from "assets/countries";
 import { UserDetails } from "types";
-import { InformationsItem } from "./Information";
-import { InformationsContainer } from "./Container";
-import useGetUserLanguages from "hooks/useGetUserLanguages";
+import { InformationsItem, InformationsContainer, InformationsHeader, InformationsWrapper } from "./Information.style";
+import { useGetUserLanguages } from "hooks";
 
 const Informations = (props: Pick<UserDetails, "phone" | "dob" | "nat">) => {
     const { phone, dob, nat } = props;
     const userLanguages = useGetUserLanguages(nat);
 
     return (
-        <div className="Details__informations">
-            <div className="header">
+        <InformationsWrapper id="Informations Wrapper">
+            <InformationsHeader direction="row" id="Informations Header">
                 <Icons.Information />
                 <Typography component="h2" variant="h2_light">
                     Informations
                 </Typography>
-            </div>
+            </InformationsHeader>
 
-            <InformationsContainer divider={<Divider orientation="vertical" flexItem />}>
+            <InformationsContainer divider={<Divider orientation="vertical" flexItem />} id="Informations Container">
                 <InformationsItem>
                     <Typography variant="text_light_small">Tel:</Typography>
                     <Typography variant="text_light_small">{phone}</Typography>
@@ -42,7 +37,7 @@ const Informations = (props: Pick<UserDetails, "phone" | "dob" | "nat">) => {
                     <Typography variant="text_light_small">{userLanguages}</Typography>
                 </InformationsItem>
             </InformationsContainer>
-        </div>
+        </InformationsWrapper>
     );
 };
 
