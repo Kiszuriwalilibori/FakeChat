@@ -7,68 +7,27 @@
         margin-left: calc(var(--nav-width) + var(--scrollbar-width));
         flex-direction: row;
         align-items: flex-start;
-        &__header,
-        &__informations,
-        &__files {
-            flex-grow: 1;
-        }
     }
 
     & > div {
-        // @extend .withGreyBorder;
         width: 100%;
         &:last-of-type {
             height: 100%;
         }
     }
-    &__header {
-        @extend .flexColumn;
-        padding-top: 30px;
+}
+
+.Details {
+    @extend .flexColumn;
+    @media (min-width: 768px) and (max-width: 1105px) {
+        display: none;
     }
 
-    &__informations,
-    &__files {
-        @extend .flexColumn;
-        & .header {
-            @extend .flexRow;
-            align-items: center;
-            padding-top: 30px;
-            padding-bottom: 30px;
-
-            & svg {
-                @extend .svg;
-            }
-
-            & h2 {
-                @extend .upperCase;
-                @extend .withGreyText;
-                font-size: 14px;
-            }
-        }
-
-        & .content {
-            @extend .flexColumn;
-            padding-bottom: 30px;
-            width: 100%;
-        }
-    }
-    &__files {
-        padding-bottom: 40px;
-        & ul {
-            @extend .flexColumn;
-            list-style: disc inside;
-            color: var(--main-nav-bg-color);
-            width: 100%;
-
-            & li {
-                padding: 14px 0 0 0;
-                // width: 75%;
-            }
-        }
-        & a {
-            text-decoration: none;
-            position: relative;
-            margin-left: 18px;
+    & > div {
+        @extend .withGreyBorder;
+        width: 100%;
+        &:last-of-type {
+            height: 100%;
         }
     }
 }

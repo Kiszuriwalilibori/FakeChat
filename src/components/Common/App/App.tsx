@@ -11,9 +11,9 @@ import { useDelayedCondition, useHandleConnectionStatus, useResizeMain, useSetSc
 import { AppDispatch } from "../AppProvider";
 
 import "./_App.scss";
-import DetailsNotebook from "components/DetailsNotebook";
 
-const Details = React.lazy(() => import("components/Details/Details"));
+import DetailsNotebook from "components/DetailsNotebook";
+const Details = React.lazy(() => import("components/DetailsNotebook/Details"));
 
 interface Props {
     fetchUsers: () => void;

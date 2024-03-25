@@ -5,7 +5,7 @@ import Divider from "@mui/material/Divider";
 import Icons from "assets/icons";
 
 import { UserDetails } from "types";
-import { InformationsItem, InformationsContainer, InformationsHeader, InformationsWrapper } from "./Information.style";
+import { InformationsItem, InformationsContainer, InformationsHeader, InformationsWrapper } from "./Informations.style";
 import { useGetUserLanguages } from "hooks";
 
 const Informations = (props: Pick<UserDetails, "phone" | "dob" | "nat">) => {

@@ -1,5 +1,5 @@
 import Chat from "./Chat";
-import Details from "./Details";
+// import Details from "./Details";
 import HiddenH1 from "./HiddenH1";
 import Navigation from "./Navigation";
 import Users from "./Users";
@@ -12,7 +12,7 @@ export {
     AppProvider,
     BasicButton,
     Chat,
-    Details,
+    // Details,
     ErrorMessage,
     HiddenH1 as Header,
     Loader,

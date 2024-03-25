@@ -13,7 +13,7 @@ export const HeaderContainer = styled(Box)(({ theme }) => ({
     flexDirection: "column",
     alignItems: "center",
     paddingTop: theme.spacing(3.75),
-    flexGrow: "1",
+    flexGrow: 1,
 }));
 
 export const UserImage = styled("img")(({ theme }) => ({

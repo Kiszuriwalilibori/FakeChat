@@ -4,27 +4,11 @@ import isEmpty from "lodash/isEmpty";
 import { connect } from "react-redux";
 
 import { Header, Informations, SharedFiles } from "./components";
-import { UserDetails, RootState, Files } from "types";
+import { UserDetails, RootState } from "types";
+import { FILES, NOTEBOOK_MEDIA_QUERY } from "./assets";
 
 import "./styles/_Details.scss";
-
-/**
- * fake files as demo
- */
-const FILES: Files = [
-    {
-        href: "/images/myw3schoolsimage.jpg",
-        fileName: "annualPlan.doc",
-    },
-    {
-        href: "/images/myw3schoolsimage.jpg",
-        fileName: "OffersToCompanies.pdf",
-    },
-    {
-        href: "/images/myw3schoolsimage.jpg",
-        fileName: "Calculation.xls",
-    },
-];
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 interface Props {
     user: UserDetails;
@@ -33,7 +17,9 @@ interface Props {
 const Details = (props: Props) => {
     const { user } = props;
     const { location, dob, name, phone, picture, social, nat } = user;
+    const matches = useMediaQuery(NOTEBOOK_MEDIA_QUERY);
 
+    if (matches) return null;
     if (isEmpty(user)) return null;
     return (
         <Slide direction="left" timeout={700} in={true} mountOnEnter unmountOnExit>
