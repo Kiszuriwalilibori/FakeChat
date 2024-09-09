@@ -1,7 +1,8 @@
 {
   "files": {
-    "main.css": "/FakeChat/static/css/main.80ae8378.css",
-    "main.js": "/FakeChat/static/js/main.e1bffc7f.js",
+    "main.css": "/FakeChat/static/css/main.50570b8f.css",
+    "main.js": "/FakeChat/static/js/main.0debdf79.js",
+    "static/js/211.e6ca3011.chunk.js": "/FakeChat/static/js/211.e6ca3011.chunk.js",
     "static/js/377.3f833630.chunk.js": "/FakeChat/static/js/377.3f833630.chunk.js",
     "service-worker.js": "/FakeChat/service-worker.js",
     "static/media/settings.svg": "/FakeChat/static/media/settings.2696c32991eda3164a516c203e82c92d.svg",
@@ -24,12 +25,13 @@
     "static/media/cards.svg": "/FakeChat/static/media/cards.286f0842777e25db37ac097d0c2f1413.svg",
     "static/media/person.svg": "/FakeChat/static/media/person.423fa0bb0fa241ff6f5a45369f822045.svg",
     "static/media/information.svg": "/FakeChat/static/media/information.522971a05f65decdf323796073f3c027.svg",
-    "main.80ae8378.css.map": "/FakeChat/static/css/main.80ae8378.css.map",
-    "main.e1bffc7f.js.map": "/FakeChat/static/js/main.e1bffc7f.js.map",
+    "main.50570b8f.css.map": "/FakeChat/static/css/main.50570b8f.css.map",
+    "main.0debdf79.js.map": "/FakeChat/static/js/main.0debdf79.js.map",
+    "211.e6ca3011.chunk.js.map": "/FakeChat/static/js/211.e6ca3011.chunk.js.map",
     "377.3f833630.chunk.js.map": "/FakeChat/static/js/377.3f833630.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.80ae8378.css",
-    "static/js/main.e1bffc7f.js"
+    "static/css/main.50570b8f.css",
+    "static/js/main.0debdf79.js"
   ]
 }
