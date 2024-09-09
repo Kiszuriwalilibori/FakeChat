@@ -1,6 +1,6 @@
 import MicIcon from "@mui/icons-material/Mic";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
 import { connect } from "react-redux";
 import { isEmpty } from "lodash";
 import { Stack } from "@mui/material";
@@ -11,16 +11,8 @@ import Icons from "assets/icons";
 
 import { IconButton } from "components/Common";
 import { GPTRequestBodyMessage, Message, RootState } from "types";
-import {
-    askChatGPT,
-    createAnswer,
-    createEmoji,
-    createMessage,
-    createGPTRequestBodyMessages,
-    getRandomDelay,
-    translateMessageToGPTChatMessage,
-} from "../utils";
-import { useBoolean, useChatMessage, useInitialFocus, useDispatchAction, useVoice } from "hooks";
+import { createAnswer, createEmoji, createMessage, createGPTRequestBodyMessages, getRandomDelay } from "../utils";
+import { useBoolean, useEnhancedState, useInitialFocus, useDispatchAction, useVoice } from "hooks";
 import { Picker } from "components";
 import { listeningMicrophoneSx } from "./ChatInput.styles";
 
@@ -35,10 +27,9 @@ interface Props extends OwnProps {
 }
 
 const ChatInput = (props: Props) => {
-    const { ID, apiGPTRequestBodyMessages } = props;
-
-    const { chatMessage, clearChatMessage, createChatMessage, isChatMessageEmpty } = useChatMessage();
-    const [message, setMessage] = useState<Message>(INITIAL_MESSAGE);
+    const { ID } = props;
+    const [chatMessage, createChatMessage, clearChatMessage, isChatMessageEmpty] = useEnhancedState<string>("");
+    const [message, setMessage] = useEnhancedState<Message>(INITIAL_MESSAGE);
     const { handleClickMicrophone, isMicrophoneDisabled, listening } = useVoice(createChatMessage, chatMessage);
     const [isPickerVisible, , , togglePickerVisibility] = useBoolean(false);
     const { addMessage, setOnlineTrue, updateLastMessage } = useDispatchAction();
@@ -52,15 +43,6 @@ const ChatInput = (props: Props) => {
         () => {
             if (chatMessage) {
                 const message = createMessage(chatMessage, ID);
-                // const newMessage = translateMessageToGPTChatMessage(message);
-                // const updatedMessages = [...apiGPTRequestBodyMessages, newMessage];
-                // const apiRequestBody = {
-                //     model: "gpt-3.5-turbo",
-                //     messages: updatedMessages,
-                // };
-
-                // askChatGPT(apiRequestBody);
-                // no GPT Chat - no action
                 addMessage(message);
                 clearChatMessage();
                 setMessage(createAnswer(chatMessage, ID));

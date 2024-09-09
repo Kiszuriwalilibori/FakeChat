@@ -1,7 +1,7 @@
 import useBoolean from "./useBoolean";
-import useChatMessage from "./useChatMessage";
 import useDelayedCondition from "./useDelayedCondition";
 import useDispatchAction from "./useDispatchAction";
+import useEnhancedState from "./useEnhancedState";
 import useGetUserLanguages from "./useGetUserLanguages";
 import useHandleConnectionStatus from "./useHandleConnectionStatus";
 import useInitialFocus from "./useInitialFocus";
@@ -12,9 +12,9 @@ import useVoice from "./useVoice";
 
 export {
     useBoolean,
-    useChatMessage,
     useDispatchAction,
     useDelayedCondition,
+    useEnhancedState,
     useGetUserLanguages,
     useHandleConnectionStatus,
     useInitialFocus,

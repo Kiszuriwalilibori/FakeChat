@@ -1,12 +1,12 @@
 import Fade from "@mui/material/Fade";
 import uuid from "react-uuid";
 
-import { useCallback, useEffect, useState } from "react";
+import { useEffect } from "react";
 import { connect } from "react-redux";
 
 import { User, UserSelectInput } from "./components";
 import { RootState, Messages, UserDetails } from "types";
-import { useDispatchAction } from "hooks";
+import { useDispatchAction, useEnhancedState } from "hooks";
 import { getSelectedUsers } from "functions";
 
 import "./styles/_Users.scss";
@@ -18,15 +18,9 @@ interface Props {
 }
 const Users = (props: Props) => {
     const { users, handleUserSelected } = props;
-    const [activeUser, setActiveUser] = useState<string>("");
-    const [pattern, setPattern] = useState<string>("");
+    const [activeUser, setActiveUser] = useEnhancedState<string>("");
+    const [inputContent, setInputContent] = useEnhancedState<string>("");
     const { setActiveUserDetails } = useDispatchAction();
-
-    const setFilter = useCallback((value: string) => {
-        setPattern(value);
-    }, []);
-
-    const activeUserSetter = useCallback((userId: string) => setActiveUser(userId), []);
 
     useEffect(() => {
         const active = users.find(obj => {
@@ -37,14 +31,14 @@ const Users = (props: Props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [activeUser, users]);
 
-    const selectedUsers = getSelectedUsers(users, pattern);
+    const selectedUsers = getSelectedUsers(users, inputContent);
 
     return (
         <Fade in={true} timeout={700}>
             <section className="Users" aria-label="Users">
-                <UserSelectInput changeHandler={setFilter} />
+                <UserSelectInput changeHandler={setInputContent} />
                 {selectedUsers.map(user => (
-                    <User user={user} isActive={user.id === activeUser} clickHandler={activeUserSetter} key={uuid()} />
+                    <User user={user} isActive={user.id === activeUser} clickHandler={setActiveUser} key={uuid()} />
                 ))}
             </section>
         </Fade>
