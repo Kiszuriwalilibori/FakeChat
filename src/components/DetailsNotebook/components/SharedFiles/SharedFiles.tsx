@@ -16,7 +16,7 @@ const SharedFiles = (props: Props) => {
     return (
         <SharedFilesWrapper id="Shared Files Wrapper">
             <SharedFilesHeader id="Shared Files Header" direction="row">
-                <Icons.Files />
+                <Icons.Files className="details_header_icon" />
                 <Typography component="h2" variant="h2_light">
                     Shared files
                 </Typography>

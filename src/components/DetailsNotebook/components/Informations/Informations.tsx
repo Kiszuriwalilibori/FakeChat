@@ -15,7 +15,7 @@ const Informations = (props: Pick<UserDetails, "phone" | "dob" | "nat">) => {
     return (
         <InformationsWrapper id="Informations Wrapper">
             <InformationsHeader direction="row" id="Informations Header">
-                <Icons.Information />
+                <Icons.Information className="details_header_icon" />
                 <Typography component="h2" variant="h2_light">
                     Informations
                 </Typography>

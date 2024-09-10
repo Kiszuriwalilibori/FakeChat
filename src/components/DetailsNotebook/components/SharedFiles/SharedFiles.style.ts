@@ -13,13 +13,6 @@ export const SharedFilesWrapper = styled("div")(({ theme }) => ({
 export const SharedFilesHeader = styled(Stack)(({ theme }) => ({
     paddingTop: theme.spacing(2.75),
     alignItems: "center",
-    "& svg": {
-        paddingRight: "14px",
-        paddingLeft: "14px",
-        width: "36px",
-        height: "36px",
-        boxSizing: "initial",
-    },
 }));
 
 export const LoadableFile = styled("li")(({ theme }) => ({

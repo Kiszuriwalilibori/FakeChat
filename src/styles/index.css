@@ -374,3 +374,11 @@ textarea {
 .scrollOffset {
   margin-left: calc(100vw - 100%);
 }
+
+.details_header_icon {
+  padding-right: 14px;
+  padding-left: 14px;
+  width: 36px;
+  height: 36px;
+  box-sizing: initial;
+}
