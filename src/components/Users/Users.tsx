@@ -1,7 +1,7 @@
 import Fade from "@mui/material/Fade";
 import uuid from "react-uuid";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { connect } from "react-redux";
 
 import { User, UserSelectInput } from "./components";
@@ -22,6 +22,8 @@ const Users = (props: Props) => {
     const [inputContent, setInputContent] = useEnhancedState<string>("");
     const { setActiveUserDetails } = useDispatchAction();
 
+    const userSelectInputRef = useRef<HTMLInputElement>(null);
+
     useEffect(() => {
         const active = users.find(obj => {
             return obj.id === activeUser;
@@ -32,11 +34,16 @@ const Users = (props: Props) => {
     }, [activeUser, users]);
 
     const selectedUsers = getSelectedUsers(users, inputContent);
-
+    const handleHover = () => {
+        userSelectInputRef.current && userSelectInputRef.current.focus();
+    };
+    const handleBlur = () => {
+        userSelectInputRef.current && userSelectInputRef.current.blur();
+    };
     return (
         <Fade in={true} timeout={700}>
-            <section className="Users" aria-label="Users">
-                <UserSelectInput changeHandler={setInputContent} />
+            <section className="Users" aria-label="Users" onMouseEnter={handleHover} onMouseLeave={handleBlur}>
+                <UserSelectInput changeHandler={setInputContent} userSelectInputRef={userSelectInputRef} />
                 {selectedUsers.map(user => (
                     <User user={user} isActive={user.id === activeUser} clickHandler={setActiveUser} key={uuid()} />
                 ))}

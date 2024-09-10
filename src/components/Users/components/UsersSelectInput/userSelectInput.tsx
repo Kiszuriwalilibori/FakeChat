@@ -1,24 +1,23 @@
-import { useCallback, useEffect, useRef, ChangeEvent } from "react";
+import { useCallback, ChangeEvent, RefObject } from "react";
 
 import Icons from "assets/icons";
 
 import { BasicButton } from "components";
-import useDebouncedCallback from "hooks/useDebouncedCallback"; //
-import useInitialFocus from "hooks/useInitialFocus";
 
 interface Props {
     changeHandler: (value: string) => void;
+    userSelectInputRef: RefObject<HTMLInputElement>;
 }
 
 const UserSelectInput = (props: Props) => {
-    const { changeHandler } = props;
-    const initialFocus = useInitialFocus<HTMLInputElement>();
+    const { changeHandler, userSelectInputRef } = props;
+
     const handleReset = useCallback(() => {
-        if (initialFocus.current) {
-            initialFocus.current.value = "";
+        if (userSelectInputRef.current) {
+            userSelectInputRef.current.value = "";
             changeHandler("");
         }
-    }, [initialFocus.current, changeHandler]);
+    }, [userSelectInputRef.current, changeHandler]);
 
     const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
         const target = e.target as HTMLInputElement;
@@ -36,10 +35,10 @@ const UserSelectInput = (props: Props) => {
                     aria-label="type selected user name here for search"
                     type="text"
                     defaultValue=""
-                    ref={initialFocus}
+                    ref={userSelectInputRef}
                     onChange={handleChange}
                 ></input>
-                {initialFocus.current && initialFocus.current.value !== "" && (
+                {userSelectInputRef.current && userSelectInputRef.current.value !== "" && (
                     <BasicButton
                         className="button button--reset flexbox-row-centered"
                         type="reset"
