@@ -67,6 +67,10 @@
         );
         @include mobile {
             margin-top: 0;
+            flex-direction: column;
+            padding-top: 10px;
+            padding-left: 5vw;
+            padding-right: 5vw;
         }
 
         &:hover {
@@ -78,6 +82,10 @@
             flex-grow: 1;
             width: 100%;
             border: none;
+            @include mobile {
+                margin-left: 10vw;
+                margin-right: 10vw;
+            }
         }
     }
     & .chat--core {

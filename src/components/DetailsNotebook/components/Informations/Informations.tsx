@@ -21,7 +21,7 @@ const Informations = (props: Pick<UserDetails, "phone" | "dob" | "nat">) => {
                 </Typography>
             </InformationsHeader>
 
-            <InformationsContainer divider={<Divider orientation="vertical" flexItem />} id="Informations Container">
+            <InformationsContainer id="Informations Container">
                 <InformationsItem>
                     <Typography variant="text_light_small">Tel:</Typography>
                     <Typography variant="text_light_small">{phone}</Typography>

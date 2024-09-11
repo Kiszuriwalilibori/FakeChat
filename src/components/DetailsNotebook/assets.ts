@@ -16,3 +16,4 @@ export const FILES: Files = [
 ];
 
 export const NOTEBOOK_MEDIA_QUERY = "(min-width: 768px ) and (max-width: 1105px )";
+export const BESIDES_NOTEBOOK_MEDIA_QUERY = "(max-width:767px) or (min-width: 1106px)";

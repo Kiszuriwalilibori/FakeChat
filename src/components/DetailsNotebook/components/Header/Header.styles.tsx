@@ -3,6 +3,8 @@ import { Box, Stack } from "@mui/material";
 import { Theme } from "@mui/material";
 import { COLOR_BLUE } from "themes/constans";
 
+const USER_IMAGE_SIZE = "128px";
+
 export const SocialIconsContainer = styled(Box)(({ theme }) => ({
     display: "flex",
     flexDirection: "row",
@@ -19,6 +21,10 @@ export const HeaderContainer = styled(Box)(({ theme }) => ({
 export const UserImage = styled("img")(({ theme }) => ({
     borderRadius: "50%",
     position: "relative",
+}));
+export const UserImageContainer = styled("div")(({ theme }) => ({
+    width: USER_IMAGE_SIZE,
+    height: USER_IMAGE_SIZE,
 }));
 
 export const UserDataStack = styled(Stack)(({ theme }) => ({

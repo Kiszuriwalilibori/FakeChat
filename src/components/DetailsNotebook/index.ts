@@ -1,1 +1,1 @@
-export { default } from "./DetailsNotebook";
+export { default } from "./Details";

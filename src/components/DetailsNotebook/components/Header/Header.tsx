@@ -8,6 +8,7 @@ import {
     UserImage,
     UserDataStack,
     UserName,
+    UserImageContainer,
 } from "./Header.styles";
 import { UserDetails } from "types";
 
@@ -16,7 +17,9 @@ const Header = (props: Pick<UserDetails, "name" | "location" | "picture" | "soci
 
     return (
         <HeaderContainer id="Header">
-            <UserImage src={picture.large} alt="user" id="User Image" />
+            <UserImageContainer>
+                <UserImage src={picture.large} alt="user" id="User Image" />
+            </UserImageContainer>
             <UserDataStack spacing={2.5}>
                 <UserName>{`${name.firstName} ${name.lastName}`}</UserName>
                 <Typography variant="body1">{`${location.city} ${location.country}`}</Typography>

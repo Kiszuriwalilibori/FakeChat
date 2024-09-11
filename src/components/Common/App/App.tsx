@@ -12,8 +12,7 @@ import { AppDispatch } from "../AppProvider";
 
 import "./_App.scss";
 
-import DetailsNotebook from "components/DetailsNotebook";
-const Details = React.lazy(() => import("components/DetailsNotebook/Details"));
+import Details from "components/DetailsNotebook/Details";
 
 interface Props {
     fetchUsers: () => void;
@@ -39,12 +38,13 @@ function _App(props: Props) {
             <div className="App">
                 <Header />
                 <Navigation />
-                <DetailsNotebook />
+
+                <Details variant={"notebook"} />
                 <main className="main" ref={refMain}>
                     <Users handleUserSelected={resizeMain} />
                     <Chat />
                     <Suspense fallback={<div></div>}>
-                        <Details />
+                        <Details variant={"not-notebook"} />
                     </Suspense>
 
                     {shouldRenderLoader && <Loader />}
