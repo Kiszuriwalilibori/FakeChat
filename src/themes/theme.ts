@@ -6,9 +6,9 @@ declare module "@mui/material/styles" {
         h2_blue: React.CSSProperties;
         h2_dark: React.CSSProperties;
         h2_light: React.CSSProperties;
-        text_blue_underlined: React.CSSProperties;
+        chat_header_userName: React.CSSProperties;
         text_light_small: React.CSSProperties;
-        text_light_underlined: React.CSSProperties;
+        fileName: React.CSSProperties;
         text_truncated?: React.CSSProperties;
     }
 
@@ -16,9 +16,9 @@ declare module "@mui/material/styles" {
         h2_blue?: React.CSSProperties;
         h2_dark?: React.CSSProperties;
         h2_light?: React.CSSProperties;
-        text_blue_underlined?: React.CSSProperties;
+        chat_header_userName?: React.CSSProperties;
         text_light_small?: React.CSSProperties;
-        text_light_underlined?: React.CSSProperties;
+        fileName?: React.CSSProperties;
         text_truncated?: React.CSSProperties;
     }
 }
@@ -28,9 +28,9 @@ declare module "@mui/material/Typography" {
         h2_blue: true;
         h2_dark: true;
         h2_light: true;
-        text_blue_underlined: true;
+        chat_header_userName: true;
         text_light_small: true;
-        text_light_underlined: true;
+        fileName: true;
         text_truncated: true;
     }
 }
@@ -61,7 +61,7 @@ theme = createTheme(theme, {
             color: TEXT_SECONDARY,
             textTransform: "uppercase",
         },
-        text_blue_underlined: {
+        chat_header_userName: {
             fontSize: "16px",
             fontWeight: 800,
             color: COLOR_BLUE,
@@ -76,7 +76,7 @@ theme = createTheme(theme, {
             textTransform: "none",
             fontWeight: 400,
         },
-        text_light_underlined: {
+        fileName: {
             fontSize: "16px",
             fontWeight: 400,
             color: TEXT_SECONDARY,

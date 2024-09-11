@@ -23,7 +23,7 @@ const ChatHeader = (props: Pick<UserDetails, "id" | "name">) => {
             <div>
                 <span>{isChatActive ? TITLE : EMPTY_TITLE}</span>
                 {isChatActive && (
-                    <Typography variant="text_blue_underlined">{` ${name.firstName} ${name.lastName}`}</Typography>
+                    <Typography variant="chat_header_userName">{` ${name.firstName} ${name.lastName}`}</Typography>
                 )}
             </div>
             <div className="buttons">

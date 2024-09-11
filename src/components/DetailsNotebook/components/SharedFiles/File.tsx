@@ -10,7 +10,7 @@ const File = (props: Props) => {
     return (
         <LoadableFile>
             <a href={href} tabIndex={0} download>
-                <Typography variant="text_light_underlined">{fileName}</Typography>
+                <Typography variant="fileName">{fileName}</Typography>
             </a>
         </LoadableFile>
     );

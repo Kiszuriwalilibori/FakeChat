@@ -6,7 +6,7 @@ import useGetUserLanguages from "./useGetUserLanguages";
 import useHandleConnectionStatus from "./useHandleConnectionStatus";
 import useInitialFocus from "./useInitialFocus";
 import useMessage from "./useMessage";
-import useResizeMain from "./useResizeMain";
+import useResizeChat from "./useResizeChat";
 import useSetScrollBarWidthOnResize from "./useSetScrollBarWidthOnResize";
 import useVoice from "./useVoice";
 
@@ -20,6 +20,6 @@ export {
     useInitialFocus,
     useMessage,
     useSetScrollBarWidthOnResize,
-    useResizeMain,
+    useResizeChat,
     useVoice,
 };

@@ -7,7 +7,7 @@ import thunkFetchUsers from "reduxware/thunks/fetchUsersThunk";
 
 import { RootState, UserDetails } from "types";
 import { Navigation, Loader, ErrorMessage, Users, Chat, Header } from "components";
-import { useDelayedCondition, useHandleConnectionStatus, useResizeMain, useSetScrollBarWidthOnResize } from "hooks";
+import { useDelayedCondition, useHandleConnectionStatus, useResizeChat, useSetScrollBarWidthOnResize } from "hooks";
 import { AppDispatch } from "../AppProvider";
 
 import "./_App.scss";
@@ -23,12 +23,12 @@ interface Props {
     activeUser: UserDetails;
 }
 
-function _App(props: Props) {
+function App(props: Props) {
     const { fetchUsers, isError, isLoading } = props;
     const shouldRenderLoader = useDelayedCondition(isLoading);
     const isNotebook = useMediaQuery(NOTEBOOK_MEDIA_QUERY);
     useHandleConnectionStatus();
-    const { refMain, resizeMain } = useResizeMain();
+    const { refChat, resizeChat } = useResizeChat();
 
     useEffect(() => {
         fetchUsers();
@@ -42,8 +42,8 @@ function _App(props: Props) {
                 <Header />
                 <Navigation />
                 {isNotebook && <Details variant={"notebook"} />}
-                <main className="main" ref={refMain}>
-                    <Users handleUserSelected={resizeMain} />
+                <main className="main" ref={refChat}>
+                    <Users handleUserSelected={resizeChat} />
                     <Chat />
                     {!isNotebook && (
                         <Suspense fallback={<div></div>}>
@@ -69,6 +69,4 @@ const mapDispatchToProps = (dispatch: AppDispatch) => ({
     fetchUsers: () => dispatch(thunkFetchUsers()),
 });
 
-const App = connect(mapStateToProps, mapDispatchToProps)(_App);
-
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);
