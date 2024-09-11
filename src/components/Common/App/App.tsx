@@ -13,6 +13,8 @@ import { AppDispatch } from "../AppProvider";
 import "./_App.scss";
 
 import Details from "components/DetailsNotebook/Details";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { NOTEBOOK_MEDIA_QUERY } from "components/DetailsNotebook/assets";
 
 interface Props {
     fetchUsers: () => void;
@@ -24,6 +26,7 @@ interface Props {
 function _App(props: Props) {
     const { fetchUsers, isError, isLoading } = props;
     const shouldRenderLoader = useDelayedCondition(isLoading);
+    const isNotebook = useMediaQuery(NOTEBOOK_MEDIA_QUERY);
     useHandleConnectionStatus();
     const { refMain, resizeMain } = useResizeMain();
 
@@ -38,14 +41,15 @@ function _App(props: Props) {
             <div className="App">
                 <Header />
                 <Navigation />
-
-                <Details variant={"notebook"} />
+                {isNotebook && <Details variant={"notebook"} />}
                 <main className="main" ref={refMain}>
                     <Users handleUserSelected={resizeMain} />
                     <Chat />
-                    <Suspense fallback={<div></div>}>
-                        <Details variant={"not-notebook"} />
-                    </Suspense>
+                    {!isNotebook && (
+                        <Suspense fallback={<div></div>}>
+                            <Details variant={"not-notebook"} />
+                        </Suspense>
+                    )}
 
                     {shouldRenderLoader && <Loader />}
                     {isError && <ErrorMessage />}

@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 
 import { Header, Informations, SharedFiles } from "./components";
 import { UserDetails, RootState } from "types";
-import { BESIDES_NOTEBOOK_MEDIA_QUERY, FILES, NOTEBOOK_MEDIA_QUERY } from "./assets";
+import { NOT_NOTEBOOK_MEDIA_QUERY, FILES, NOTEBOOK_MEDIA_QUERY } from "./assets";
 
 import "./styles/_Details.scss";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -26,7 +26,7 @@ interface Props {
 
 const params: Params = {
     notebook: { mediaQuery: NOTEBOOK_MEDIA_QUERY, direction: "down", cls: "Details-notebook", id: "DetailsNotebook" },
-    "not-notebook": { mediaQuery: BESIDES_NOTEBOOK_MEDIA_QUERY, direction: "left", cls: "Details", id: "" },
+    "not-notebook": { mediaQuery: NOT_NOTEBOOK_MEDIA_QUERY, direction: "left", cls: "Details", id: "" },
 };
 
 export const Details = (props: Props) => {
