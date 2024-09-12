@@ -22,9 +22,9 @@ export interface RawUserDetails {
     lastMessage?: LastMessage;
 }
 
-interface JsonUser extends Omit<RawUserDetails, "name"> {
-    name: { first: string; last: string };
-}
+// interface JsonUser extends Omit<RawUserDetails, "name"> {
+//     name: { first: string; last: string };
+// }
 
 interface UserDetails extends Omit<RawUserDetails, "dob"> {
     dob: string;
@@ -64,7 +64,7 @@ type Messages = Message[];
 type Error = Pick<RootState["fetch"], "isError" | "errorMessage">;
 
 interface Response {
-    results: JsonUser[];
+    results: RawUserDetails[];
     error?: { message: string };
 }
 
@@ -75,7 +75,6 @@ export type {
     GPTRequestBodyMessages,
     GPTRequestBodyMessage,
     Icons,
-    JsonUser,
     MenuConfig,
     MenuConfigItem,
     Message,
