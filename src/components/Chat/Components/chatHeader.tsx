@@ -1,7 +1,5 @@
 import Typography from "@mui/material/Typography";
 
-import { useCallback } from "react";
-
 import Icons from "assets/icons";
 
 import { BasicButton } from "components";
@@ -17,13 +15,13 @@ const ChatHeader = (props: Pick<UserDetails, "id" | "name">) => {
     const { toggleFavorite } = useDispatchAction();
     const handleFavoriteClicked = useDebouncedCallback<HTMLButtonElement>(toggleFavorite, id);
 
-    const isChatActive = Boolean(name && name.lastName);
+    const isChatActive = Boolean(name && name.last);
     return (
         <div className="Chat__header" id="Chat_Header">
             <div>
                 <span>{isChatActive ? TITLE : EMPTY_TITLE}</span>
                 {isChatActive && (
-                    <Typography variant="chat_header_userName">{` ${name.firstName} ${name.lastName}`}</Typography>
+                    <Typography variant="chat_header_userName">{` ${name.first} ${name.last}`}</Typography>
                 )}
             </div>
             <div className="buttons">

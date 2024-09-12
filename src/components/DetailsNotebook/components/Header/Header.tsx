@@ -21,7 +21,7 @@ const Header = (props: Pick<UserDetails, "name" | "location" | "picture" | "soci
                 <UserImage src={picture.large} alt="user" id="User Image" />
             </UserImageContainer>
             <UserDataStack spacing={2.5}>
-                <UserName>{`${name.firstName} ${name.lastName}`}</UserName>
+                <UserName>{`${name.first} ${name.last}`}</UserName>
                 <Typography variant="body1">{`${location.city} ${location.country}`}</Typography>
                 <SocialIconsContainer>
                     <IconButton

@@ -1,17 +1,17 @@
-import { UserDetails, JsonUser } from "types";
+import { UserDetails, RawUserDetails } from "types";
 
 function getData(data: string | null, replacement: string = "Undisclosed") {
     return data || replacement;
 }
 
-function createUserDetails(obj: JsonUser): UserDetails {
+function createUserDetails(obj: RawUserDetails): UserDetails {
     const array = new Uint32Array(1);
     window.crypto.getRandomValues(array);
 
     const result = {
         dob: getData(obj?.dob?.date),
         phone: getData(obj?.phone),
-        name: { firstName: getData(obj?.name?.first, ""), lastName: getData(obj?.name?.last, "") },
+        name: { first: getData(obj?.name?.first, ""), last: getData(obj?.name?.last, "") },
         location: { city: getData(obj.location?.city), country: getData(obj.location?.country) },
         isFavorite: false,
         picture: obj.picture,
@@ -24,7 +24,7 @@ function createUserDetails(obj: JsonUser): UserDetails {
     return result;
 }
 
-export function createUserData(ary: JsonUser[]) {
+export function createUserData(ary: RawUserDetails[]) {
     return ary.map(createUserDetails);
 }
 

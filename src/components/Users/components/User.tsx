@@ -32,10 +32,7 @@ const User = (props: Props) => {
                 />
 
                 <div className="text--content">
-                    <Typography
-                        variant="h2_dark"
-                        component="h2"
-                    >{`${user.name.firstName} ${user.name.lastName}`}</Typography>
+                    <Typography variant="h2_dark" component="h2">{`${user.name.first} ${user.name.last}`}</Typography>
 
                     {user.lastMessage?.content && (
                         <Box

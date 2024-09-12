@@ -29,7 +29,7 @@ const Portrait = (props: Props) => {
                     anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
                     variant="dot"
                 >
-                    <Avatar src={thumbnail} alt={name.lastName} />
+                    <Avatar src={thumbnail} alt={name.last} />
                 </GreenBadge>
             </Badge>
         </div>

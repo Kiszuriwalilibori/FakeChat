@@ -9,7 +9,7 @@ interface MenuConfigItem {
 type MenuConfig = MenuConfigItem[];
 
 export interface RawUserDetails {
-    name: { firstName: string; lastName: string };
+    name: { first: string; last: string };
     location: { city: string; country: string };
     phone: string;
     dob: { date: string; age: number };
