@@ -1,4 +1,5 @@
 import { useCallback, ChangeEvent, RefObject } from "react";
+import { debounce } from "lodash";
 
 import Icons from "assets/icons";
 
@@ -12,17 +13,23 @@ interface Props {
 const UserSelectInput = (props: Props) => {
     const { changeHandler, userSelectInputRef } = props;
 
-    const handleReset = useCallback(() => {
-        if (userSelectInputRef.current) {
-            userSelectInputRef.current.value = "";
-            changeHandler("");
-        }
-    }, [userSelectInputRef.current, changeHandler]);
+    const handleReset = useCallback(
+        debounce(() => {
+            if (userSelectInputRef.current) {
+                userSelectInputRef.current.value = "";
+                changeHandler("");
+            }
+        }, 300),
+        [userSelectInputRef.current, changeHandler]
+    );
 
-    const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-        const target = e.target as HTMLInputElement;
-        changeHandler(target.value);
-    }, []);
+    const handleChange = useCallback(
+        debounce((e: ChangeEvent<HTMLInputElement>) => {
+            const target = e.target as HTMLInputElement;
+            changeHandler(target.value);
+        }, 300),
+        []
+    );
 
     return (
         <div className="users--search-wrapper">

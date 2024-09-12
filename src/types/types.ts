@@ -12,7 +12,7 @@ export interface RawUserDetails {
     name: { firstName: string; lastName: string };
     location: { city: string; country: string };
     phone: string;
-    dob: { date: string; age: number }; //
+    dob: { date: string; age: number };
     nat: string;
     picture: { large: string; medium: string; thumbnail: string };
     isFavorite: boolean;
