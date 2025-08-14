@@ -1,72 +1,136 @@
-# Scheme - old recruitment task with some extra development
+# FakeChat - Modern Chat Application
 
-[![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
+[![React](https://img.shields.io/badge/React-v18-blue.svg)](https://reactjs.org)
+[![Redux](https://img.shields.io/badge/Redux-v8-green.svg)](https://redux.js.org)
+[![MUI](https://img.shields.io/badge/MUI-v5-orange.svg)](https://mui.com)
 
-## The objective
+## Project Overview
 
--   present my skills
+FakeChat is a modern chat application built with React and Redux, featuring real-time messaging, voice support, and a clean, professional UI. This project serves as a showcase of modern web development practices and technologies.
 
 ## Features
 
--   This app imitates chat
+- Real-time messaging interface
+- Voice message support
+- User authentication and profile management
+- Modern Material-UI design
+- Responsive layout
+- Customizable chat interface
+- Voice-to-text functionality
+- User avatars and badges
 
 ## Technologies
 
--   HTML
--   SASS/SCSS
--   JS
--   REACT
--   REDUX
+- Frontend:
+  - React 18
+  - Redux Toolkit
+  - Material-UI v5
+  - Axios for API calls
+- Styling:
+  - SCSS for custom styles
+  - Material-UI components
+- Development:
+  - TypeScript for type safety
+  - ESLint for code quality
+  - Prettier for code formatting
 
-## Installation
+## Getting Started
 
--   That site is hosted on GH Pages
--   Is available on https://kiszuriwalilibori.github.io/FakeChat/
+### Prerequisites
 
-## Steps to create local copy:
+- Node.js (v16 or higher)
+- npm (v7 or higher)
 
-1. fetch/clone repo
-2. run npm install (note ready for yarn).
-3. run with npm run
-4. enjoy app
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/Kiszuriwalilibori/FakeChat.git
+cd FakeChat
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
+```bash
+npm start
+```
+
+4. The application will be available at `http://localhost:3000`
+
+### Production Build
+
+To create a production build:
+```bash
+npm run build
+```
+
+The build files will be generated in the `build` directory.
 
 ## Browser Support
 
-Not for IE and Opera Mini
-However, it shows its best on Chrome. At least one feature is not visible on FF ( input gets blue border on focus)
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+- Opera (latest)
 
-## Versions
+Note: The application is not compatible with Internet Explorer or Opera Mini.
 
-### 1.0.0
-
-initial
-
-### 1.0.1
-
-restyled main chat component
-
-### 1.0.2
-
-languages and not language codes
-MUI v5.xx
-Avatar and Badge applied
-custom icon in index.html
-
-### 1.0.3
-
-files structure rearranged
-better names
-stricter typings
-fixed bug - now after change of current user input clears
-
-### 1.1.0
-
-voice support, Axios
+## Version History
 
 ### 1.1.1
+- Additional style improvements
+- Bug fixes and optimizations
 
-some styles rearranged
+### 1.1.0
+- Added voice support
+- Integrated Axios for API calls
+- Improved error handling
 
-### TODO
+### 1.0.3
+- Restructured file organization
+- Enhanced TypeScript typing
+- Fixed input clearing bug
+- Improved code organization
 
-find another way to reach GPT chat
+### 1.0.2
+- Updated to Material-UI v5
+- Added avatar and badge components
+- Improved language handling
+- Custom favicon implementation
+
+### 1.0.1
+- Restyled main chat component
+- Improved UI/UX
+- Better component organization
+
+### 1.0.0
+- Initial release
+- Basic chat functionality
+- React and Redux implementation
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Future Improvements
+
+- Implement real-time chat using WebSocket
+- Add message encryption
+- Implement user authentication system
+- Add message attachments
+- Improve voice message handling
+- Add more customization options
+
