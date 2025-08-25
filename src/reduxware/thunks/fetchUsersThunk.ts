@@ -7,8 +7,13 @@ import { createUserData } from "functions";
 import { Response, RootState, UserDetails } from "types";
 
 
-const USERS_URL = process.env.REACT_APP_API_URL || "https://randomuser.me/api/";
-const USERS_ENDPOINT = `${USERS_URL}?results=10`;
+const API_CONFIG = {
+    URL: process.env.REACT_APP_API_URL || 'https://randomuser.me/api/',
+    TIMEOUT: parseInt(process.env.REACT_APP_API_TIMEOUT || '10000', 10),
+    MAX_RESULTS: parseInt(process.env.REACT_APP_MAX_RESULTS || '10', 10)
+};
+
+const USERS_ENDPOINT = `${API_CONFIG.URL}?results=${API_CONFIG.MAX_RESULTS}`;
 
 interface ApiError {
     status: number;
@@ -42,7 +47,7 @@ const thunkFetchUsers = (): ThunkAction<Promise<void>, RootState, unknown, AnyAc
 
         try {
             const response = await axios.get<Response>(USERS_ENDPOINT, {
-                timeout: 10000, 
+                timeout: API_CONFIG.TIMEOUT,
                 validateStatus: (status) => status >= 200 && status < 400
             });
 
