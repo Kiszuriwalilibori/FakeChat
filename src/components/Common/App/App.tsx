@@ -42,11 +42,14 @@ function App(props: Props) {
                 <Header />
                 <Navigation />
                 {isNotebook && <Details variant={"notebook"} />}
-                <main className="main" ref={refChat}>
+                <main className="main" ref={refChat}
+                aria-live="polite"
+                aria-busy={isLoading}
+                aria-describedby={isError ? 'error-message' : undefined}>
                     <Users handleUserSelected={resizeChat} />
                     <Chat />
                     {!isNotebook && (
-                        <Suspense fallback={<div></div>}>
+                        <Suspense fallback={<span aria-busy="true" />}>
                             <Details variant={"not-notebook"} />
                         </Suspense>
                     )}

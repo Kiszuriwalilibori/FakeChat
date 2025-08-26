@@ -36,10 +36,13 @@ const Chat = (props: Pick<UserDetails, "id" | "name">) => {
 
     return (
         <Fade in={true} timeout={ANIMATION_TIMEOUT_MS}>
-            <section className="Chat" id="Chat" ref={ref} aria-label="Chat section">
+            <section className="Chat" id="Chat" ref={ref} role="region"
+                aria-label={id ? `Chat with ${name}` : 'Chat section'}
+                aria-live="polite"
+                aria-atomic="false">
                 <ChatHeader id={id} name={name} />
-                {id && <Core ID={id} />}
-                {id && <ChatInput ID={id} />}
+                {id && <Core ID={id} aria-live="polite" aria-atomic="false"/>}
+                {id && <ChatInput ID={id} aria-label="Type your message"/>}
             </section>
         </Fade>
     );

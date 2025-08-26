@@ -24,7 +24,7 @@ const ErrorMessage = (props: Props) => {
 
     return (
         <Fade in={true} timeout={300} style={styleWrapper}>
-            <article className="error">
+            <article className="error" id ="error-message" >
                 <CancelIcon onClick={handleCancelClicked} style={styleCancelIcon} />
                 <hr></hr>
                 <p>{ERROR}</p>
