@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useRef } from "react";
 import Fade from "@mui/material/Fade";
 
 import { connect } from "react-redux";
@@ -16,23 +16,24 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 
 const Chat = (props: Pick<UserDetails, "id" | "name">) => {
     const { id, name } = props;
-    const matches = useMediaQuery("(min-width: 768px ) and (max-width: 1105px");
-
-    const ref: React.RefObject<any> = React.createRef();
-
-    function scrolling() {
-        if (!matches) {
-            ref.current && ref.current.scrollIntoView();
-            window.scrollBy(0, -80);
-        }
-    }
-
-    const debouncedScrolling = debounce(scrolling, 500);
+    const matches = useMediaQuery("(min-width: 768px ) and (max-width: 1105px");   
+    const ref = useRef<HTMLElement>(null);
+    const debouncedScrolling = useCallback(
+            debounce(() => {
+                if (!matches && ref.current) {
+                    ref.current.scrollIntoView();
+                    window.scrollBy(0, -80);
+                }
+            }, 500),
+            [matches] 
+    );
 
     useLayoutEffect(() => {
-        id && debouncedScrolling();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [id]);
+        if (id) {
+            debouncedScrolling();
+            return () => debouncedScrolling.cancel();
+        }
+    }, [id, debouncedScrolling]); 
 
     return (
         <Fade in={true} timeout={700}>
