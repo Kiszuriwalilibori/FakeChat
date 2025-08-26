@@ -22,9 +22,7 @@ export interface RawUserDetails {
     lastMessage?: LastMessage;
 }
 
-// interface JsonUser extends Omit<RawUserDetails, "name"> {
-//     name: { first: string; last: string };
-// }
+
 
 interface UserDetails extends Omit<RawUserDetails, "dob"> {
     dob: string;

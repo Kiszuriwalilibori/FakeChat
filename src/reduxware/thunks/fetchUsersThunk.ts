@@ -5,15 +5,9 @@ import { ThunkAction } from "redux-thunk";
 import { startLoading, completeLoading, showError, storeUsers } from "../actionCreators";
 import { createUserData } from "functions";
 import { Response, RootState, UserDetails } from "types";
+import { API_CONFIG } from "config/api";
 
-
-const API_CONFIG = {
-    URL: process.env.REACT_APP_API_URL || 'https://randomuser.me/api/',
-    TIMEOUT: parseInt(process.env.REACT_APP_API_TIMEOUT || '10000', 10),
-    MAX_RESULTS: parseInt(process.env.REACT_APP_MAX_RESULTS || '10', 10)
-};
-
-const USERS_ENDPOINT = `${API_CONFIG.URL}?results=${API_CONFIG.MAX_RESULTS}`;
+const USERS_ENDPOINT = `${API_CONFIG.BASE_URL}?results=${API_CONFIG.MAX_RESULTS}`;
 
 interface ApiError {
     status: number;
