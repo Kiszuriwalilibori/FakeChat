@@ -1,5 +1,5 @@
 import Slide from "@mui/material/Slide";
-import isEmpty from "lodash/isEmpty";
+import isEmpty from "lodash/isEmpty"; // This import is already optimized
 
 import { connect } from "react-redux";
 

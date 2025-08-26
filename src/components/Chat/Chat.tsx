@@ -1,31 +1,30 @@
-import React, { useCallback, useRef } from "react";
-import Fade from "@mui/material/Fade";
-
+import { useCallback, useRef,useLayoutEffect } from "react";
 import { connect } from "react-redux";
-import { debounce } from "lodash";
-import { useLayoutEffect } from "react";
+import Fade from "@mui/material/Fade";
+import debounce from "lodash/debounce";
 
 import { RootState, UserDetails } from "types";
-
 import { ChatHeader, ChatInput } from "./Components";
-
 import Core from "./Components/Chat_Core";
 
 import "./styles/_Chat.scss";
 import useMediaQuery from "@mui/material/useMediaQuery";
+
+const ANIMATION_TIMEOUT_MS = 700;
+const DEBOUNCE_DELAY_MS = 500;
 
 const Chat = (props: Pick<UserDetails, "id" | "name">) => {
     const { id, name } = props;
     const matches = useMediaQuery("(min-width: 768px ) and (max-width: 1105px");   
     const ref = useRef<HTMLElement>(null);
     const debouncedScrolling = useCallback(
-            debounce(() => {
-                if (!matches && ref.current) {
-                    ref.current.scrollIntoView();
-                    window.scrollBy(0, -80);
-                }
-            }, 500),
-            [matches] 
+        debounce(() => {
+            if (!matches && ref.current) {
+                ref.current.scrollIntoView();
+                window.scrollBy(0, -80);
+            }
+        }, DEBOUNCE_DELAY_MS),
+        [matches] 
     );
 
     useLayoutEffect(() => {
@@ -36,7 +35,7 @@ const Chat = (props: Pick<UserDetails, "id" | "name">) => {
     }, [id, debouncedScrolling]); 
 
     return (
-        <Fade in={true} timeout={700}>
+        <Fade in={true} timeout={ANIMATION_TIMEOUT_MS}>
             <section className="Chat" id="Chat" ref={ref} aria-label="Chat section">
                 <ChatHeader id={id} name={name} />
                 {id && <Core ID={id} />}

@@ -2,7 +2,7 @@ import MicIcon from "@mui/icons-material/Mic";
 
 import { useCallback, useEffect } from "react";
 import { connect } from "react-redux";
-import { isEmpty } from "lodash";
+import isEmpty from "lodash/isEmpty";
 import { Stack } from "@mui/material";
 import { EmojiClickData } from "emoji-picker-react";
 import { useSpeechRecognition } from "react-speech-kit";

@@ -1,5 +1,5 @@
 import { useCallback, ChangeEvent, RefObject } from "react";
-import { debounce } from "lodash";
+import debounce from "lodash/debounce";
 
 import Icons from "assets/icons";
 
