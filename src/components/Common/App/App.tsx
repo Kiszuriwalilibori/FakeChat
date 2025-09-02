@@ -15,6 +15,7 @@ import "./_App.scss";
 import Details from "components/DetailsNotebook/Details";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { NOTEBOOK_MEDIA_QUERY } from "components/DetailsNotebook/assets";
+import Hutest from "components/Hutest";
 
 interface Props {
     fetchUsers: () => void;
@@ -41,6 +42,7 @@ function App(props: Props) {
             <div className="App">
                 <Header />
                 <Navigation />
+                <Hutest />
                 {isNotebook && <Details variant={"notebook"} />}
                 <main className="main" ref={refChat}
                 aria-live="polite"
@@ -56,6 +58,7 @@ function App(props: Props) {
 
                     {shouldRenderLoader && <Loader />}
                     {isError && <ErrorMessage />}
+                   
                 </main>
             </div>
         </center>

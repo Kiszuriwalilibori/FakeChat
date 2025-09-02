@@ -14,7 +14,9 @@ const ANIMATION_TIMEOUT_MS = 700;
 const DEBOUNCE_DELAY_MS = 500;
 
 const Chat = (props: Pick<UserDetails, "id" | "name">) => {
+    console.log("chat renders");
     const { id, name } = props;
+    console.log(id);
     const matches = useMediaQuery("(min-width: 768px ) and (max-width: 1105px");   
     const ref = useRef<HTMLElement>(null);
     const debouncedScrolling = useCallback(

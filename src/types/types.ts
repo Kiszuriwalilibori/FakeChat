@@ -56,7 +56,12 @@ interface Message extends LastMessage {
     sender: string;
     addressee: string;
 }
-
+export interface MessageBody {
+    role: "assistant" | "user" | "system";
+    content: string;
+    userId: string; // ID of the user who sent the message
+}
+export type MessageBodyArray = MessageBody[];
 type Messages = Message[];
 
 type Error = Pick<RootState["fetch"], "isError" | "errorMessage">;

@@ -10,6 +10,7 @@ import { register } from "../../serviceWorkerRegistration";
 import fetchReducer from "reduxware/reducers/fetchReducer";
 import usersReducer from "reduxware/reducers/usersReducer";
 import messagesReducer from "reduxware/reducers/messageReducer";
+import messageBodyReducer from "reduxware/reducers/messageBodyReducer";
 import theme from "../../themes/theme";
 import { SnackbarProvider } from "notistack";
 
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
     fetch: fetchReducer,
     users: usersReducer,
     messages: messagesReducer,
+    messageBodies: messageBodyReducer,
 });
 
 export const store = configureStore({
