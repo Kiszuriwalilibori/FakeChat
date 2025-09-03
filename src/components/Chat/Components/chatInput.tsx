@@ -11,10 +11,11 @@ import Icons from "assets/icons";
 
 import { IconButton } from "components/Common";
 import { GPTRequestBodyMessage, Message, RootState } from "types";
-import { createAnswer, createEmoji, createMessage, createGPTRequestBodyMessages, getRandomDelay } from "../utils";
-import { useBoolean, useEnhancedState, useInitialFocus, useDispatchAction, useVoice } from "hooks";
+import { createAnswer, createEmoji, createMessage, createGPTRequestBodyMessages, getRandomDelay, createMessageBody } from "../utils";
+import { useBoolean, useEnhancedState, useInitialFocus, useProcessMessage, useDispatchAction, useVoice } from "hooks";
 import { Picker } from "components";
 import { listeningMicrophoneSx } from "./ChatInput.styles";
+
 
 const PLACEHOLDER = "Type your message here...";
 const INITIAL_MESSAGE = {} as Message;
@@ -28,25 +29,29 @@ interface Props extends OwnProps {
 
 const ChatInput = (props: Props) => {
     const { ID } = props;
-    const [chatMessage, createChatMessage, clearChatMessage, isChatMessageEmpty] = useEnhancedState<string>("");
+    const [chatMessage, createChatMessage, clearInput, isChatMessageEmpty] = useEnhancedState<string>("");
     const [message, setMessage] = useEnhancedState<Message>(INITIAL_MESSAGE);
     const { handleClickMicrophone, isMicrophoneDisabled, listening } = useVoice(createChatMessage, chatMessage);
     const [isPickerVisible, , , togglePickerVisibility] = useBoolean(false);
     const { addMessage, setOnlineTrue, updateLastMessage } = useDispatchAction();
     const initialFocus = useInitialFocus<HTMLInputElement>();
+    const sendMessage = useProcessMessage();
 
     useEffect(() => {
-        ID && clearChatMessage();
+        ID && clearInput();
     }, [ID]);
+
+    
 
     const sendClickHandler = useCallback(
         () => {
             if (chatMessage) {
                 const message = createMessage(chatMessage, ID);
                 addMessage(message);
-                clearChatMessage();
+                sendMessage(chatMessage,ID);// to jest nowe
+                clearInput();
                 setMessage(createAnswer(chatMessage, ID));
-                updateLastMessage({ ID, lastMessage: { content: message.content, timestamp: message.timestamp } });
+                // updateLastMessage({ ID, lastMessage: { content: message.content, timestamp: message.timestamp } });
                 initialFocus.current && initialFocus.current.focus();
             }
         },
@@ -61,8 +66,8 @@ const ChatInput = (props: Props) => {
         timeouts.push(
             setTimeout(() => {
                 !isEmpty(message) && addMessage(message);
-                !isEmpty(message) &&
-                    updateLastMessage({ ID, lastMessage: { content: message.content, timestamp: message.timestamp } });
+                // !isEmpty(message) &&
+                //     updateLastMessage({ ID, lastMessage: { content: message.content, timestamp: message.timestamp } });
             }, getRandomDelay())
         );
         timeouts.push(

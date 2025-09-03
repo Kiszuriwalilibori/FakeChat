@@ -1,6 +1,6 @@
 
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 interface Message {
@@ -29,7 +29,6 @@ const ChatApp = () => {
         {
           headers: {
             Authorization: `Bearer ${process.env.REACT_APP_MISTRAL}`,
-          // Authorization: 'Bearer yqdyU96FYKyEBEg4LYmdJUS8zidj6D3m',
             'Content-Type': 'application/json',
           },
         }

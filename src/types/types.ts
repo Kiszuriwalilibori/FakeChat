@@ -59,6 +59,7 @@ interface Message extends LastMessage {
 export interface MessageBody {
     role: "assistant" | "user" | "system";
     content: string;
+    timestamp: number;
     userId: string; // ID of the user who sent the message
 }
 export type MessageBodyArray = MessageBody[];
