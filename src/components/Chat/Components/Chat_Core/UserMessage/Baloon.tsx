@@ -10,7 +10,7 @@ interface Props {
 const Baloon = (props: Props) => {
     const { message, variant } = props;
 
-    return <div className={variant === "host" ? "baloon baloon-host" : "baloon baloon-user"}>{message}</div>;
+    return <div className={variant === "assistant" ? "baloon baloon-host" : "baloon baloon-user"}>{message}</div>;
 };
 
 export default memo(Baloon);

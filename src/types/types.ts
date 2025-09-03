@@ -90,4 +90,4 @@ export type {
     UserDetails,
 };
 
-export type BaloonVariant = "host" | "user";
+export type BaloonVariant = "assistant" | "user";
