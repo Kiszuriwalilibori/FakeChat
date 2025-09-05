@@ -37,25 +37,21 @@ interface LastMessage {
     timestamp: number;
 }
 
-interface GPTRequestBodyMessage {
-    role: "assistant" | "user" | "system";
-    content: string;
-}
-type GPTRequestBodyMessages = GPTRequestBodyMessage[];
-interface GPTRequestBody {
-    model: string;
-    messages: GPTRequestBodyMessages;
-}
+// interface GPTRequestBodyMessage {
+//     role: "assistant" | "user" | "system";
+//     content: string;
+// }
+// type GPTRequestBodyMessages = GPTRequestBodyMessage[];
+// interface GPTRequestBody {
+//     model: string;
+//     messages: GPTRequestBodyMessages;
+// }
 
 interface UpdateLastMessage {
     ID: string;
     lastMessage: LastMessage;
 }
 
-interface Message extends LastMessage {
-    sender: string;
-    addressee: string;
-}
 export interface MessageBody {
     role: "assistant" | "user" | "system";
     content: string;
@@ -63,7 +59,6 @@ export interface MessageBody {
     userId: string; // ID of the user who sent the message
 }
 export type MessageBodyArray = MessageBody[];
-type Messages = Message[];
 
 type Error = Pick<RootState["fetch"], "isError" | "errorMessage">;
 
@@ -75,14 +70,9 @@ interface Response {
 export type {
     Error,
     Files,
-    GPTRequestBody,
-    GPTRequestBodyMessages,
-    GPTRequestBodyMessage,
     Icons,
     MenuConfig,
     MenuConfigItem,
-    Message,
-    Messages,
     Response,
     RootState,
     UpdateLastMessage,

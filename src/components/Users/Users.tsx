@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 import { connect } from "react-redux";
 
 import { User, UserSelectInput } from "./components";
-import { RootState, Messages, UserDetails } from "types";
+import { RootState, UserDetails } from "types";
 import { useDispatchAction, useEnhancedState } from "hooks";
 import { getSelectedUsers } from "functions";
 
@@ -13,7 +13,6 @@ import "./styles/_Users.scss";
 
 interface Props {
     users: UserDetails[];
-    messages: Messages;
     handleUserSelected: () => void;
 }
 const Users = (props: Props) => {
@@ -54,7 +53,6 @@ const Users = (props: Props) => {
 
 const mapStateToProps = (state: RootState) => ({
     users: state.users.users,
-    messages: state.messages.messages,
 });
 
 export default connect(mapStateToProps, {})(Users);

@@ -3,12 +3,14 @@ import { connect } from "react-redux";
 import Fade from "@mui/material/Fade";
 import debounce from "lodash/debounce";
 
+
 import { RootState, UserDetails } from "types";
 import { ChatHeader, ChatInput } from "./Components";
 import Core from "./Components/Chat_Core";
 
 import "./styles/_Chat.scss";
 import useMediaQuery from "@mui/material/useMediaQuery";
+// import sendMessage from "./utils/sendMessage";
 
 const ANIMATION_TIMEOUT_MS = 700;
 const DEBOUNCE_DELAY_MS = 500;
@@ -35,6 +37,10 @@ const Chat = (props: Pick<UserDetails, "id" | "name">) => {
             return () => debouncedScrolling.cancel();
         }
     }, [id, debouncedScrolling]); 
+    //test chat.js
+
+// sendMessage('Test');
+    // koniec testu chat.js
 
     return (
         <Fade in={true} timeout={ANIMATION_TIMEOUT_MS}>

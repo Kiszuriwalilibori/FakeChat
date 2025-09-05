@@ -24,7 +24,6 @@
     }
     grid-auto-rows: 1fr;
     margin-left: calc(var(--nav-width) + var(--scrollbar-width));
-    /*margin-right: 18px;*/ // wątpliwe, do likwidacji
     max-width: var(--max-width);
 
     @include mobile {

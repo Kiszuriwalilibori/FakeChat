@@ -1,5 +1,5 @@
 import { styled } from "@mui/material/styles";
-import { Box, Stack } from "@mui/material";
+import { Stack } from "@mui/material";
 import { COLOR_BLUE } from "themes/constans";
 
 export const SharedFilesWrapper = styled("div")(({ theme }) => ({

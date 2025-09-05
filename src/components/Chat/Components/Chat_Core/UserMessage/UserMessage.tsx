@@ -1,22 +1,19 @@
 import Baloon from "./Baloon";
 import Time from "./Time";
 
-import {/* Message,*/MessageBody, UserDetails } from "types";
+import {MessageBody, UserDetails } from "types";
 
 import "./_Message.scss";
 import { Portrait } from "components";
 
 interface Props {
-    // message: Message;
     message: MessageBody;
     thumbnail: string;
     name: UserDetails["name"];
 }
 const UserMessage = (props: Props) => {
     const { thumbnail, message, name } = props;
-    // const { content, timestamp, sender } = message;
     const { content, timestamp, role} = message;
-    // const isFromHost = sender === "host";
 const isFromAssistant = role === "assistant";
     return (
         <div className={isFromAssistant ? "message message--host" : " message message--user"}>

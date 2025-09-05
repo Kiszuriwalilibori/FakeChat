@@ -1,39 +1,32 @@
 import MicIcon from "@mui/icons-material/Mic";
 
 import { useCallback, useEffect } from "react";
-import { connect } from "react-redux";
-import isEmpty from "lodash/isEmpty";
+
 import { Stack } from "@mui/material";
 import { EmojiClickData } from "emoji-picker-react";
-import { useSpeechRecognition } from "react-speech-kit";
+
 
 import Icons from "assets/icons";
-
 import { IconButton } from "components/Common";
-import { GPTRequestBodyMessage, Message, RootState } from "types";
-import { createAnswer, createEmoji, createMessage, createGPTRequestBodyMessages, getRandomDelay, createMessageBody } from "../utils";
-import { useBoolean, useEnhancedState, useInitialFocus, useProcessMessage, useDispatchAction, useVoice } from "hooks";
+import {  createEmoji} from "../utils";
+import { useBoolean, useEnhancedState, useInitialFocus, useProcessMessage, useVoice } from "hooks";
 import { Picker } from "components";
 import { listeningMicrophoneSx } from "./ChatInput.styles";
 
 
 const PLACEHOLDER = "Type your message here...";
-const INITIAL_MESSAGE = {} as Message;
+
 
 interface OwnProps {
     ID: string;
 }
-interface Props extends OwnProps {
-    apiGPTRequestBodyMessages: GPTRequestBodyMessage[];
-}
 
-const ChatInput = (props: Props) => {
+
+const ChatInput = (props:OwnProps) => {
     const { ID } = props;
     const [chatMessage, createChatMessage, clearInput, isChatMessageEmpty] = useEnhancedState<string>("");
-    const [message, setMessage] = useEnhancedState<Message>(INITIAL_MESSAGE);
     const { handleClickMicrophone, isMicrophoneDisabled, listening } = useVoice(createChatMessage, chatMessage);
     const [isPickerVisible, , , togglePickerVisibility] = useBoolean(false);
-    const { addMessage, setOnlineTrue, updateLastMessage } = useDispatchAction();
     const initialFocus = useInitialFocus<HTMLInputElement>();
     const sendMessage = useProcessMessage();
 
@@ -46,12 +39,10 @@ const ChatInput = (props: Props) => {
     const sendClickHandler = useCallback(
         () => {
             if (chatMessage) {
-                const message = createMessage(chatMessage, ID);
-                addMessage(message);
-                sendMessage(chatMessage,ID);// to jest nowe
+                
+                sendMessage(chatMessage,ID);
                 clearInput();
-                setMessage(createAnswer(chatMessage, ID));
-                // updateLastMessage({ ID, lastMessage: { content: message.content, timestamp: message.timestamp } });
+                
                 initialFocus.current && initialFocus.current.focus();
             }
         },
@@ -60,30 +51,7 @@ const ChatInput = (props: Props) => {
         [chatMessage, ID]
     );
 
-    const timeouts: NodeJS.Timeout[] = [];
-
-    useEffect(() => {
-        timeouts.push(
-            setTimeout(() => {
-                !isEmpty(message) && addMessage(message);
-                // !isEmpty(message) &&
-                //     updateLastMessage({ ID, lastMessage: { content: message.content, timestamp: message.timestamp } });
-            }, getRandomDelay())
-        );
-        timeouts.push(
-            setTimeout(() => {
-                !isEmpty(message) && setOnlineTrue(ID);
-            }, getRandomDelay())
-        );
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [message]);
-
-    useEffect(() => {
-        return () => timeouts.forEach(t => clearTimeout(t));
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
+    
     return (
         <div className="Chat__message-section">
             <input
@@ -129,10 +97,4 @@ const ChatInput = (props: Props) => {
     );
 };
 
-const mapStateToProps = (state: RootState, ownProps: OwnProps) => {
-    return {
-        apiGPTRequestBodyMessages: createGPTRequestBodyMessages(state.messages.messages, ownProps.ID),
-    };
-};
-
-export default connect(mapStateToProps, {})(ChatInput);
+export default ChatInput;
