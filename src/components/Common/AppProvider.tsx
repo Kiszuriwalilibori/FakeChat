@@ -16,7 +16,7 @@ import { SnackbarProvider } from "notistack";
 const rootReducer = combineReducers({
     fetch: fetchReducer,
     users: usersReducer,
-    messageBodies: messagesReducer,
+    messages: messagesReducer,
 });
 
 export const store = configureStore({

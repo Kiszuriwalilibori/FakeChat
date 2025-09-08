@@ -31,7 +31,7 @@ const MessagesSection = (props: Props) => {
 
 const mapStateToProps = (state: RootState, ownProps: OwnProps) => {
     return {
-        messages: filterMessageBodies(state.messageBodies.messageBodies, ownProps.ID),
+        messages: filterMessageBodies(state.messages.messages, ownProps.ID),
         thumbnail: state.users.activeUser.picture.thumbnail,
         userName: state.users.activeUser.name,
     };

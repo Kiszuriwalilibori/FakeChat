@@ -6,7 +6,7 @@ import createQuestions from 'components/Chat/utils/createQuestion';
 import { getRandomDelay } from 'components/Chat/utils/getRandomDelay';
 
 export const useProcessMessage = () => {
-  const {addMessageBody,updateLastMessage } = useDispatchAction();
+  const {addMessage: addMessageBody,updateLastMessage } = useDispatchAction();
   const sendMessage = useCallback(async (input: string, threadId: string) => {
     try {
       const response = await axios.post(

@@ -12,9 +12,5 @@ export const setActiveUserID = createAction<RootState["users"]["activeUserId"]>(
 export const toggleFavorite = createAction<string>("FAVORITE_TOGGLE");
 export const setOnlineTrue = createAction<string>("ONLINE_SET_TRUE");
 export const setOnlineFalse = createAction<string>("ONLINE_SET_FALSE");
-
-// export const addMessage = createAction<Message>("MESSAGE_SEND");
-
 export const updateLastMessage = createAction<UpdateLastMessage>("LAST_MESSAGE_UPDATE");
-
-export const addMessageBody = createAction<Message>("MESSAGE_BODY_ADD");
+export const addMessage = createAction<Message>("MESSAGE_ADD");
