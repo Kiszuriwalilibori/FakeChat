@@ -7,13 +7,15 @@ import { getRandomDelay } from 'components/Chat/utils/getRandomDelay';
 
 export const useProcessMessage = () => {
   const {addMessage: addMessageBody,updateLastMessage } = useDispatchAction();
-  const sendMessage = useCallback(async (input: string, threadId: string) => {
+  const sendMessage = useCallback(async (input: string, threadId: string, personality:string) => {
+    
     try {
+    
       const response = await axios.post(
         'https://api.mistral.ai/v1/chat/completions',
         {
           model: 'mistral-small',
-          messages: [{ role: 'user', content: input }],
+          messages: [{ role: 'user', content: input }, { role: 'system', content: personality }],
         },
         {
           headers: {

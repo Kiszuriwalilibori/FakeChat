@@ -19,11 +19,12 @@ const PLACEHOLDER = "Type your message here...";
 
 interface OwnProps {
     ID: string;
+    personality: string;
 }
 
 
 const ChatInput = (props:OwnProps) => {
-    const { ID } = props;
+    const { ID,personality } = props;
     const [chatMessage, createChatMessage, clearInput, isChatMessageEmpty] = useEnhancedState<string>("");
     const { handleClickMicrophone, isMicrophoneDisabled, listening } = useVoice(createChatMessage, chatMessage);
     const [isPickerVisible, , , togglePickerVisibility] = useBoolean(false);
@@ -39,8 +40,7 @@ const ChatInput = (props:OwnProps) => {
     const sendClickHandler = useCallback(
         () => {
             if (chatMessage) {
-                
-                sendMessage(chatMessage,ID);
+                sendMessage(chatMessage,ID,personality);
                 clearInput();
                 
                 initialFocus.current && initialFocus.current.focus();
@@ -48,7 +48,7 @@ const ChatInput = (props:OwnProps) => {
         },
         // eslint-disable-next-line react-hooks/exhaustive-deps
 
-        [chatMessage, ID]
+        [chatMessage, ID,personality]
     );
 
     

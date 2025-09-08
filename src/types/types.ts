@@ -8,7 +8,7 @@ interface MenuConfigItem {
 
 type MenuConfig = MenuConfigItem[];
 
-export interface RawUserDetails {
+export interface FetchedUser {
     name: { first: string; last: string };
     location: { city: string; country: string };
     phone: string;
@@ -24,9 +24,11 @@ export interface RawUserDetails {
 
 
 
-interface UserDetails extends Omit<RawUserDetails, "dob"> {
+interface UserDetails extends Omit<FetchedUser, "dob"> {
     dob: string;
+    personality: string;
 }
+
 
 type Users = UserDetails[];
 
@@ -63,7 +65,7 @@ export type MessageArray = Message[];
 type Error = Pick<RootState["fetch"], "isError" | "errorMessage">;
 
 interface Response {
-    results: RawUserDetails[];
+    results: FetchedUser[];
     error?: { message: string };
 }
 

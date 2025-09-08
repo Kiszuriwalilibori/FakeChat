@@ -3,7 +3,7 @@ import { AnyAction } from "redux";
 import { ThunkAction } from "redux-thunk";
 
 import { startLoading, completeLoading, showError, storeUsers } from "../actionCreators";
-import { createUserData } from "functions";
+import { createUsers } from "functions";
 import { Response, RootState, UserDetails } from "types";
 import { API_CONFIG } from "config/api";
 
@@ -49,7 +49,7 @@ const thunkFetchUsers = (): ThunkAction<Promise<void>, RootState, unknown, AnyAc
                 throw new Error('Invalid API response structure');
             }
 
-            const users = createUserData(response.data.results);
+            const users = createUsers(response.data.results);
             
             if (!Array.isArray(users)) {
                 throw new Error('Failed to process user data');

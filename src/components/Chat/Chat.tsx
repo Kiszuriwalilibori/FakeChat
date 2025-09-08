@@ -10,15 +10,14 @@ import Core from "./Components/Chat_Core";
 
 import "./styles/_Chat.scss";
 import useMediaQuery from "@mui/material/useMediaQuery";
-// import sendMessage from "./utils/sendMessage";
 
 const ANIMATION_TIMEOUT_MS = 700;
 const DEBOUNCE_DELAY_MS = 500;
 
-const Chat = (props: Pick<UserDetails, "id" | "name">) => {
-    console.log("chat renders");
-    const { id, name } = props;
-    console.log(id);
+const Chat = (props: Pick<UserDetails, "id" | "name"|"personality">) => {
+   
+    const { id, name,personality } = props;
+    
     const matches = useMediaQuery("(min-width: 768px ) and (max-width: 1105px");   
     const ref = useRef<HTMLElement>(null);
     const debouncedScrolling = useCallback(
@@ -50,7 +49,7 @@ const Chat = (props: Pick<UserDetails, "id" | "name">) => {
                 aria-atomic="false">
                 <ChatHeader id={id} name={name} />
                 {id && <Core ID={id} aria-live="polite" aria-atomic="false"/>}
-                {id && <ChatInput ID={id} aria-label="Type your message"/>}
+                {id && <ChatInput ID={id} personality={personality} aria-label="Type your message"/>}
             </section>
         </Fade>
     );
@@ -59,5 +58,6 @@ const Chat = (props: Pick<UserDetails, "id" | "name">) => {
 const mapStateToProps = (state: RootState) => ({
     name: state.users.activeUser.name,
     id: state.users.activeUser.id,
+    personality: state.users.activeUser.personality,
 });
 export default connect(mapStateToProps, {})(Chat);

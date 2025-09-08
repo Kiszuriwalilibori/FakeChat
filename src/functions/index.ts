@@ -1,6 +1,6 @@
 import breakWhenInternetExplorer from "./breakWhenInternetExplorer";
-import createUserData from "./createUserData";
+import createUsers from "./createUsers";
 import setScrollBarWidth from "./setScrollBarWidth";
 import getSelectedUsers from "./getSelectedUsers";
 
-export { createUserData, breakWhenInternetExplorer, getSelectedUsers, setScrollBarWidth };
+export { createUsers, breakWhenInternetExplorer, getSelectedUsers, setScrollBarWidth };
