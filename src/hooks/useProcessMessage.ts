@@ -1,21 +1,29 @@
 import { useCallback } from 'react';
 import axios from 'axios';
-import useDispatchAction from './useDispatchAction';
+import { useDispatchAction } from 'hooks';
 import { createResponse } from 'components/Chat/utils';
 import createQuestions from 'components/Chat/utils/createQuestion';
 import { getRandomDelay } from 'components/Chat/utils/getRandomDelay';
+import useMessage from './useMessage';
 
 export const useProcessMessage = () => {
-  const {addMessage: addMessageBody,updateLastMessage } = useDispatchAction();
-  const sendMessage = useCallback(async (input: string, threadId: string, personality:string) => {
-    
+  const showMessage = useMessage();
+  const { addMessage: addMessageBody, updateLastMessage } = useDispatchAction();
+  
+  const sendMessage = useCallback(async (
+    input: string, 
+    threadId: string, 
+    personality: string
+  ) => {
     try {
-    
       const response = await axios.post(
         'https://api.mistral.ai/v1/chat/completions',
         {
           model: 'mistral-small',
-          messages: [{ role: 'user', content: input }, { role: 'system', content: personality }],
+          messages: [
+            { role: 'user', content: input },
+            { role: 'system', content: personality }
+          ],
         },
         {
           headers: {
@@ -28,10 +36,15 @@ export const useProcessMessage = () => {
       const responseContent = response.data.choices[0].message.content;
       const timestamp = +new Date();
       
+      // Add user's question
       addMessageBody(createQuestions(input, threadId));
-      updateLastMessage({ID: threadId,lastMessage: {content: input, timestamp}})
-      const delay = getRandomDelay();
+      updateLastMessage({
+        ID: threadId,
+        lastMessage: { content: input, timestamp }
+      });
       
+      // Add AI response after a delay
+      const delay = getRandomDelay();
       setTimeout(() => {
         addMessageBody(createResponse(responseContent, threadId));
         updateLastMessage({ 
@@ -43,14 +56,33 @@ export const useProcessMessage = () => {
         });
       }, delay);
       
-      // return response.data; // Return the response data
-    } catch (error) {
-      console.error('Error sending message:', error);
-      // throw error; // Re-throw the error to handle it in the component
+    } catch (error: unknown) {
+      let errorMessage = 'Failed to send message';
+      
+      if (axios.isAxiosError(error)) {
+        // Handle Axios specific errors
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          errorMessage = `Error: ${error.response.status} - ${error.response.data?.message || 'Unknown error'}`;
+        } else if (error.request) {
+          // The request was made but no response was received
+          errorMessage = 'No response from server. Please check your connection.';
+        }
+      } else if (error instanceof Error) {
+        // Handle other types of errors
+        errorMessage = error.message;
+      }
+      
+      // Show user-friendly error message
+      showMessage.error(errorMessage);
+      
+      // Return error information
+      return { error: errorMessage };
     }
-  }, []);
+  }, [addMessageBody, updateLastMessage, showMessage]);
 
-  return sendMessage;
+  return { sendMessage };
 };
 
 export default useProcessMessage;

@@ -13,7 +13,6 @@ import { useBoolean, useEnhancedState, useInitialFocus, useProcessMessage, useVo
 import { Picker } from "components";
 import { listeningMicrophoneSx } from "./ChatInput.styles";
 
-
 const PLACEHOLDER = "Type your message here...";
 
 
@@ -29,7 +28,7 @@ const ChatInput = (props:OwnProps) => {
     const { handleClickMicrophone, isMicrophoneDisabled, listening } = useVoice(createChatMessage, chatMessage);
     const [isPickerVisible, , , togglePickerVisibility] = useBoolean(false);
     const initialFocus = useInitialFocus<HTMLInputElement>();
-    const sendMessage = useProcessMessage();
+    const { sendMessage } = useProcessMessage();
 
     useEffect(() => {
         ID && clearInput();
