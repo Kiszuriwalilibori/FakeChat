@@ -1,13 +1,13 @@
 import Baloon from "./Baloon";
 import Time from "./Time";
 
-import {MessageBody, UserDetails } from "types";
+import {Message, UserDetails } from "types";
 
 import "./_Message.scss";
 import { Portrait } from "components";
 
 interface Props {
-    message: MessageBody;
+    message: Message;
     thumbnail: string;
     name: UserDetails["name"];
 }

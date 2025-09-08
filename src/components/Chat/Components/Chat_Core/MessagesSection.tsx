@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import uuid from "react-uuid";
 
-import { RootState, UserDetails, MessageBodyArray } from "types";
+import { RootState, UserDetails, MessageArray } from "types";
 
 import UserMessage from "./UserMessage";
 import filterMessageBodies from "components/Chat/utils/filterMessageBodies";
@@ -13,7 +13,7 @@ interface OwnProps {
 }
 
 interface Props extends OwnProps {
-    messages: MessageBodyArray;
+    messages: MessageArray;
     thumbnail: string;
     userName: UserDetails["name"];
 }

@@ -1,6 +1,6 @@
-import { MessageBodyArray} from "types";
+import { MessageArray} from "types";
 
-export const filterMessageBodies = (messages: MessageBodyArray, id: string) => {
+export const filterMessageBodies = (messages: MessageArray, id: string) => {
     return messages.filter(item => item.userId === id);
 };
 

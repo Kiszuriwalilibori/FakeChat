@@ -52,13 +52,13 @@ interface UpdateLastMessage {
     lastMessage: LastMessage;
 }
 
-export interface MessageBody {
+export interface Message {
     role: "assistant" | "user" | "system";
     content: string;
     timestamp: number;
     userId: string; // ID of the user who sent the message
 }
-export type MessageBodyArray = MessageBody[];
+export type MessageArray = Message[];
 
 type Error = Pick<RootState["fetch"], "isError" | "errorMessage">;
 

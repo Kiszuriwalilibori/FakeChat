@@ -1,18 +1,13 @@
 import { createReducer, createSelector } from "@reduxjs/toolkit";
-import { MessageBodyArray, RootState } from "types";
+import { MessageArray, RootState } from "types";
 import { addMessageBody } from "../actionCreators";
 
-// State type
-type MessageBodyState = {
-    messageBodies: MessageBodyArray;
-};
-
-const initialState: MessageBodyState = {
+const initialState: {messageBodies: MessageArray} = {
     messageBodies: [],
 };
 
-// Reducer
-const messageBodyReducer = createReducer(initialState, builder => {
+
+const messagesReducer = createReducer(initialState, builder => {
     builder.addCase(addMessageBody, (state, action) => {
         if (action.payload) {
             const messageBodies = [...state.messageBodies];
@@ -85,7 +80,7 @@ export const selectMessageBodiesCountByUserId = (userId: string) =>
         (userMessages) => userMessages.length
     );
 
-export default messageBodyReducer;
+export default messagesReducer;
 
 
 

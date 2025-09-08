@@ -1,5 +1,5 @@
 import { createAction } from "@reduxjs/toolkit";
-import {UpdateLastMessage, RootState, Error, MessageBody } from "types";
+import {UpdateLastMessage, RootState, Error, Message } from "types";
 
 export const showError = createAction<Error>("ERROR_SHOW");
 export const clearError = createAction("ERROR_CLEAR");
@@ -17,4 +17,4 @@ export const setOnlineFalse = createAction<string>("ONLINE_SET_FALSE");
 
 export const updateLastMessage = createAction<UpdateLastMessage>("LAST_MESSAGE_UPDATE");
 
-export const addMessageBody = createAction<MessageBody>("MESSAGE_BODY_ADD");
+export const addMessageBody = createAction<Message>("MESSAGE_BODY_ADD");

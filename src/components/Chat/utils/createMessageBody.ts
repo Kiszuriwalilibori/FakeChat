@@ -1,7 +1,7 @@
-import { MessageBody } from "types";
+import { Message } from "types";
 
-export function createMessageBody(content: string, userId: string): MessageBody {
-    const result = {} as MessageBody;
+export function createMessageBody(content: string, userId: string): Message {
+    const result = {} as Message;
     result.role = "user";
     result.content = content;
     result.timestamp = new Date().valueOf();

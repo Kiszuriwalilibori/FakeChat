@@ -1,7 +1,7 @@
-import { MessageBody } from "types";
+import { Message } from "types";
 
-export function createResponse(content: string, userId: string): MessageBody {
-    const result = {} as MessageBody;
+export function createResponse(content: string, userId: string): Message {
+    const result = {} as Message;
     result.role = "assistant";
     result.content = content;
     result.timestamp = new Date().valueOf();
