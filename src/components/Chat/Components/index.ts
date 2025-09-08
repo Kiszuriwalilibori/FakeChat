@@ -1,4 +1,4 @@
 import ChatHeader from "./ChatHeader";
 import ChatInput from "./ChatInput";
-
-export { ChatHeader, ChatInput };
+import MicrophoneButton from "./MicrophoneButton";
+export { ChatHeader, ChatInput, MicrophoneButton};

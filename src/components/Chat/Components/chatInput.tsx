@@ -1,7 +1,4 @@
-import MicIcon from "@mui/icons-material/Mic";
-
 import { useCallback, useEffect } from "react";
-
 import { Stack } from "@mui/material";
 import { EmojiClickData } from "emoji-picker-react";
 
@@ -9,9 +6,9 @@ import { EmojiClickData } from "emoji-picker-react";
 import Icons from "assets/icons";
 import { IconButton } from "components/Common";
 import {  createEmoji} from "../utils";
-import { useBoolean, useEnhancedState, useInitialFocus, useProcessMessage, useVoice } from "hooks";
+import { useBoolean, useEnhancedState, useInitialFocus, useProcessMessage} from "hooks";
 import { Picker } from "components";
-import { listeningMicrophoneSx } from "./ChatInput.styles";
+import { MicrophoneButton } from "./MicrophoneButton";
 
 const PLACEHOLDER = "Type your message here...";
 
@@ -25,7 +22,6 @@ interface OwnProps {
 const ChatInput = (props:OwnProps) => {
     const { ID,personality } = props;
     const [chatMessage, createChatMessage, clearInput, isChatMessageEmpty] = useEnhancedState<string>("");
-    const { handleClickMicrophone, isMicrophoneDisabled, listening } = useVoice(createChatMessage, chatMessage);
     const [isPickerVisible, , , togglePickerVisibility] = useBoolean(false);
     const initialFocus = useInitialFocus<HTMLInputElement>();
     const { sendMessage } = useProcessMessage();
@@ -65,16 +61,10 @@ const ChatInput = (props:OwnProps) => {
             ></input>
 
             <Stack direction="row" spacing={1.5} sx={{ mx: 2 }}>
-                <IconButton
-                    disabled={isMicrophoneDisabled}
-                    id={"Microphone"}
-                    aria-label="toggle microphone"
-                    onClick={handleClickMicrophone}
-                    sx={{ ...listeningMicrophoneSx(listening) }}
-                >
-                    <MicIcon />
-                </IconButton>
-
+                <MicrophoneButton 
+                    onTranscript={createChatMessage}
+                    currentMessage={chatMessage}
+                />
                 <IconButton disabled aria-label="attach file">
                     <Icons.Attach />
                 </IconButton>
