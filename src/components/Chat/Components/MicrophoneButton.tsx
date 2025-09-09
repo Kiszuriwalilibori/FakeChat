@@ -37,23 +37,36 @@ const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
   }, [handleClick]);
   
   return (
-    <div 
-      role="status"
-      aria-live="polite"
-      aria-atomic="true"
-      className="sr-only"
-    >
-    <IconButton
-      disabled={isMicrophoneDisabled}
-      id="Microphone"
-      aria-label={listening ? "Stop recording" : "Start recording"}
-      onClick={handleClick}
-      onKeyDown={handleKeyDown}
-      sx={{ ...listeningMicrophoneSx(listening) }}
-    >
-      <MicIcon />
-    </IconButton>
-    </div>
+    <>
+      <div 
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+        style={{
+          position: 'absolute',
+          width: '1px',
+          height: '1px',
+          padding: 0,
+          margin: '-1px',
+          overflow: 'hidden',
+          clip: 'rect(0, 0, 0, 0)',
+          whiteSpace: 'nowrap',
+          border: 0
+        }}
+      >
+        {listening ? 'Microphone is active' : 'Microphone is ready'}
+      </div>
+      <IconButton
+        disabled={isMicrophoneDisabled}
+        id="Microphone"
+        aria-label={listening ? "Stop recording" : "Start recording"}
+        onClick={handleClick}
+        onKeyDown={handleKeyDown}
+        sx={{ ...listeningMicrophoneSx(listening) }}
+      >
+        <MicIcon />
+      </IconButton>
+    </>
   );
 };
 
