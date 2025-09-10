@@ -2,7 +2,7 @@ import MicIcon from "@mui/icons-material/Mic";
 import { IconButton } from "components/Common";
 import { useVoice } from "hooks";
 import { listeningMicrophoneSx } from "./ChatInput.styles";
-import { useCallback} from "react";
+import { useCallback, useEffect, useRef } from "react";
 
 interface MicrophoneButtonProps {
   onTranscript: (transcript: string) => void;
@@ -19,11 +19,28 @@ export const MicrophoneButton = ({
     isMicrophoneDisabled, 
     listening 
   } = useVoice(onTranscript, currentMessage);
+  
+  const statusRef = useRef<HTMLDivElement>(null);
 
+  // Announce state changes to screen readers
+  useEffect(() => {
+    if (statusRef.current) {
+      if (listening) {
+        statusRef.current.textContent = 'Recording in progress';
+      } else if (isMicrophoneDisabled) {
+        statusRef.current.textContent = 'Microphone access is not available';
+      } else {
+        statusRef.current.textContent = 'Microphone ready';
+      }
+    }
+  }, [listening, isMicrophoneDisabled]);
 
-const handleClick = useCallback(() => {
+  const handleClick = useCallback(() => {
     if (isMicrophoneDisabled) {
       console.warn('Microphone access is not available or was denied');
+      if (statusRef.current) {
+        statusRef.current.textContent = 'Microphone access was denied. Please check your browser permissions.';
+      }
       return;
     }
     handleClickMicrophone();
@@ -39,6 +56,7 @@ const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
   return (
     <>
       <div 
+        ref={statusRef}
         role="status"
         aria-live="polite"
         aria-atomic="true"
@@ -57,14 +75,18 @@ const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
         {listening ? 'Microphone is active' : 'Microphone is ready'}
       </div>
       <IconButton
-        disabled={isMicrophoneDisabled}
-        id="Microphone"
-        aria-label={listening ? "Stop recording" : "Start recording"}
         onClick={handleClick}
         onKeyDown={handleKeyDown}
-        sx={{ ...listeningMicrophoneSx(listening) }}
+        sx={listening ? listeningMicrophoneSx(true) : {}}
+        disabled={isMicrophoneDisabled}
+        data-testid="microphone-button"
+        aria-label={listening ? 'Stop recording' : 'Start recording'}
+        aria-pressed={listening}
+        aria-haspopup="false"
+        title={listening ? 'Stop recording (Space/Enter)' : 'Start voice recording (Space/Enter)'}
       >
-        <MicIcon />
+        <MicIcon aria-hidden="true" />
+        <span className="sr-only">{listening ? 'Stop recording' : 'Start recording'}</span>
       </IconButton>
     </>
   );

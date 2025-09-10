@@ -6,7 +6,7 @@ import { EmojiClickData } from "emoji-picker-react";
 import Icons from "assets/icons";
 import { IconButton } from "components/Common";
 import {  createEmoji} from "../utils";
-import { useBoolean, useEnhancedState, useInitialFocus, useProcessMessage} from "hooks";
+import { useBoolean, useEnhancedState, useInitialFocus, useMessage, useProcessMessage} from "hooks";
 import { Picker } from "components";
 import { MicrophoneButton } from "./MicrophoneButton";
 
@@ -25,28 +25,27 @@ const ChatInput = (props:OwnProps) => {
     const [isPickerVisible, , , togglePickerVisibility] = useBoolean(false);
     const initialFocus = useInitialFocus<HTMLInputElement>();
     const { sendMessage } = useProcessMessage();
+    const showMessage = useMessage();
 
     useEffect(() => {
         ID && clearInput();
     }, [ID]);
 
+    const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    createChatMessage(e.target.value);
+}, [createChatMessage]);
+
+    const sendClickHandler = useCallback(() => {
+    if (!chatMessage.trim()) return;
+    if (!ID || !personality) {
+        showMessage.error('Missing required props');
+        return;
+    }
     
-
-    const sendClickHandler = useCallback(
-        () => {
-            if (chatMessage) {
-                sendMessage(chatMessage,ID,personality);
-                clearInput();
-                
-                initialFocus.current && initialFocus.current.focus();
-            }
-        },
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-
-        [chatMessage, ID,personality]
-    );
-
-    
+    sendMessage(chatMessage, ID, personality);
+    clearInput();
+    initialFocus.current?.focus();
+}, [chatMessage, ID, personality, sendMessage, clearInput, initialFocus]);
     return (
         <div className="Chat__message-section">
             <input
@@ -55,9 +54,7 @@ const ChatInput = (props:OwnProps) => {
                 type="text"
                 value={chatMessage}
                 ref={initialFocus}
-                onChange={e => {
-                    createChatMessage(e.target.value);
-                }}
+                onChange={handleInputChange}
             ></input>
 
             <Stack direction="row" spacing={1.5} sx={{ mx: 2 }}>

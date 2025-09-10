@@ -1,4 +1,8 @@
-import { RootState } from "components/Common/AppProvider";
+import {store } from "components/Common/AppProvider";
+
+type RootState = ReturnType<typeof store.getState>;
+
+type AppDispatch = typeof store.dispatch;
 
 type Icons = "chat" | "edit" | "home" | "person" | "cards" | "settings";
 interface MenuConfigItem {
@@ -19,7 +23,7 @@ export interface FetchedUser {
     id: string;
     social: { facebook: string; linkedin: string; twitter: string };
     isOnline: boolean;
-    lastMessage?: LastMessage;
+    
 }
 
 
@@ -27,6 +31,7 @@ export interface FetchedUser {
 interface UserDetails extends Omit<FetchedUser, "dob"> {
     dob: string;
     personality: string;
+    lastMessage?: LastMessage;
 }
 
 
@@ -39,26 +44,19 @@ interface LastMessage {
     timestamp: number;
 }
 
-// interface GPTRequestBodyMessage {
-//     role: "assistant" | "user" | "system";
-//     content: string;
-// }
-// type GPTRequestBodyMessages = GPTRequestBodyMessage[];
-// interface GPTRequestBody {
-//     model: string;
-//     messages: GPTRequestBodyMessages;
-// }
 
 interface UpdateLastMessage {
     ID: string;
     lastMessage: LastMessage;
 }
 
+export type MessageRole = "assistant" | "user" | "system";
+
 export interface Message {
-    role: "assistant" | "user" | "system";
+    role: MessageRole;
     content: string;
     timestamp: number;
-    userId: string; // ID of the user who sent the message
+    userId: string;
 }
 export type MessageArray = Message[];
 
@@ -70,6 +68,7 @@ interface Response {
 }
 
 export type {
+    AppDispatch,
     Error,
     Files,
     Icons,

@@ -49,4 +49,4 @@ const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 register();
 export default AppProvider;
 export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+

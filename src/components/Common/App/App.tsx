@@ -5,10 +5,10 @@ import { connect } from "react-redux";
 
 import thunkFetchUsers from "reduxware/thunks/fetchUsersThunk";
 
-import { RootState, UserDetails } from "types";
+import { AppDispatch, RootState, UserDetails } from "types";
 import { Navigation, Loader, ErrorMessage, Users, Chat, Header } from "components";
 import { useDelayedCondition, useHandleConnectionStatus, useResizeChat, useSetScrollBarWidthOnResize } from "hooks";
-import { AppDispatch } from "../AppProvider";
+
 
 import "./_App.scss";
 
