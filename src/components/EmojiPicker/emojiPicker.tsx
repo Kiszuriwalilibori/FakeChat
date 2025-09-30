@@ -13,7 +13,11 @@ export const Picker = (props: Props) => {
 
     if (!isActive) return null;
     return (
-        <Box sx={sxPicker}>
+        <Box sx={sxPicker}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Emoji picker"
+      >
             <EmojiPicker height={450} width={320} onEmojiClick={clickHandler} />
         </Box>
     );
