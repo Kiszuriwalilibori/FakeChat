@@ -9,6 +9,7 @@ import { useBoolean, useEnhancedState, useInitialFocus, useMessage, useProcessMe
 import { Picker } from "components";
 import { MicrophoneButton } from "./MicrophoneButton";
 import { sanitizeInput } from "../utils/sanitizeInput";
+import EmojiButton from "./EmojiButton";
 
 const PLACEHOLDER = "Type your message here...";
 
@@ -71,9 +72,10 @@ const ChatInput = (props:OwnProps) => {
                 <IconButton disabled aria-label="attach file">
                     <Icons.Attach />
                 </IconButton>
-                <IconButton aria-label="add emoticon" id="Add emoticon" onClick={togglePickerVisibility}>
+                <EmojiButton isPickerVisible={isPickerVisible} togglePickerVisibility={togglePickerVisibility}/>
+                {/* <IconButton aria-label="add emoticon" id="Add emoticon" onClick={togglePickerVisibility}>
                     <Icons.Smile />
-                </IconButton>
+                </IconButton> */}
 
                 <IconButton disabled={isChatMessageEmpty} onClick={sendClickHandler} aria-label="send">
                     <Icons.Send />
