@@ -2,13 +2,13 @@ import { useCallback, useEffect } from "react";
 import { Stack } from "@mui/material";
 import { EmojiClickData } from "emoji-picker-react";
 
-
 import Icons from "assets/icons";
 import { IconButton } from "components/Common";
 import {  createEmoji} from "../utils";
 import { useBoolean, useEnhancedState, useInitialFocus, useMessage, useProcessMessage} from "hooks";
 import { Picker } from "components";
 import { MicrophoneButton } from "./MicrophoneButton";
+import { sanitizeInput } from "../utils/sanitizeInput";
 
 const PLACEHOLDER = "Type your message here...";
 
@@ -41,8 +41,14 @@ const ChatInput = (props:OwnProps) => {
         showMessage.error('Missing required props');
         return;
     }
+
+    const sanitizedMessage = sanitizeInput(chatMessage);
+  if (!sanitizedMessage) {
+    showMessage.error('Message contains invalid content');
+    return;
+  }
     
-    sendMessage(chatMessage, ID, personality);
+    sendMessage(sanitizedMessage, ID, personality);
     clearInput();
     initialFocus.current?.focus();
 }, [chatMessage, ID, personality, sendMessage, clearInput, initialFocus]);
