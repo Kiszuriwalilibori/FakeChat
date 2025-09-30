@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import Fade from "@mui/material/Fade";
 import debounce from "lodash/debounce";
 
-
 import { RootState, UserDetails } from "types";
 import { ChatHeader, ChatInput } from "./Components";
 import Core from "./Components/Chat_Core";
@@ -36,11 +35,7 @@ const Chat = (props: Pick<UserDetails, "id" | "name"|"personality">) => {
             return () => debouncedScrolling.cancel();
         }
     }, [id, debouncedScrolling]); 
-    //test chat.js
-
-// sendMessage('Test');
-    // koniec testu chat.js
-
+    
     return (
         <Fade in={true} timeout={ANIMATION_TIMEOUT_MS}>
             <section className="Chat" id="Chat" ref={ref} role="region"
