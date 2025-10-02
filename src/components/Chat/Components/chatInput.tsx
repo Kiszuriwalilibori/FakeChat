@@ -86,6 +86,7 @@ const ChatInput = (props:OwnProps) => {
                 clickHandler={(emojiData: EmojiClickData) => {
                     createEmoji(emojiData) && createChatMessage(chatMessage + createEmoji(emojiData));
                 }}
+                onClose={togglePickerVisibility}
             />
         </div>
     );
