@@ -354,6 +354,11 @@ Note: The application is not compatible with Internet Explorer or Opera Mini.
 - Basic chat functionality
 - React and Redux implementation
 
+### 2.0.0
+- works with Mistral Chat API
+### 2.0.1
+- better emoji picker: it hides on click outside and correctly manages focus
+
 ## Contributing
 
 1. Fork the repository
