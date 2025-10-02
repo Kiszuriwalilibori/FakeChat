@@ -6,9 +6,7 @@
     flex-grow: 1;
     position: relative;
     height: calc(10 * var(--details-height) + (var(--users-search-wrapper-height)));
-    // display: grid;
-    // grid-template-rows: 62.5px calc(100% - 142.5px) 80px;
-    // max-width: 100%;
+    
 
     &__header {
         @extend .flexRow;

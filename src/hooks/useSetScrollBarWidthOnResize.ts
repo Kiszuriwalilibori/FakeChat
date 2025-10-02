@@ -8,11 +8,10 @@ export function useSetScrollBarWidthOnResize() {
                 window.innerWidth - document.documentElement.offsetWidth + "px"
             );
         }
-        // Add event listener
+       
         window.addEventListener("resize", handleResize);
 
         handleResize();
-        // Remove event listener on cleanup
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 }

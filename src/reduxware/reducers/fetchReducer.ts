@@ -24,8 +24,7 @@ const fetchReducer = createReducer(initialState, builder => {
         })
         .addCase(completeLoading, (state, action) => {
             state.isLoading = false;
-            // state.isError = false;
-            // state.errorMessage = "";
+            
         });
 });
 

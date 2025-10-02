@@ -1,12 +1,16 @@
-import { useCallback } from 'react';
+
 import axios from 'axios';
+import DOMPurify from 'dompurify';
+
+import { useCallback } from 'react';
+
 import { useDispatchAction } from 'hooks';
 import { createResponse } from 'components/Chat/utils';
 import createQuestions from 'components/Chat/utils/createQuestion';
 import { getRandomDelay } from 'components/Chat/utils/getRandomDelay';
 import useMessage from './useMessage';
 import { sanitizeInput } from 'components/Chat/utils/sanitizeInput';
-import DOMPurify from 'dompurify';
+
 
 export const useProcessMessage = () => {
   const showMessage = useMessage();
