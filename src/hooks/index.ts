@@ -10,12 +10,20 @@ import useResizeChat from "./useResizeChat";
 import useProcessMessage from "./useProcessMessage";
 import useSetScrollBarWidthOnResize from "./useSetScrollBarWidthOnResize";
 import useVoice from "./useVoice";
+import { useClickOutside } from "./useClickOutside";
+import { useEscapeKey } from "./useEscapeKey";
+import { useFocusManagement } from "./useFocusManagement";
+import { useFocusTrap } from "./useFocusTrap";
 
 export {
     useBoolean,
+    useClickOutside,
     useDispatchAction,
     useDelayedCondition,
     useEnhancedState,
+    useEscapeKey,
+    useFocusManagement,
+    useFocusTrap,
     useGetUserLanguages,
     useHandleConnectionStatus,
     useInitialFocus,
